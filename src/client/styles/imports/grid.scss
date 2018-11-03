@@ -28,6 +28,10 @@ $columnWidth: 70px;
   }
 }
 
+.of-grid-#{$columns}, .of-grid-full {
+  width: 100%;
+}
+
 .of-grid-container {
   position: fixed;
   top: 0;

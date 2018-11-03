@@ -36,13 +36,19 @@ class HomePage extends Component {
 
 		return (
 				<div className="route-page-container">
-					<PoseGroup>
-						{isVisible && [
-		          <Of key="Of" className="of-container" >
-								<OfText key="OfText" className="of-text">New York</OfText>
-							</Of>,
-		        ]}
-					</PoseGroup>					
+					<div className="of-grid">
+						<div className="of-grid-row">
+							<div className="of-grid-20">
+								<PoseGroup>
+									{isVisible && [
+					          <Of key="Of" className="of-container" >
+											<OfText key="OfText" className="of-text">New York</OfText>
+										</Of>,
+					        ]}
+								</PoseGroup>
+							</div>
+						</div>
+					</div>
 			</div>
 
 
