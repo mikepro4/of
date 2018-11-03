@@ -29,7 +29,8 @@ body {
 	font-family: "OF", sans-serif;
 	font-weight: 400;
 	-webkit-font-smoothing: subpixel-antialiased;
-	overflow: hidden;
+	overflow-y: scroll;
+	overflow-x: hidden;
 	width: 100%;
 	color: white;
 }

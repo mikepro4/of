@@ -8,9 +8,8 @@ import ReactDOM from "react-dom";
 class Grid extends Component {
 	render() {
 		return (
-      <div className="of-grid-container">
-  			<div className="of-grid">
-          <div className="of-grid-row">
+  			<div className="of-grid of-grid-preview">
+          <div className="of-grid-container">
             <div className="of-grid-1"></div>
             <div className="of-grid-1"></div>
             <div className="of-grid-1"></div>
@@ -33,8 +32,6 @@ class Grid extends Component {
             <div className="of-grid-1"></div>
           </div>
         </div>
-
-			</div>
 		);
 	}
 }

@@ -4,20 +4,6 @@ $rowPadding: 20px;
 $gutterWidth: 10px;
 $columnWidth: 70px;
 
-.of-grid {
-  padding: 0 $offset 0 $offset;
-  width: 100%;
-  margin-left: 10px;
-}
-
-.of-grid-row {
-  display: block;
-  width: calc(100% - 10px);;
-  margin-bottom: $gutterWidth;
-  display: flex;
-  position: relative;
-}
-
 @for $i from 1 through $columns {
   .of-grid-#{$i} {
       margin-right: 10px;
@@ -27,7 +13,7 @@ $columnWidth: 70px;
 
 @for $i from 1 through $columns {
   .of-grid-gutter-#{$i} {
-      margin-left: calc((100% / #{$columns} * #{$i}));
+      margin-left: calc(((100% / #{$columns}) * #{$i}));
   }
 }
 
@@ -43,34 +29,92 @@ $columnWidth: 70px;
   }
 }
 
+
+
 .of-grid-#{$columns}, .of-grid-full {
   width: 100%;
 }
 
+
+
 .of-grid-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  display: block;
+  width: calc(100%);
+  // margin-bottom: $gutterWidth;
   display: flex;
+  position: relative;
+}
+
+.of-grid {
+  position: relative;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
   z-index: 1;
-  opacity: 0.4;
-  // opacity: 0;
+  margin: 0 30px 0 40px;
+  height: 3000px;
 
-  .of-grid-row {
-    flex-grow: 1;
-    margin-bottom: 0;
-  }
-
-  .of-grid {
+  &.of-grid-preview {
     display: flex;
-  }
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 1;
 
-  @for $i from 1 through $columns {
-    .of-grid-#{$i} {
-      background: red;
+    .of-grid-container {
       flex-grow: 1;
+      margin-bottom: 0;
+    }
+
+
+    @for $i from 1 through $columns {
+      .of-grid-#{$i} {
+        background: red;
+        flex-grow: 1;
+        opacity: 0.3;
+      }
     }
   }
 }
+
+// .of-grid-inner-container {
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   padding-right: 20px;
+//   bottom: 0;
+//   left: 0;
+// }
+
+
+
+
+// .of-grid-preview {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   display: flex;
+//   z-index: 1;
+//   opacity: 0.4;
+//   // opacity: 0;
+//
+//   .of-grid-container {
+//     flex-grow: 1;
+//     margin-bottom: 0;
+//   }
+//
+//   .of-grid {
+//     display: flex;
+//   }
+//
+//   @for $i from 1 through $columns {
+//     .of-grid-#{$i} {
+//       background: red;
+//       flex-grow: 1;
+//     }
+//   }
+// }

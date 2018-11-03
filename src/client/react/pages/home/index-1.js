@@ -38,32 +38,34 @@ class HomePage extends Component {
 				<div className="route-page-container">
           <div className="of-grid">
 
-            <div className="of-grid-logo">
-              Logo
-            </div>
-
-            <div className="of-grid-images">
-              <div className="image-1">
-                image
-              </div>
-
-              <div className="image-2">
-                image
-              </div>
-
-              <div className="image-3">
-                image
+            <div className="of-grid-container of-grid-images">
+              <div className="of-grid-1 of-grid-gutter-10">
+                some image
               </div>
             </div>
 
-            <div className="of-grid-navigation">
-              Navigation
-            </div>
+            <div className="of-grid-container of-grid-application">
 
-            <div className="of-grid-13 of-grid-gutter-4 of-grid-content">
-              content
+              <div className="of-grid-1 of-grid-logo">
+                <PoseGroup>
+                  {isVisible && [
+                    <Of key="Of" className="of-container" >
+                      <OfText key="OfText" className="of-text">New York</OfText>
+                    </Of>,
+                  ]}
+                </PoseGroup>
+              </div>
+
+              <div className="of-grid-width-3 of-grid-navigation">
+                navigation here
+              </div>
+
+              <div className="of-grid-width-16 of-grid-left-4 of-grid-content">
+                content here
+              </div>
             </div>
           </div>
+
 
 			</div>
 
