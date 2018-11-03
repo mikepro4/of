@@ -38,7 +38,7 @@ class HomePage extends Component {
 				<div className="route-page-container">
 					<div className="of-grid">
 						<div className="of-grid-row">
-							<div className="of-grid-20">
+							<div className="of-grid-1 of-grid-gutter-10">
 								<PoseGroup>
 									{isVisible && [
 					          <Of key="Of" className="of-container" >
@@ -47,6 +47,14 @@ class HomePage extends Component {
 					        ]}
 								</PoseGroup>
 							</div>
+
+              <div className="something">
+  						      something 1
+              </div>
+
+              <div className="something2">
+  						      something 2
+              </div>
 						</div>
 					</div>
 			</div>

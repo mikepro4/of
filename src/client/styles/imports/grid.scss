@@ -7,23 +7,39 @@ $columnWidth: 70px;
 .of-grid {
   padding: 0 $offset 0 $offset;
   width: 100%;
+  margin-left: 10px;
 }
 
 .of-grid-row {
   display: block;
-  width: 100%;
+  width: calc(100% - 10px);;
   margin-bottom: $gutterWidth;
   display: flex;
+  position: relative;
 }
 
 @for $i from 1 through $columns {
   .of-grid-#{$i} {
       margin-right: 10px;
       width: calc((100% / #{$columns} * #{$i}) - 10px);
+  }
+}
 
-      &:last-child {
-        margin-right: 0;
-      }
+@for $i from 1 through $columns {
+  .of-grid-gutter-#{$i} {
+      margin-left: calc((100% / #{$columns} * #{$i}));
+  }
+}
+
+@for $i from 1 through $columns {
+  .of-grid-width-#{$i} {
+      width: calc((100% / #{$columns} * #{$i}) - 10px);
+  }
+}
+
+@for $i from 1 through $columns {
+  .of-grid-left-#{$i} {
+      left: calc((100% / #{$columns} * #{$i}));
   }
 }
 
@@ -40,7 +56,7 @@ $columnWidth: 70px;
   display: flex;
   z-index: 1;
   opacity: 0.4;
-  opacity: 0;
+  // opacity: 0;
 
   .of-grid-row {
     flex-grow: 1;

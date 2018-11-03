@@ -17,6 +17,7 @@
 // pages
 @import "../App";
 @import "../react/pages/home/index";
+
 html {
 	overflow: hidden;
 }
@@ -31,7 +32,6 @@ body {
 	overflow: hidden;
 	width: 100%;
 	color: white;
-
 }
 
 * {

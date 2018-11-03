@@ -3,3 +3,25 @@
   height: 100px;
   background: $white;
 }
+
+.something {
+  background: blue;
+  opacity: 0.4;
+  position: absolute;
+
+  @extend .of-grid-width-4;
+  @extend .of-grid-left-10;
+
+  top: 150px;
+}
+
+.something2 {
+  background: green;
+  opacity: 0.4;
+  position: absolute;
+
+  @extend .of-grid-width-10;
+  @extend .of-grid-left-3;
+
+  bottom: 600px;
+}
