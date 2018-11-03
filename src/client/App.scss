@@ -1,0 +1,33 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+
+  .route-page-container {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  .route-page {
+    padding: 20px 20px 20px 20px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+}
