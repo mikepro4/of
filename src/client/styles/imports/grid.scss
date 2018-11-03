@@ -1,0 +1,55 @@
+$columns: 20;
+$offset: 40px;
+$rowPadding: 20px;
+$gutterWidth: 10px;
+$columnWidth: 70px;
+
+.of-grid {
+  padding: 0 $offset 0 $offset;
+  width: 100%;
+}
+
+.of-grid-row {
+  display: block;
+  width: 100%;
+  margin-bottom: $gutterWidth;
+  display: flex;
+}
+
+@for $i from 1 through $columns {
+  .of-grid-#{$i} {
+      background: red;
+      margin-right: 10px;
+      width: calc((100% / #{$columns} * #{$i}) - 10px);
+
+      &:last-child {
+        margin-right: 0;
+      }
+  }
+}
+
+.of-grid-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  z-index: 1;
+  opacity: 0.4;
+
+  .of-grid-row {
+    flex-grow: 1;
+    margin-bottom: 0;
+  }
+
+  .of-grid {
+    display: flex;
+  }
+
+  @for $i from 1 through $columns {
+    .of-grid-#{$i} {
+        flex-grow: 1;
+    }
+  }
+}

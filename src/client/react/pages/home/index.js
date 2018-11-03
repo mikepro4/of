@@ -42,7 +42,7 @@ class HomePage extends Component {
 								<OfText key="OfText" className="of-text">New York</OfText>
 							</Of>,
 		        ]}
-					</PoseGroup>
+					</PoseGroup>					
 			</div>
 
 

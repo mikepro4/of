@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { FocusStyleManager } from "@blueprintjs/core";
 import ReactDOM from "react-dom";
+import Grid from "./react/components/grid"
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
@@ -22,8 +23,9 @@ class App extends Component {
 				<div className="app-container" ref="app">
 					{renderRoutes(this.props.route.routes)}
 				</div>
+				<Grid/>
 			</div>
-		);
+		)
 	}
 }
 
