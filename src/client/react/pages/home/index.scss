@@ -3,7 +3,6 @@
   top: 0;
   right: 0;
   left: 0;
-  background: rgba(blue, 0.2);
   z-index: 1;
   height: 1000px;
 
@@ -30,11 +29,31 @@
   .image-3 {
     position: absolute;
     top: 600px;
-    height: 1000px;
+    height: 400px;
     background: rgba(green, 0.5);
 
     @extend .of-grid-width-5;
     @extend .of-grid-left-11;
+  }
+
+  .image-4 {
+    position: absolute;
+    top: 2000px;
+    height: 500px;
+    background: rgba(green, 0.5);
+
+    @extend .of-grid-width-5;
+    @extend .of-grid-left-1;
+  }
+
+  .image-5 {
+    position: absolute;
+    top: 1200px;
+    height: 500px;
+    background: rgba(green, 0.5);
+
+    @extend .of-grid-width-6;
+    @extend .of-grid-left-8;
   }
 }
 
@@ -54,7 +73,13 @@
   left: 40px;
   z-index: 1000;
   width: 200px;
-  background: rgba(yellow, 0.2);
+
+  .of-text {
+    font-size: 18px;
+    letter-spacing: 1.1px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
 }
 
 .of-grid-navigation {
@@ -66,53 +91,10 @@
   bottom: 0;
   display: flex;
   align-items: center;
-  background: rgba($white, 0.3);
 }
 
 .of-grid-content {
   z-index: 3;
-  background: rgba($white, 0.3);
   height: 2500px;
+  // background: rgba(white, 0.2)
 }
-
-//
-// .box {
-//   width: 100px;
-//   height: 100px;
-//   background: $white;
-// }
-//
-//
-//
-// .something {
-//   background: blue;
-//   opacity: 0.4;
-//   position: absolute;
-//
-//   @extend .of-grid-width-4;
-//   @extend .of-grid-left-10;
-//
-//   top: 150px;
-// }
-//
-// .something2 {
-//   background: green;
-//   opacity: 0.4;
-//   position: absolute;
-//
-//   @extend .of-grid-width-10;
-//   @extend .of-grid-left-3;
-//
-//   bottom: 600px;
-// }
-//
-// .navigation {
-//   background: green;
-//   opacity: 0.4;
-//   @extend .of-grid-width-3;
-//   left: 0;
-//   top: 0;
-//   position: absolute;
-//   flex-grow: 1;
-//   display: flex;
-// }

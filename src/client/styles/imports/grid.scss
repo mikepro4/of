@@ -29,13 +29,9 @@ $columnWidth: 70px;
   }
 }
 
-
-
 .of-grid-#{$columns}, .of-grid-full {
   width: 100%;
 }
-
-
 
 .of-grid-container {
   display: block;
@@ -71,50 +67,10 @@ $columnWidth: 70px;
 
     @for $i from 1 through $columns {
       .of-grid-#{$i} {
-        background: red;
+        // background: red;
         flex-grow: 1;
         opacity: 0.3;
       }
     }
   }
 }
-
-// .of-grid-inner-container {
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-//   padding-right: 20px;
-//   bottom: 0;
-//   left: 0;
-// }
-
-
-
-
-// .of-grid-preview {
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   right: 0;
-//   bottom: 0;
-//   display: flex;
-//   z-index: 1;
-//   opacity: 0.4;
-//   // opacity: 0;
-//
-//   .of-grid-container {
-//     flex-grow: 1;
-//     margin-bottom: 0;
-//   }
-//
-//   .of-grid {
-//     display: flex;
-//   }
-//
-//   @for $i from 1 through $columns {
-//     .of-grid-#{$i} {
-//       background: red;
-//       flex-grow: 1;
-//     }
-//   }
-// }
