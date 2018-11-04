@@ -11,7 +11,6 @@
     top: 150px;
     height: 40px;
     background: rgba(green, 0.5);
-
     @extend .of-grid-width-4;
     @extend .of-grid-left-12;
   }
@@ -21,7 +20,6 @@
     top: 400px;
     height: 100px;
     background: rgba(green, 0.5);
-
     @extend .of-grid-width-3;
     @extend .of-grid-left-17;
   }
@@ -31,7 +29,6 @@
     top: 600px;
     height: 400px;
     background: rgba(green, 0.5);
-
     @extend .of-grid-width-5;
     @extend .of-grid-left-11;
   }
@@ -41,7 +38,6 @@
     top: 2000px;
     height: 500px;
     background: rgba(green, 0.5);
-
     @extend .of-grid-width-5;
     @extend .of-grid-left-1;
   }
@@ -51,50 +47,19 @@
     top: 1200px;
     height: 500px;
     background: rgba(green, 0.5);
-
     @extend .of-grid-width-6;
     @extend .of-grid-left-8;
   }
 }
 
-.of-grid-application {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background: rgba(yellow, 0.2);
-  z-index: 2;
-}
-
-.of-grid-logo {
-  position: fixed;
-  top: 30px;
-  left: 40px;
-  z-index: 1000;
-  width: 200px;
-
-  .of-text {
-    font-size: 18px;
-    letter-spacing: 1.1px;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-}
-
-.of-grid-navigation {
-  position: fixed;
-  top: 0;
-  left: 40px;
-  z-index: 2;
-  width: 200px;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-}
-
 .of-grid-content {
   z-index: 3;
   height: 2500px;
-  // background: rgba(white, 0.2)
+  @extend .of-grid-15;
+  @extend .of-grid-gutter-4;
+
+  @media only screen and (max-width: $mobile) {
+    margin-left: 0;
+    width: calc(100% - 10px);
+  }
 }

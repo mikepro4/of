@@ -21,7 +21,7 @@ class HomePage extends Component {
 	state = { isVisible: false };
 
 	componentDidMount() {
-    this.setState({ isVisible: !this.state.isVisible });
+    // this.setState({ isVisible: !this.state.isVisible });
   }
 
 	renderHead = () => (
@@ -34,60 +34,35 @@ class HomePage extends Component {
 		const { isVisible } = this.state;
 
 		return (
-				<div className="route-page-container">
-          <div className="of-grid">
+      <div className="of-grid-content">
 
-            <div className="of-grid-logo">
-              <div className="of-container">
-                {isVisible && (
-                  <SplitText
-                    className="of-text"
-                    initialPose="exit"
-                    pose="enter"
-                    wordPoses={charPoses}
-                    onPoseComplete={()=> {console.log("complete")}}
-                    onValueChange={{
-                      translateY: v => {console.log("translateY: ", v)},
-                      opacity: v => {console.log("opacity: ", v)}
-                    }}
-                  >
-                    Olena Finch
-                  </SplitText>
-                )}
-              </div>
+      {isVisible && (
+        <div>
+          content
+
+          <div className="of-grid-images">
+            <div className="image-1">
+              image
             </div>
 
-            <div className="of-grid-images">
-              <div className="image-1">
-                image
-              </div>
-
-              <div className="image-2">
-                image
-              </div>
-
-              <div className="image-3">
-                image
-              </div>
-
-              <div className="image-4">
-                image
-              </div>
-
-              <div className="image-5">
-                image
-              </div>
+            <div className="image-2">
+              image
             </div>
 
-            <div className="of-grid-navigation">
-              Navigation
+            <div className="image-3">
+              image
             </div>
 
-            <div className="of-grid-15 of-grid-gutter-4 of-grid-content">
-              content
+            <div className="image-4">
+              image
+            </div>
+
+            <div className="image-5">
+              image
             </div>
           </div>
-
+        </div>
+      )}
 			</div>
 
 
