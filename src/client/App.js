@@ -119,9 +119,7 @@ const charPoses = {
 
 class App extends Component {
 	state = {
-		appVisible: false,
-
-		introVisible: true,
+		introVisible: false,
 
 		leftLabelVisible: false,
 		rightLabelVisible: false,
@@ -136,7 +134,7 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		// this.setState({ isVisible: !this.state.isVisible });
+		// this.setState({ introVisible: true });
 
 		setTimeout(()=> {
 			this.setState({ leftLabelVisible: true });
@@ -227,8 +225,6 @@ class App extends Component {
 	}
 
 	render() {
-		const { appVisible } = this.state;
-
 		return (
 			<div className="app">
 
@@ -236,7 +232,7 @@ class App extends Component {
 
 					<div className="of-grid-logo">
 						<div className="of-container">
-							{appVisible && (
+							{this.props.appVisible && (
 								<SplitText
 									className="of-text"
 									initialPose="exit"
@@ -255,7 +251,7 @@ class App extends Component {
 					</div>
 
 					<div className="of-grid-navigation">
-						{appVisible && (<div>Navigation</div>)}
+						{this.props.appVisible && (<div>Navigation</div>)}
 					</div>
 
 					{renderRoutes(this.props.route.routes)}
@@ -336,8 +332,7 @@ class App extends Component {
 
 											if(pose == "exit") {
 												this.setState({
-													introVisible: false,
-													appVisible: true
+													introVisible: false
 												})
 												this.props.showApp()
 											}
@@ -359,9 +354,9 @@ class App extends Component {
 	}
 }
 
-function mapStateToProps(state) {
+function mapStateToProps({app}) {
 	return {
-
+		appVisible: app.appVisible
 	};
 }
 

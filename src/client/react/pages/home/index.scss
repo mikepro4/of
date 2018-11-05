@@ -52,11 +52,16 @@
   }
 }
 
+.of-grid-content-layer {
+  position: relative;
+  z-index: 10
+}
+
 .of-grid-content {
   z-index: 3;
   height: 2500px;
-  @extend .of-grid-15;
-  @extend .of-grid-gutter-4;
+  // @extend .of-grid-15;
+  // @extend .of-grid-gutter-4;
 
   @media only screen and (max-width: $mobile) {
     margin-left: 0;

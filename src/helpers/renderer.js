@@ -64,6 +64,7 @@ export default (
 				<link rel="stylesheet" href="/${buildAssets.bundle.css}">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 				<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+				<script async src="//www.instagram.com/embed.js"></script>
       </head>
       <body>
         <div id="app">${content}</div>
