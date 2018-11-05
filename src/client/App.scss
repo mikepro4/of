@@ -81,17 +81,18 @@
       display: flex;
       flex-grow: 1;
       flex-shrink: 1;
-      background: rgba($white, 0.2);
       margin: 0 15px;
       height: 1px;
       position: relative;
+      overflow: hidden;
 
       .of-grid-progress-bar {
-        width: 70%;
+        width: 100%;
+        left: -100%;
         position: absolute;
         left: 0;
         height: 1px;
-        background: rgba($white, 1);
+        background: rgba($white, 0.2);
       }
     }
   }
@@ -107,7 +108,16 @@
     align-items: center;
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 5.7vw;
+    font-size: 5.3vw;
     letter-spacing: 8px;
+    user-select: none;
+
+    .of-container {
+      line-height: 75px;
+    }
+
+    span {
+      overflow: hidden;
+    }
   }
 }
