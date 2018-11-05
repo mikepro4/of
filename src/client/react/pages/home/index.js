@@ -31,12 +31,10 @@ class HomePage extends Component {
 		</Helmet>
 	);
 	render() {
-		const { isVisible } = this.state;
-
 		return (
       <div className="of-grid-content">
 
-      {isVisible && (
+      {this.props.appVisible && (
         <div>
           content
 
@@ -70,8 +68,10 @@ class HomePage extends Component {
 	}
 }
 
-function mapStateToProps() {
-	return {};
+function mapStateToProps({ app }) {
+	return {
+    appVisible: app.appVisible
+  };
 }
 
 export default {

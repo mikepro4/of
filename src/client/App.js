@@ -6,6 +6,7 @@ import { FocusStyleManager } from "@blueprintjs/core";
 import ReactDOM from "react-dom";
 import posed, { PoseGroup } from 'react-pose';
 import SplitText from 'react-pose-text';
+import { showApp } from "./redux/actions/appActions";
 
 import Grid from "./react/components/grid"
 
@@ -14,14 +15,14 @@ FocusStyleManager.onlyShowFocusOnTabs();
 const Image = posed.img({
 	exit: {opacity: 0, scale: 0.9},
 	out: {
-		scale: 1.1,
+		scale: 1.2,
 		opacity: 0,
 		transition: {
 			opacity: {
 				duration: 1000,
 			},
 			scale: {
-				duration: 1000
+				duration: 7000
 			},
 		}
 	},
@@ -79,7 +80,6 @@ const Name = posed.div({
 			 }
 		}
 	},
-
 	enter: {
 		opacity: 1,
 		letterSpacing: 14,
@@ -102,9 +102,9 @@ const charPoses = {
 		translateY: -30,
 		opacity: 0,
 		transition: {
-		 duration: 500,
+		 duration: 600,
 		},
-		delay: ({ wordIndex }) => wordIndex * 200
+		delay: ({ wordIndex }) => wordIndex * 250
 	},
   enter: {
     translateY: 0,
@@ -119,7 +119,7 @@ const charPoses = {
 
 class App extends Component {
 	state = {
-		isVisible: false,
+		appVisible: false,
 
 		introVisible: true,
 
@@ -204,7 +204,7 @@ class App extends Component {
 			this.setState({
 				imageOut: true,
 			})
-		}, 800)
+		}, 1200)
 
 		setTimeout(() => {
 			this.setState({
@@ -223,11 +223,11 @@ class App extends Component {
 			this.setState({
 				rightLabelVisible: false,
 			})
-		}, 2200)
+		}, 2500)
 	}
 
 	render() {
-		const { isVisible } = this.state;
+		const { appVisible } = this.state;
 
 		return (
 			<div className="app">
@@ -236,7 +236,7 @@ class App extends Component {
 
 					<div className="of-grid-logo">
 						<div className="of-container">
-							{isVisible && (
+							{appVisible && (
 								<SplitText
 									className="of-text"
 									initialPose="exit"
@@ -255,7 +255,7 @@ class App extends Component {
 					</div>
 
 					<div className="of-grid-navigation">
-						{isVisible && (<div>Navigation</div>)}
+						{appVisible && (<div>Navigation</div>)}
 					</div>
 
 					{renderRoutes(this.props.route.routes)}
@@ -336,8 +336,10 @@ class App extends Component {
 
 											if(pose == "exit") {
 												this.setState({
-													introVisible: false
+													introVisible: false,
+													appVisible: true
 												})
+												this.props.showApp()
 											}
 										}}
 									>
@@ -359,9 +361,10 @@ class App extends Component {
 
 function mapStateToProps(state) {
 	return {
+
 	};
 }
 
 export default {
-	component: connect(mapStateToProps, {})(withRouter(App))
+	component: connect(mapStateToProps, { showApp })(withRouter(App))
 };
