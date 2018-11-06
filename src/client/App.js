@@ -66,10 +66,10 @@ class App extends Component {
 
 	componentDidUpdate(prevProps) {
 		// Reset scrolling position on route change
-		// if(prevProps.location.pathname !== this.props.location.pathname) {
-		// 	let node = ReactDOM.findDOMNode(this.refs.app)
-		// 	if (node) { node.scrollTop = 0 }
-		// }
+		if(prevProps.location.pathname !== this.props.location.pathname) {
+			let node = document.getElementById("body")
+			if (node) { node.scrollTop = 0 }
+		}
 	}
 
 	render() {
