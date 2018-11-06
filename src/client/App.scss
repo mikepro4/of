@@ -4,6 +4,8 @@
   left: 40px;
   z-index: 1000;
   width: 200px;
+  user-select: none;
+  cursor: pointer;
 
   .of-text {
     font-size: 18px;
@@ -22,6 +24,55 @@
   bottom: 0;
   display: flex;
   align-items: center;
+  z-index: 10;
+
+  ul.main-links {
+    li.main-link-container {
+      font-size: 30px;
+      padding: 15px 0;
+      font-weight: 300;
+      letter-spacing: 1.3px;
+      transition: all 1s;
+      position: relative;
+
+      &:before {
+        content: "";
+        width: 0;
+        left: -40px;
+        height: 1px;
+        background: #fff;
+        position: absolute;
+        top: 34px;
+        transition: all 0.2s;
+      }
+    }
+
+    &.active {
+      li.main-link-container {
+        opacity: 0.3;
+
+        &.main-link-active {
+          opacity: 1;
+
+          &:before {
+            width: 25px;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      li.main-link-container {
+        opacity: 0.3;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+
 }
 
 .app-intro {

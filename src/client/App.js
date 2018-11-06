@@ -8,12 +8,15 @@ import posed, { PoseGroup } from 'react-pose';
 import SplitText from 'react-pose-text';
 import keydown from "react-keydown";
 import classNames from "classnames"
-import { showApp, showGrid, hideGrid, fetchImageDetails } from "./redux/actions/appActions";
-
+import { Link } from "react-router-dom";
 import ipp from "instagram-profile-picture";
 import bud from "basic-instagram-user-details";
 
+import { showApp, showGrid, hideGrid, fetchImageDetails } from "./redux/actions/appActions";
+
 import Grid from "./react/components/grid"
+
+import MainLinks from "./react/components/navigation/main_links/"
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
@@ -139,7 +142,7 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		this.setState({ introVisible: true });
+		// this.setState({ introVisible: true });
 		ipp.image("https://www.instagram.com/p/BpZvZeWhSei/").then(img => {
 	  	console.log(img);
 		});
@@ -256,26 +259,30 @@ class App extends Component {
 
 					<div className="of-grid-logo">
 						<div className="of-container">
-							{this.props.appVisible && (
-								<SplitText
-									className="of-text"
-									initialPose="exit"
-									pose="enter"
-									wordPoses={charPoses}
-									onPoseComplete={()=> {console.log("complete")}}
-									onValueChange={{
-										translateY: v => {console.log("translateY: ", v)},
-										opacity: v => {console.log("opacity: ", v)}
-									}}
-								>
-									Olena Finch
-								</SplitText>
-							)}
+							<Link to ="/" className="home-link">
+								{this.props.appVisible && (
+									<SplitText
+										className="of-text"
+										initialPose="exit"
+										pose="enter"
+										wordPoses={charPoses}
+										onPoseComplete={()=> {console.log("complete")}}
+										onValueChange={{
+											translateY: v => {console.log("translateY: ", v)},
+											opacity: v => {console.log("opacity: ", v)}
+										}}
+									>
+										Olena Finch
+									</SplitText>
+								)}
+								</Link>
 						</div>
 					</div>
 
 					<div className="of-grid-navigation">
-						{this.props.appVisible && (<div>Navigation</div>)}
+						{this.props.appVisible && (
+								<MainLinks />
+						)}
 					</div>
 
 					<div className={classNames({"of-grid-content-visible": this.props.appVisible}, "of-grid-content")}>
