@@ -12,6 +12,8 @@ import { Link } from "react-router-dom";
 import ipp from "instagram-profile-picture";
 import bud from "basic-instagram-user-details";
 
+import DoubleArrow from "./react/components/svg/double_arrow";
+
 import { showApp, showGrid, hideGrid, fetchImageDetails } from "./redux/actions/appActions";
 
 import Grid from "./react/components/grid"
@@ -138,7 +140,10 @@ class App extends Component {
 		imageOut: false,
 
 		nameVisible: true,
-		nameOut: false
+		nameOut: false,
+
+		instagramHovered: false,
+		facebookHovered: false
 	};
 
 	componentDidMount() {
@@ -276,6 +281,54 @@ class App extends Component {
 									</SplitText>
 								)}
 								</Link>
+						</div>
+					</div>
+
+					<div className="of-grid-top-left">
+						<div
+							className="of-container"
+							onMouseEnter={() => this.setState({instagramHovered: true})}
+					    onMouseLeave={() => this.setState({instagramHovered: false})}
+						>
+							<a href="#">Instagram</a>
+						</div>
+
+						<div className="divider-container">
+							<div
+								className={classNames({
+									"right": this.state.facebookHovered,
+									"left": this.state.instagramHovered,
+								}, "divider-bar")}
+							/>
+						</div>
+
+						<div
+							className="of-container"
+							onMouseEnter={() => this.setState({facebookHovered: true})}
+					    onMouseLeave={() => this.setState({facebookHovered: false})}
+						>
+							<a href="#">Facebook</a>
+						</div>
+					</div>
+
+					<div className="of-grid-top-right">
+						<div className="of-container">
+							<a href="#" className="line-hover">contact@olenafinch.com</a>
+						</div>
+					</div>
+
+					<div className="of-grid-bottom-right">
+						<div className="of-container">Promotions & modeling</div>
+						<div className="of-container">New York City</div>
+					</div>
+
+					<div className="of-grid-bottom-left">
+						<div className="arrow-container">
+							<div className="arrow-icon"><DoubleArrow/></div>
+						</div>
+						<div className="scroll-message-container">
+							<div className="scroll-message-title">Scroll down</div>
+							<div className="scroll-message-description">More content ahead</div>
 						</div>
 					</div>
 

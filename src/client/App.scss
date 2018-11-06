@@ -15,6 +15,145 @@
   }
 }
 
+.of-grid-top-left {
+  position: fixed;
+  top: 40px;
+  z-index: 1000;
+  width: width(5);
+  left: left(4);
+  display: flex;
+
+  .of-container {
+    transition: all 1s;
+    letter-spacing: 1px;
+    font-size: 12px;
+    font-weight: 300;
+  }
+
+  &:hover {
+    .of-container {
+      opacity: 0.3;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .divider-container {
+    width: 40px;
+    position: relative;
+    margin: 8px 10px 0 10px;
+    height: 1px;
+    overflow: hidden;
+
+    .divider-bar {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 1px;
+      background: $white;
+      transition: all 1s;
+
+      &.right {
+        left: 100%;
+      }
+
+      &.left {
+        left: -100%;
+      }
+    }
+  }
+}
+
+
+
+.of-grid-top-right {
+  position: fixed;
+  top: 40px;
+  z-index: 1000;
+  width: width(5);
+  right: 40px;
+  text-align: right;
+
+  .of-container {
+    transition: all 1s;
+    letter-spacing: 1px;
+    font-size: 12px;
+    font-weight: 300;
+    height: 25px;
+
+    a {
+     height: 20px;
+    }
+  }
+}
+
+.of-grid-bottom-right {
+  position: fixed;
+  bottom: 20px;
+  z-index: 1000;
+  width: width(5);
+  right: 40px;
+  text-align: right;
+  transform: rotate(90deg) translateX(18px);
+  transform-origin: top right;
+  display: flex;
+  flex-direction: column;
+
+
+  .of-container {
+    transition: all 1s;
+    letter-spacing: 1px;
+    font-size: 12px;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin: 0 0 5px 0;
+  }
+}
+
+.of-grid-bottom-left {
+  position: fixed;
+  bottom: 40px;
+  z-index: 1000;
+  width: width(3);
+  left: 40px;
+  display: flex;
+
+  .arrow-container {
+    width: 10px;
+    height: 28px;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    margin-right: 20px;
+    margin-top: 4px;
+
+    .arrow-icon {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .scroll-message-container {
+    letter-spacing: 0.5px;
+    
+    .scroll-message-title {
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    .scroll-message-description {
+      margin: 0;
+      font-size: 11px;
+      font-weight: 300;
+      opacity: 0.3;
+    }
+  }
+}
+
 .of-grid-navigation {
   position: fixed;
   top: 0;

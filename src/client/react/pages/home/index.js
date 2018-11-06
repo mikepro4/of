@@ -24,10 +24,8 @@ class HomePage extends Component {
         <div className="of-grid-content-layer">
           <div className="of-grid-row">
             <div className="of-grid-gutter-4 of-grid-5">
-                @yeah_lenka
             </div>
             <div className="of-grid-gutter-2 of-grid-3">
-                @yeah_lenka
             </div>
           </div>
         </div>

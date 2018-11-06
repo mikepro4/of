@@ -29,6 +29,14 @@ $columnWidth: 70px;
   }
 }
 
+@function left($num) {
+  @return calc(((100% - 70px) / 20 * #{$num} + 40px));
+}
+
+@function width($num) {
+  @return calc(((100% - 70px) / 20 * #{$num} - 10px));
+}
+
 .of-grid-#{$columns}, .of-grid-full {
   width: 100%;
 }
