@@ -12,8 +12,6 @@ import { Link } from "react-router-dom";
 import ipp from "instagram-profile-picture";
 import bud from "basic-instagram-user-details";
 
-import DoubleArrow from "./react/components/svg/double_arrow";
-
 import { showApp, showGrid, hideGrid, fetchImageDetails } from "./redux/actions/appActions";
 
 import Grid from "./react/components/grid"
@@ -22,6 +20,9 @@ import MainLinks from "./react/components/navigation/main_links/"
 import Logo from "./react/components/app/logo/"
 import Intro from "./react/components/app/intro/"
 import TopLeft from "./react/components/app/top_left/"
+import TopRight from "./react/components/app/top_right/"
+import BottomRight from "./react/components/app/bottom_right/"
+import BottomLeft from "./react/components/app/bottom_left/"
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
@@ -46,8 +47,11 @@ class App extends Component {
 
 		this.props.fetchImageDetails()
 
+		// this.props.showApp()
+
 		setTimeout(()=> {
 			this.setState({ leftLabelVisible: true });
+
 		}, 2000)
 	}
 
@@ -74,35 +78,22 @@ class App extends Component {
 
 				<div className="of-grid of-grid-app">
 
-					<Logo isVisible={this.props.appVisible} />
+					<Grid/>
 
-					<TopLeft isVisible={this.props.appVisible} />
+					<Intro />
 
-					<div className="of-grid-top-right">
-						<div className="of-container">
-							<a href="#" className="line-hover">contact@olenafinch.com</a>
-						</div>
-					</div>
+					<Logo />
 
-					<div className="of-grid-bottom-right">
-						<div className="of-container">Promotions & modeling</div>
-						<div className="of-container">New York City</div>
-					</div>
+					<TopLeft />
 
-					<div className="of-grid-bottom-left">
-						<div className="arrow-container">
-							<div className="arrow-icon"><DoubleArrow/></div>
-						</div>
-						<div className="scroll-message-container">
-							<div className="scroll-message-title">Scroll down</div>
-							<div className="scroll-message-description">More content ahead</div>
-						</div>
-					</div>
+					<TopRight  />
+
+					<BottomRight  />
+
+					<BottomLeft />
 
 					<div className="of-grid-navigation">
-						{this.props.appVisible && (
-								<MainLinks isVisible={this.props.appVisible} />
-						)}
+						<MainLinks isVisible={this.props.appVisible} />
 					</div>
 
 					<div className={classNames({"of-grid-content-visible": this.props.appVisible}, "of-grid-content")}>
@@ -110,10 +101,6 @@ class App extends Component {
 					</div>
 
 				</div>
-
-				<Grid/>
-
-				<Intro />
 
 			</div>
 		)

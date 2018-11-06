@@ -47,12 +47,8 @@ class Logo extends Component {
 }
 
 function mapStateToProps({app}) {
-	return {};
-}
-
-function mapStateToProps(state) {
 	return {
-		location: state.router.location
+    isVisible: app.appVisible,
 	};
 }
 

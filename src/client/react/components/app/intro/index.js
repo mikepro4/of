@@ -116,7 +116,7 @@ const wordPoses = {
 
 class Intro extends Component {
 	state = {
-    introVisible: false,
+    introVisible: true,
 
     leftLabelVisible: false,
 		rightLabelVisible: false,
@@ -131,8 +131,6 @@ class Intro extends Component {
   };
 
   componentDidMount() {
-		this.props.showApp()
-		
     setTimeout(()=> {
       this.setState({ leftLabelVisible: true });
     }, 2000)
@@ -305,10 +303,6 @@ class Intro extends Component {
         return <div/>
     }
 	}
-}
-
-function mapStateToProps({app}) {
-	return {};
 }
 
 function mapStateToProps(state) {
