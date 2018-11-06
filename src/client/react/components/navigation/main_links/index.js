@@ -2,6 +2,27 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import classNames from "classnames"
+import posed, { PoseGroup } from 'react-pose';
+
+const Parent = posed.ul({
+	open: {
+		opacity: 1,
+		delayChildren: 500,
+	  staggerChildren: 70,
+		transition: {
+			duration: 2200
+		}
+	},
+  closed: { opacity: 0 },
+	initialPose: 'closed'
+});
+
+const Child = posed.div({
+	open: { y: 0, opacity: 1, transition: {duration: 300}  },
+  closed: { y: 50, opacity: 0},
+	initialPose: 'closed'
+});
+
 
 class MainLinks extends Component {
 	isActivePath = (pathname) => {
@@ -32,9 +53,15 @@ class MainLinks extends Component {
       }
     ]
 
+		const {isVisible} = this.props
+
 		return (
 			<div className="main-links-container">
-        <ul className={classNames({"active": !(this.props.location.pathname == "/")}, "main-links")}>
+        <Parent
+					className={classNames({"active": !(this.props.location.pathname == "/")}, "main-links")}
+					initialPose="closed"
+					pose={isVisible ? 'open' : 'closed'}
+				>
 
           {links.map(link => {
             return (
@@ -42,13 +69,15 @@ class MainLinks extends Component {
                   "main-link-active": this.isActivePath(link.url)
                 })}
               >
-                <Link to ={link.url} className="main-link">
-                  <span className="main-link-label">{link.name}</span>
-                </Link>
+								<Child>
+	                <Link to ={link.url} className="main-link">
+	                  <span className="main-link-label">{link.name}</span>
+	                </Link>
+								</Child>
               </li>
             )
           })}
-        </ul>
+        </Parent>
 			</div>
 		);
 	}

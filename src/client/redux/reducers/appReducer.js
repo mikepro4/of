@@ -7,7 +7,7 @@ import {
 } from "../actions/types";
 
 export const initialState = {
-	appVisible: true,
+	appVisible: false,
 	gridVisible: false
 };
 
