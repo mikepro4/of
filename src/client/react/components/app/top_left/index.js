@@ -36,7 +36,7 @@ class TopLeft extends Component {
   };
 
   componentDidUpdate(prevprops) {
-    if(this.props.isVisible == true) {
+    if(this.props.isVisible == true && this.state.instagramVisible == false) {
       setTimeout(() => {
         this.setState({
           instagramVisible: true

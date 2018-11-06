@@ -25,7 +25,7 @@ class BottomRight extends Component {
   };
 
   componentDidUpdate(prevprops) {
-    if(this.props.isVisible == true) {
+    if(this.props.isVisible == true && this.state.topLineVisible == false) {
       setTimeout(() => {
         this.setState({
           topLineVisible: true

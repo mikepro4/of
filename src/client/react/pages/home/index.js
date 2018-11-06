@@ -5,10 +5,30 @@ import { Link } from "react-router-dom";
 import posed, { PoseGroup } from 'react-pose';
 import SplitText from 'react-pose-text';
 
-class HomePage extends Component {
-	state = {};
+const Images = posed.div({
+  exit: { opacity: 0 },
+  enter: {
+    opacity: 1,
+    transition: {
+     duration: 600,
+	 }
+  }
+})
 
-	componentDidMount() {}
+class HomePage extends Component {
+	state = {
+		imagesVisible: false
+	};
+
+	componentDidMount() {
+		let timeOut = this.props.appVisible ? 0 : this.props.introLength
+
+		setTimeout(() => {
+			this.setState({
+				imagesVisible: true
+			})
+		}, timeOut)
+	}
 
 	renderHead = () => (
 		<Helmet>
@@ -24,13 +44,15 @@ class HomePage extends Component {
         <div className="of-grid-content-layer">
           <div className="of-grid-row">
             <div className="of-grid-gutter-4 of-grid-5">
-            </div>
-            <div className="of-grid-gutter-2 of-grid-3">
+							<h1>Home</h1>
             </div>
           </div>
         </div>
 
-        <div className="of-grid-images">
+        <Images
+					initialPose="exit"
+					pose={this.state.imagesVisible ? "enter" : "exit"}
+					className="of-grid-images">
           <div className="image-1">
             image
           </div>
@@ -50,7 +72,7 @@ class HomePage extends Component {
           <div className="image-5">
             image
           </div>
-        </div>
+        </Images>
       </div>
 		);
 	}
@@ -58,8 +80,9 @@ class HomePage extends Component {
 
 function mapStateToProps({ app }) {
 	return {
-    appVisible: app.appVisible
-  };
+		appVisible: app.appVisible,
+		introLength: app.introLength
+	};
 }
 
 export default {

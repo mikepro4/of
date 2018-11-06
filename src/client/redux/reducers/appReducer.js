@@ -7,6 +7,7 @@ import {
 } from "../actions/types";
 
 export const initialState = {
+	introLength: 7000,
 	appVisible: false,
 	gridVisible: false
 };

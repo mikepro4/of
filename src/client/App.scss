@@ -106,16 +106,10 @@
 .of-grid-content {
   z-index: 3;
   height: 2500px;
-  opacity: 0;
-  transition: all 0.2s;
 
   @media only screen and (max-width: $mobile) {
     margin-left: 0;
     width: calc(100% - 10px);
-  }
-
-  &.of-grid-content-visible {
-    opacity: 1;
   }
 }
 

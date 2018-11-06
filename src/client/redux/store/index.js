@@ -23,7 +23,7 @@ export const configure = (
 	}
 
 	// Analytics will be tracked here
-	history.listen(location => console.log("Track route change: ", location));
+	// history.listen(location => console.log("Track route change: ", location));
 
 	const initializedRouterMW = routerMiddleware(history);
 

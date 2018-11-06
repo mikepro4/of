@@ -66,21 +66,21 @@ class App extends Component {
 
 	componentDidUpdate(prevProps) {
 		// Reset scrolling position on route change
-		if(prevProps.location.pathname !== this.props.location.pathname) {
-			let node = ReactDOM.findDOMNode(this.refs.app)
-			if (node) { node.scrollTop = 0 }
-		}
+		// if(prevProps.location.pathname !== this.props.location.pathname) {
+		// 	let node = ReactDOM.findDOMNode(this.refs.app)
+		// 	if (node) { node.scrollTop = 0 }
+		// }
 	}
 
 	render() {
 		return (
 			<div className="app">
 
+				<Grid/>
+
+				<Intro />
+
 				<div className="of-grid of-grid-app">
-
-					<Grid/>
-
-					<Intro />
 
 					<Logo />
 
@@ -107,10 +107,11 @@ class App extends Component {
 	}
 }
 
-function mapStateToProps({app}) {
+function mapStateToProps(state) {
 	return {
-		appVisible: app.appVisible,
-		gridVisible: app.gridVisible
+		appVisible: state.app.appVisible,
+		gridVisible: state.app.gridVisible,
+		location: state.router.location
 	};
 }
 

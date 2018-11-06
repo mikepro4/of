@@ -24,7 +24,7 @@ class TopRight extends Component {
   };
 
   componentDidUpdate(prevprops) {
-    if(this.props.isVisible == true) {
+    if(this.props.isVisible == true && this.state.emailVisible == false) {
       setTimeout(() => {
         this.setState({
           emailVisible: true

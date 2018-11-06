@@ -1,6 +1,7 @@
 import React from "react";
 import App from "../App";
 import Home from "../react/pages/home";
+import About from "../react/pages/about";
 
 export default [
 	{
@@ -12,6 +13,14 @@ export default [
 				exact: true,
 				params: {
 					name: "home"
+				}
+			},
+			{
+				...About,
+				path: "/about",
+				exact: true,
+				params: {
+					name: "about"
 				}
 			}
 		]
