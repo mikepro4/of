@@ -1,5 +1,3 @@
-.app {}
-
 .of-grid-logo {
   position: fixed;
   top: 40px;
@@ -35,9 +33,6 @@
   z-index: 100;
   height: 100vh;
   display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // background: $black;
 
   .of-grid {
     display: flex;
@@ -121,3 +116,26 @@
     }
   }
 }
+
+.of-grid-content-layer {
+  position: relative;
+  z-index: 10
+}
+
+.of-grid-content {
+  z-index: 3;
+  height: 2500px;
+  opacity: 0;
+  transition: all 0.2s;
+
+  @media only screen and (max-width: $mobile) {
+    margin-left: 0;
+    width: calc(100% - 10px);
+  }
+
+  &.of-grid-content-visible {
+    opacity: 1;
+  }
+}
+
+.route-container {}

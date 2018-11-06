@@ -6,7 +6,12 @@ import { FocusStyleManager } from "@blueprintjs/core";
 import ReactDOM from "react-dom";
 import posed, { PoseGroup } from 'react-pose';
 import SplitText from 'react-pose-text';
-import { showApp } from "./redux/actions/appActions";
+import keydown from "react-keydown";
+import classNames from "classnames"
+import { showApp, showGrid, hideGrid, fetchImageDetails } from "./redux/actions/appActions";
+
+import ipp from "instagram-profile-picture";
+import bud from "basic-instagram-user-details";
 
 import Grid from "./react/components/grid"
 
@@ -134,11 +139,30 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		// this.setState({ introVisible: true });
+		this.setState({ introVisible: true });
+		ipp.image("https://www.instagram.com/p/BpZvZeWhSei/").then(img => {
+	  	console.log(img);
+		});
+
+		bud("mikepro4", 'id').then(id => {
+		  console.log(id);
+		  // => { data: '259220806' }
+		});
+
+		this.props.fetchImageDetails()
 
 		setTimeout(()=> {
 			this.setState({ leftLabelVisible: true });
 		}, 2000)
+	}
+
+	@keydown("G")
+	toggleGrid() {
+		if(this.props.gridVisible) {
+			this.props.hideGrid()
+		} else {
+			this.props.showGrid()
+		}
 	}
 
 	componentDidUpdate(prevProps) {
@@ -254,7 +278,9 @@ class App extends Component {
 						{this.props.appVisible && (<div>Navigation</div>)}
 					</div>
 
-					{renderRoutes(this.props.route.routes)}
+					<div className={classNames({"of-grid-content-visible": this.props.appVisible}, "of-grid-content")}>
+						{renderRoutes(this.props.route.routes)}
+					</div>
 
 				</div>
 
@@ -348,7 +374,6 @@ class App extends Component {
 					</div>
 				) : "" }
 
-
 			</div>
 		)
 	}
@@ -356,10 +381,11 @@ class App extends Component {
 
 function mapStateToProps({app}) {
 	return {
-		appVisible: app.appVisible
+		appVisible: app.appVisible,
+		gridVisible: app.gridVisible
 	};
 }
 
 export default {
-	component: connect(mapStateToProps, { showApp })(withRouter(App))
+	component: connect(mapStateToProps, { showApp, showGrid, hideGrid, fetchImageDetails })(withRouter(App))
 };

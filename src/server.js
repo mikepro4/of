@@ -30,6 +30,8 @@ app.use(
 	})
 );
 
+require("./routes/mailRoutes")(app);
+
 app.use(express.static(STATIC_DIR));
 app.use(express.static(PUBLIC_DIR));
 

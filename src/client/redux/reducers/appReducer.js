@@ -2,10 +2,13 @@ import { assign } from "lodash";
 
 import {
 	SHOW_APP,
+	SHOW_GRID,
+	HIDE_GRID
 } from "../actions/types";
 
 export const initialState = {
-	appVisible: true,
+	appVisible: false,
+	gridVisible: false
 };
 
 export const appReducer = (state = initialState, action) => {
@@ -13,6 +16,14 @@ export const appReducer = (state = initialState, action) => {
 		case SHOW_APP:
 			return assign({}, state, {
 				appVisible: true
+			});
+		case SHOW_GRID:
+			return assign({}, state, {
+				gridVisible: true
+			});
+		case HIDE_GRID:
+			return assign({}, state, {
+				gridVisible: false
 			});
 		default:
 			return state;

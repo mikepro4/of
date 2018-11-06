@@ -1,70 +1,56 @@
-.of-grid-images {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1;
-  height: 1000px;
+.route-home {
 
-  .image-1 {
+  .of-grid-images {
     position: absolute;
-    top: 150px;
-    height: 40px;
-    background: rgba(green, 0.5);
-    @extend .of-grid-width-4;
-    @extend .of-grid-left-12;
-  }
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    height: 1000px;
 
-  .image-2 {
-    position: absolute;
-    top: 400px;
-    height: 100px;
-    background: rgba(green, 0.5);
-    @extend .of-grid-width-3;
-    @extend .of-grid-left-17;
-  }
+    .image-1 {
+      position: absolute;
+      top: 150px;
+      height: 40px;
+      background: rgba(green, 0.5);
+      @extend .of-grid-width-4;
+      @extend .of-grid-left-12;
+    }
 
-  .image-3 {
-    position: absolute;
-    top: 600px;
-    height: 400px;
-    background: rgba(green, 0.5);
-    @extend .of-grid-width-5;
-    @extend .of-grid-left-11;
-  }
+    .image-2 {
+      position: absolute;
+      top: 400px;
+      height: 100px;
+      background: rgba(green, 0.5);
+      @extend .of-grid-width-3;
+      @extend .of-grid-left-17;
+    }
 
-  .image-4 {
-    position: absolute;
-    top: 2000px;
-    height: 500px;
-    background: rgba(green, 0.5);
-    @extend .of-grid-width-5;
-    @extend .of-grid-left-1;
-  }
+    .image-3 {
+      position: absolute;
+      top: 600px;
+      height: 400px;
+      background: rgba(green, 0.5);
+      @extend .of-grid-width-5;
+      @extend .of-grid-left-11;
+    }
 
-  .image-5 {
-    position: absolute;
-    top: 1200px;
-    height: 500px;
-    background: rgba(green, 0.5);
-    @extend .of-grid-width-6;
-    @extend .of-grid-left-8;
-  }
-}
+    .image-4 {
+      position: absolute;
+      top: 2000px;
+      height: 500px;
+      background: rgba(green, 0.5);
+      @extend .of-grid-width-5;
+      @extend .of-grid-left-1;
+    }
 
-.of-grid-content-layer {
-  position: relative;
-  z-index: 10
-}
-
-.of-grid-content {
-  z-index: 3;
-  height: 2500px;
-  // @extend .of-grid-15;
-  // @extend .of-grid-gutter-4;
-
-  @media only screen and (max-width: $mobile) {
-    margin-left: 0;
-    width: calc(100% - 10px);
+    .image-5 {
+      position: absolute;
+      top: 1200px;
+      height: 500px;
+      background: rgba(green, 0.5);
+      @extend .of-grid-width-6;
+      @extend .of-grid-left-8;
+    }
   }
 }
