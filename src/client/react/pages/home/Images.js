@@ -9,18 +9,6 @@ import posed from 'react-pose';
 
 import Image from "./Image"
 
-const ImageContainer = posed.div({
-  exit: {
-    opacity: 0
-  },
-  enter: {
-    opacity: 1,
-    transition: {
-      duration: 600,
-	 }
-  }
-});
-
 class Images extends Component {
 	state = {
     isVisible: false

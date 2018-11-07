@@ -14,19 +14,20 @@ class HomePage extends Component {
 	};
 
 	componentDidMount() {
-		let timeOut = this.props.appVisible ? 0 : (this.props.introLength + 5000)
+		let timeOut = this.props.appVisible ? 0 : (this.props.introLength + 0)
 
 		setTimeout(() => {
 			this.setState({
         profileVisible: true,
+				imagesVisible: true
 			})
 		}, timeOut)
 
-		setTimeout(() => {
-			this.setState({
-				imagesVisible: true
-			})
-		}, timeOut + 2000)
+		// setTimeout(() => {
+		// 	this.setState({
+		//
+		// 	})
+		// }, timeOut)
 	}
 
 	renderHead = () => (

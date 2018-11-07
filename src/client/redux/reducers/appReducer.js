@@ -19,6 +19,9 @@ export const initialState = {
 	gridVisible: false,
 	imageUrls: [
 		{
+			id: "BnJRyQBFDLv"
+		},
+		{
 			id: "Bp2TY2FlrM0"
 		},
 		{
@@ -32,9 +35,6 @@ export const initialState = {
 		},
 		{
 			id: "BnP71eRlU0F"
-		},
-		{
-			id: "BnJRyQBFDLv"
 		},
 		{
 			id: "BllohYGFEpN"

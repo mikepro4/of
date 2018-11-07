@@ -37,7 +37,6 @@ const ImageContainer = posed.div({
 class Image extends Component {
 	state = {
     isVisible: false,
-    originalY: 0
   };
 
   componentDidUpdate(prevprops) {
@@ -49,22 +48,36 @@ class Image extends Component {
   }
 
   getPose() {
-    let node = this.refs[this.props.imageId]
-    let bodyHeight = document.getElementById("body").clientHeight
-
-    if(this.state.isVisible && node && (this.refs.image_container.offsetTop < ( this.props.totalScrolledPixels + (bodyHeight/0.9)))) {
-      return "enter"
+    if(this.props.loadedImages[this.props.imageId] && this.refs.image_container) {
+      let node = this.refs[this.props.imageId]
+      let bodyHeight = document.getElementById("body").clientHeight
+      if( this.state.isVisible && node && (this.refs.image_container.offsetTop <= ( this.props.totalScrolledPixels + (bodyHeight/0.9)))) {
+        return "enter"
+      } else {
+        return "exit"
+      }
     } else {
       return "exit"
     }
   }
 
-	render() {
+  mayberRenderImage() {
     let imgStyle = {
       transform: `translateY(${this.props.totalScrolledPixels / 6}px)`
     }
+    if(this.props.loadedImages[this.props.imageId] && this.refs.image_container) {
+        return (
+          <div className="image-wrapper" style={imgStyle} >
+            <span className="info">
+              {this.props.className} – {this.props.imageId} - {this.refs.image_container.offsetTop}
+            </span>
+            <img ref={this.props.imageId} src={this.props.loadedImages[this.props.imageId].imageDetails.display_url} />
+          </div>
+        )
+      }
+  }
 
-    if(this.props.loadedImages[this.props.imageId]) {
+	render() {
       return (
         <div className={classNames({"of-grid-image": true}, this.props.className)} ref="image_container">
           <ImageContainer
@@ -72,18 +85,10 @@ class Image extends Component {
             order={this.props.order}
             pose={this.getPose()}
           >
-              {this.props.loadedImages[this.props.imageId] && this.refs.image_container && (
-                <div className="image-wrapper" style={imgStyle} >
-                  <span className="info">
-                    {this.props.className} – {this.props.imageId} - {this.refs.image_container.offsetTop}
-                  </span>
-                  <img ref={this.props.imageId} src={this.props.loadedImages[this.props.imageId].imageDetails.display_url} />
-                </div>
-              )}
+            {this.mayberRenderImage()}
           </ImageContainer>
         </div>
       )
-    } else { return <div/>}
 
 	}
 }

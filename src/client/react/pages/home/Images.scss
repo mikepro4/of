@@ -52,7 +52,7 @@
   .image-4 {
     position: absolute;
     top: 2400px;
-    @extend .of-grid-width-7;
+    @extend .of-grid-width-10;
     left: 0;
   }
 
@@ -65,7 +65,7 @@
 
   .image-6 {
     position: absolute;
-    top: 3000px;
+    top: 3700px;
     @extend .of-grid-width-12;
     @extend .of-grid-left-8;
   }
