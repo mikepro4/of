@@ -6,11 +6,13 @@ import posed, { PoseGroup } from 'react-pose';
 import SplitText from 'react-pose-text';
 import Profile from "./Profile"
 import Images from "./Images"
+import SectionHero from "./SectionHero"
 
 class HomePage extends Component {
 	state = {
     profileVisible: false,
-		imagesVisible: false
+		imagesVisible: false,
+		heroVisible: false
 	};
 
 	componentDidMount() {
@@ -19,15 +21,15 @@ class HomePage extends Component {
 		setTimeout(() => {
 			this.setState({
         profileVisible: true,
-				imagesVisible: true
+				heroVisible: true
 			})
 		}, timeOut)
 
-		// setTimeout(() => {
-		// 	this.setState({
-		//
-		// 	})
-		// }, timeOut)
+		setTimeout(() => {
+			this.setState({
+				imagesVisible: true
+			})
+		}, (timeOut + 4000))
 	}
 
 	renderHead = () => (
@@ -38,11 +40,15 @@ class HomePage extends Component {
 	)
 
 	render() {
+		let imgStyle = {
+			transform: `translateY(${this.props.totalScrolledPixels /2}px)`
+		}
 		return (
       <div className="route-container route-home">
 
-        <div className="of-grid-content-layer">
+        <div className="of-grid-content-layer"  style={imgStyle}>
           <Profile isVisible={this.state.profileVisible} />
+					<SectionHero isVisible={this.state.heroVisible} />
         </div>
 
         <Images isVisible={this.state.imagesVisible}  />
@@ -54,7 +60,8 @@ class HomePage extends Component {
 function mapStateToProps({ app }) {
 	return {
 		appVisible: app.appVisible,
-		introLength: app.introLength
+		introLength: app.introLength,
+    totalScrolledPixels: app.totalScrolledPixels
 	};
 }
 

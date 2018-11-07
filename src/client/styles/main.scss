@@ -13,11 +13,14 @@
 @import "./imports/blueprint_overides";
 @import "./imports/animations";
 @import "./imports/grid";
+@import "./imports/buttons";
 
 // pages
 @import "../App";
 @import "../react/pages/home/index";
 @import "../react/pages/home/Images";
+@import "../react/pages/home/Profile";
+@import "../react/pages/home/SectionHero";
 
 
 //components

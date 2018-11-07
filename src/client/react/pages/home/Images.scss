@@ -31,13 +31,15 @@
   .image-1 {
     position: absolute;
     top: 150px;
-    @extend .of-grid-width-5;
-    @extend .of-grid-left-13;
+    display: none;
+    @extend .of-grid-width-3;
+    @extend .of-grid-left-16;
   }
 
   .image-2 {
     position: absolute;
     top: 700px;
+    display: none;
     @extend .of-grid-width-3;
     @extend .of-grid-left-17;
   }
@@ -45,6 +47,7 @@
   .image-3 {
     position: absolute;
     top: 1100px;
+    display: none;
     @extend .of-grid-width-5;
     @extend .of-grid-left-13;
   }
@@ -59,13 +62,15 @@
   .image-5 {
     position: absolute;
     top: 1800px;
+    display: none;
     @extend .of-grid-width-4;
     @extend .of-grid-left-16;
   }
 
   .image-6 {
     position: absolute;
-    top: 3700px;
+    top: 800px;
+    display: none;
     @extend .of-grid-width-12;
     @extend .of-grid-left-8;
   }

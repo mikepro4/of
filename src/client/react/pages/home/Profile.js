@@ -23,9 +23,11 @@ const TextLine = posed.div({
 
 const Avatar = posed.div({
   exit: {
+    scale: 1.5,
     opacity: 0
   },
   enter: {
+    scale: 1,
     opacity: 1,
     transition: {
       duration: 600,
@@ -54,13 +56,13 @@ class Profile extends Component {
         this.setState({
           topLineVisible: true
         })
-      }, 100)
+      }, 300)
 
       setTimeout(() => {
         this.setState({
           bottomLineVisible: true
         })
-      }, 400)
+      }, 370)
     }
   }
 
@@ -71,34 +73,41 @@ class Profile extends Component {
 	render() {
 		return (
       <div className="of-grid-gutter-4 of-grid-5">
-        <Avatar
-          initialPose="exit"
-          pose={this.state.isVisible ? "enter": "exit"}
-          className="profile-avatar"
-        >
-          <img src={this.props.userDetails.avatarUrl} />
-        </Avatar>
 
-        <div className="of-container">
-          <TextLine
-            initialPose="exit"
-            pose={this.state.topLineVisible ? "enter": "exit"}
-            className="profile-title"
-          >
-            @yeah_lenka
-          </TextLine>
+        <div className="profile-avatar-container">
+          <div className="profile-avatar">
+            {this.props.userDetails.avatarUrl ? (
+              <Avatar
+                initialPose="exit"
+                pose={this.state.isVisible ? "enter": "exit"}
+              >
+                <img src={this.props.userDetails.avatarUrl} />
+              </Avatar>
+            ) : ""}
+          </div>
+
+          <div className="profile-info-container">
+            <div className="of-container">
+              <TextLine
+                initialPose="exit"
+                pose={this.state.topLineVisible ? "enter": "exit"}
+                className="profile-title"
+              >
+                @yeah_lenka
+              </TextLine>
+            </div>
+
+            <div className="of-container">
+              <TextLine
+                initialPose="exit"
+                pose={this.state.bottomLineVisible ? "enter": "exit"}
+                className="profile-description"
+              >
+                200K Followers
+              </TextLine>
+            </div>
+          </div>
         </div>
-
-        <div className="of-container">
-          <TextLine
-            initialPose="exit"
-            pose={this.state.bottomLineVisible ? "enter": "exit"}
-            className="profile-description"
-          >
-            200K Followers
-          </TextLine>
-        </div>
-
       </div>
     )
 	}

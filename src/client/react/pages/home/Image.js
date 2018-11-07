@@ -63,15 +63,15 @@ class Image extends Component {
 
   mayberRenderImage() {
     let imgStyle = {
-      transform: `translateY(${this.props.totalScrolledPixels / 6}px)`
+      transform: `translateY(${this.props.totalScrolledPixels /6}px)`
     }
     if(this.props.loadedImages[this.props.imageId] && this.refs.image_container) {
         return (
-          <div className="image-wrapper" style={imgStyle} >
+          <div className="image-wrapper" >
             <span className="info">
               {this.props.className} – {this.props.imageId} - {this.refs.image_container.offsetTop}
             </span>
-            <img ref={this.props.imageId} src={this.props.loadedImages[this.props.imageId].imageDetails.display_url} />
+            <img ref={this.props.imageId} src={this.props.loadedImages[this.props.imageId].imageDetails.display_resources[2].src} />
           </div>
         )
       }

@@ -41,13 +41,16 @@ class TopLeft extends Component {
         this.setState({
           instagramVisible: true
         })
-      }, 1000)
+      }, 2000)
     }
   }
 
 	render() {
 		return (
-      <div className="of-grid-top-left">
+      <div className={classNames({
+        "hidden-component": !this.state.instagramVisible
+        }, "of-grid-top-left")}
+      >
         <div
           className="of-container"
           onMouseEnter={() => this.setState({instagramHovered: true})}
