@@ -17,6 +17,8 @@
 // pages
 @import "../App";
 @import "../react/pages/home/index";
+@import "../react/pages/home/Images";
+
 
 //components
 @import "../react/components/navigation/main_links/index";
@@ -25,6 +27,8 @@
 @import "../react/components/app/top_left/index";
 @import "../react/components/app/top_right/index";
 @import "../react/components/app/bottom_right/index";
+@import "../react/components/app/bottom_left/index";
+
 
 html {
 	overflow: hidden;

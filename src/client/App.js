@@ -9,10 +9,9 @@ import SplitText from 'react-pose-text';
 import keydown from "react-keydown";
 import classNames from "classnames"
 import { Link } from "react-router-dom";
-import ipp from "instagram-profile-picture";
-import bud from "basic-instagram-user-details";
 
-import { showApp, showGrid, hideGrid, fetchImageDetails } from "./redux/actions/appActions";
+
+import { showApp, showGrid, hideGrid, fetchImageDetails, fetchUserDetails, loadAllDetails} from "./redux/actions/appActions";
 
 import Grid from "./react/components/grid"
 import MainLinks from "./react/components/navigation/main_links/"
@@ -29,30 +28,30 @@ FocusStyleManager.onlyShowFocusOnTabs();
 class App extends Component {
 	state = {
 		introVisible: false,
-
+		appVisible: false,
 		instagramHovered: false,
 		facebookHovered: false
 	};
 
+	// static loadData(store, match) {
+	// 	return store.dispatch(loadAllDetails());
+	// }
+
 	componentDidMount() {
-		// this.setState({ introVisible: true });
-		ipp.image("https://www.instagram.com/p/BpZvZeWhSei/").then(img => {
-	  	console.log(img);
-		});
 
-		bud("mikepro4", 'id').then(id => {
-		  console.log(id);
-		  // => { data: '259220806' }
-		});
+		this.props.fetchUserDetails()
 
-		this.props.fetchImageDetails()
+		// this.props.fetchImageDetails()
 
-		// this.props.showApp()
+		if(this.props.appVisible) {
+			this.setState({
+				appVisible: true
+			})
+		}
 
-		setTimeout(()=> {
-			this.setState({ leftLabelVisible: true });
-
-		}, 2000)
+		this.props.imageUrls.map((image, i) => {
+        this.props.fetchImageDetails(image.id, i)
+    })
 	}
 
 	@keydown("G")
@@ -82,15 +81,15 @@ class App extends Component {
 
 				<div className="of-grid of-grid-app">
 
-					<Logo />
+					<Logo isVisible={this.state.appVisible} />
 
-					<TopLeft />
+					<TopLeft isVisible={this.state.appVisible}/>
 
-					<TopRight  />
+					<TopRight isVisible={this.state.appVisible}/>
 
-					<BottomRight  />
+					<BottomRight isVisible={this.state.appVisible}/>
 
-					<BottomLeft />
+					<BottomLeft isVisible={this.state.appVisible}/>
 
 					<div className="of-grid-navigation">
 						<MainLinks isVisible={this.props.appVisible} />
@@ -111,10 +110,11 @@ function mapStateToProps(state) {
 	return {
 		appVisible: state.app.appVisible,
 		gridVisible: state.app.gridVisible,
-		location: state.router.location
+		location: state.router.location,
+		imageUrls: state.app.imageUrls
 	};
 }
 
 export default {
-	component: connect(mapStateToProps, { showApp, showGrid, hideGrid, fetchImageDetails })(withRouter(App))
+	component: connect(mapStateToProps, { showApp, showGrid, hideGrid, fetchImageDetails, fetchUserDetails, loadAllDetails })(withRouter(App))
 };

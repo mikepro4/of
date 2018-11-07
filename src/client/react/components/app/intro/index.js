@@ -116,7 +116,7 @@ const wordPoses = {
 
 class Intro extends Component {
 	state = {
-    introVisible: true,
+    introVisible: false,
 
     leftLabelVisible: false,
 		rightLabelVisible: false,
@@ -131,9 +131,18 @@ class Intro extends Component {
   };
 
   componentDidMount() {
-    setTimeout(()=> {
-      this.setState({ leftLabelVisible: true });
-    }, 2000)
+
+		if(this.props.appVisible == false) {
+			this.setState({
+				introVisible: true
+			});
+
+	    setTimeout(()=> {
+	      this.setState({
+					leftLabelVisible: true
+				});
+	    }, 2000)
+		}
   }
 
   getLinePose() {
@@ -307,6 +316,7 @@ class Intro extends Component {
 
 function mapStateToProps(state) {
 	return {
+		appVisible: state.app.appVisible,
 		location: state.router.location
 	};
 }

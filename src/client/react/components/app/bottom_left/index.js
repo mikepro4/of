@@ -7,6 +7,10 @@ import classNames from "classnames"
 import { Link } from "react-router-dom";
 import posed from 'react-pose';
 
+
+import { updateTotalPixels, updateTotalScrolledPixels} from "../../../../redux/actions/appActions";
+
+
 import DoubleArrow from "../../../components/svg/double_arrow";
 
 const Description = posed.div({
@@ -58,6 +62,23 @@ class BottomLeft extends Component {
         })
       }, 2800)
     }
+
+    let node = document.getElementById("body")
+
+    if(this.props.totalPixels !== node.scrollHeight) {
+      this.props.updateTotalPixels(node.scrollHeight)
+    }
+
+  }
+
+  handleScroll = (event) => {
+    this.props.updateTotalScrolledPixels(event.target.scrollTop)
+  }
+
+  componentDidMount() {
+    let node = document.getElementById("body")
+    node.addEventListener('scroll', this.handleScroll);
+    this.props.updateTotalPixels(node.scrollHeight)
   }
 
 	render() {
@@ -94,7 +115,10 @@ class BottomLeft extends Component {
                 initialPose="exit"
                 pose={this.state.topLineVisible ? "enter": "exit"}
               >
-                More content ahead
+                Scrolled pixels:
+                <span className="count-container">{this.props.totalScrolledPixels}</span>
+                /
+                <span className="count-container">{this.props.totalPixels}</span>
               </Description>
             </div>
           </div>
@@ -104,10 +128,13 @@ class BottomLeft extends Component {
 	}
 }
 
-function mapStateToProps({app}) {
+function mapStateToProps(state) {
 	return {
-    isVisible: app.appVisible,
+    isVisible: state.app.appVisible,
+    totalPixels: state.app.totalPixels,
+    totalScrolledPixels: state.app.totalScrolledPixels,
+    location: state.router.location
 	};
 }
 
-export default connect(mapStateToProps, {})(BottomLeft);
+export default connect(mapStateToProps, {updateTotalPixels, updateTotalScrolledPixels})(BottomLeft);

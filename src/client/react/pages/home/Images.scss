@@ -1,0 +1,49 @@
+.of-grid-images {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  height: 2000px;
+
+  .of-grid-image {
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .image-1 {
+    position: absolute;
+    top: 150px;
+    @extend .of-grid-width-5;
+    @extend .of-grid-left-13;
+  }
+
+  .image-2 {
+    position: absolute;
+    top: 700px;
+    @extend .of-grid-width-3;
+    @extend .of-grid-left-17;
+  }
+
+  .image-3 {
+    position: absolute;
+    top: 1100px;
+    @extend .of-grid-width-5;
+    @extend .of-grid-left-11;
+  }
+
+  .image-4 {
+    position: absolute;
+    top: 2400px;
+    @extend .of-grid-width-7;
+    left: 0;
+  }
+
+  .image-5 {
+    position: absolute;
+    top: 1800px;
+    @extend .of-grid-width-4;
+    @extend .of-grid-left-16;
+  }
+}

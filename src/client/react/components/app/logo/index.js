@@ -31,10 +31,10 @@ class Logo extends Component {
                 initialPose="closed"
                 pose={this.props.isVisible ? "open": "closed"}
                 wordPoses={wordPoses}
-                onPoseComplete={()=> {console.log("complete")}}
+                onPoseComplete={()=> {}}
                 onValueChange={{
-                  translateY: v => {console.log("translateY: ", v)},
-                  opacity: v => {console.log("opacity: ", v)}
+                  translateY: v => {},
+                  opacity: v => {}
                 }}
               >
                 Olena Finch

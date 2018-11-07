@@ -4,27 +4,21 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import posed, { PoseGroup } from 'react-pose';
 import SplitText from 'react-pose-text';
-
-const Images = posed.div({
-  exit: { opacity: 0 },
-  enter: {
-    opacity: 1,
-    transition: {
-     duration: 600,
-	 }
-  }
-})
+import Profile from "./Profile"
+import Images from "./Images"
 
 class HomePage extends Component {
 	state = {
+    profileVisible: false,
 		imagesVisible: false
 	};
 
 	componentDidMount() {
-		let timeOut = this.props.appVisible ? 0 : this.props.introLength
+		let timeOut = this.props.appVisible ? 0 : (this.props.introLength + 5000)
 
 		setTimeout(() => {
 			this.setState({
+        profileVisible: true,
 				imagesVisible: true
 			})
 		}, timeOut)
@@ -42,37 +36,10 @@ class HomePage extends Component {
       <div className="route-container route-home">
 
         <div className="of-grid-content-layer">
-          <div className="of-grid-row">
-            <div className="of-grid-gutter-4 of-grid-5">
-							<h1>Home</h1>
-            </div>
-          </div>
+          <Profile isVisible={this.state.profileVisible} />
         </div>
 
-        <Images
-					initialPose="exit"
-					pose={this.state.imagesVisible ? "enter" : "exit"}
-					className="of-grid-images">
-          <div className="image-1">
-            image
-          </div>
-
-          <div className="image-2">
-            image
-          </div>
-
-          <div className="image-3">
-            image
-          </div>
-
-          <div className="image-4">
-            image
-          </div>
-
-          <div className="image-5">
-            image
-          </div>
-        </Images>
+        <Images isVisible={this.state.imagesVisible}  />
       </div>
 		);
 	}
