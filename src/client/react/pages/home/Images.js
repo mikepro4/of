@@ -7,7 +7,9 @@ import classNames from "classnames"
 import { Link } from "react-router-dom";
 import posed from 'react-pose';
 
-const ImagesContainer = posed.div({
+import Image from "./Image"
+
+const ImageContainer = posed.div({
   exit: {
     opacity: 0
   },
@@ -26,59 +28,28 @@ class Images extends Component {
 
   componentDidUpdate(prevprops) {
     if(this.props.isVisible == true && this.state.isVisible == false) {
-      setTimeout(() => {
-        this.setState({
-          isVisible: true
-        })
-      }, 1000)
+      this.setState({
+        isVisible: true
+      })
     }
   }
 
 	render() {
 		return (
-      <ImagesContainer
-        initialPose="exit"
-        pose={this.state.isVisible ? "enter" : "exit"}
-        className="of-grid-images">
-
-        <div className="of-grid-image image-1">
-          {this.props.loadedImages.BnJRyQBFDLv && (
-            <img src={this.props.loadedImages.BnJRyQBFDLv.imageDetails.display_url} />
-          )}
-        </div>
-
-        <div className="of-grid-image image-2">
-          {this.props.loadedImages.BpnjJjZlLrL && (
-            <img src={this.props.loadedImages.BpnjJjZlLrL.imageDetails.display_url} />
-          )}
-        </div>
-
-        <div className="of-grid-image image-3">
-          {this.props.loadedImages.BoHCPBnFPzq && (
-            <img src={this.props.loadedImages.BoHCPBnFPzq.imageDetails.display_url} />
-          )}
-        </div>
-
-        <div className="of-grid-image image-4">
-          {this.props.loadedImages.Bngu9tGFkkH && (
-            <img src={this.props.loadedImages.Bngu9tGFkkH.imageDetails.display_url} />
-          )}
-        </div>
-
-        <div className="of-grid-image image-5">
-          {this.props.loadedImages.BnP71eRlU0F && (
-            <img src={this.props.loadedImages.BnP71eRlU0F.imageDetails.display_url} />
-          )}
-        </div>
-      </ImagesContainer>
+      <div className="of-grid-images">
+        <Image isVisible={this.state.isVisible} className="image-1" imageId="BnJRyQBFDLv" order={1} />
+        <Image isVisible={this.state.isVisible} className="image-2" imageId="BpnjJjZlLrL" order={2}/>
+        <Image isVisible={this.state.isVisible} className="image-3" imageId="BoHCPBnFPzq" order={3}/>
+        <Image isVisible={this.state.isVisible} className="image-4" imageId="Bngu9tGFkkH" order={4}/>
+        <Image isVisible={this.state.isVisible} className="image-5" imageId="BnP71eRlU0F" order={5}/>
+        <Image isVisible={this.state.isVisible} className="image-6" imageId="BllohYGFEpN" order={5}/>
+      </div>
     )
 	}
 }
 
 function mapStateToProps({app}) {
 	return {
-    isVisible: app.appVisible,
-    loadedImages: app.loadedImages
 	};
 }
 

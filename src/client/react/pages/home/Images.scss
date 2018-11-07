@@ -7,7 +7,23 @@
   height: 2000px;
 
   .of-grid-image {
+    position: relative;
+
+    .image-wrapper {
+    }
+
+    .info {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba($black, 0.5);
+      font-size: 10px;
+      z-index: 10;
+    }
+
     img {
+      position: relative;
+      z-index: 1;
       max-width: 100%;
     }
   }
@@ -30,7 +46,7 @@
     position: absolute;
     top: 1100px;
     @extend .of-grid-width-5;
-    @extend .of-grid-left-11;
+    @extend .of-grid-left-13;
   }
 
   .image-4 {
@@ -45,5 +61,12 @@
     top: 1800px;
     @extend .of-grid-width-4;
     @extend .of-grid-left-16;
+  }
+
+  .image-6 {
+    position: absolute;
+    top: 3000px;
+    @extend .of-grid-width-12;
+    @extend .of-grid-left-8;
   }
 }
