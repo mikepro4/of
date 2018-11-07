@@ -111,7 +111,7 @@ class SectionHero extends Component {
 
           <div className="hero-description">
 						<div className="hero-description-textline">
-							<div className="of-container"><Child>My name is Olena Finch and I’m an actress, model and an instagram influencer.</Child></div>
+							<div className="of-container"><Child>My name is Olena Finch and I’m an actress, model and instagram influencer.</Child></div>
 						</div>
 
 						<div className="hero-description-textline">

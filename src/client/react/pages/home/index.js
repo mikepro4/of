@@ -41,7 +41,7 @@ class HomePage extends Component {
 
 	render() {
 		let imgStyle = {
-			transform: `translateY(${this.props.totalScrolledPixels /2}px)`
+			// transform: `translateY(${this.props.totalScrolledPixels /2}px)`
 		}
 		return (
       <div className="route-container route-home">

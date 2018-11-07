@@ -3,8 +3,7 @@
   top: 0;
   right: 0;
   left: 0;
-  z-index: 1;
-  height: 2000px;
+  z-index: 2;
 
   .of-grid-image {
     position: relative;
@@ -39,9 +38,9 @@
   .image-2 {
     position: absolute;
     top: 700px;
-    display: none;
-    @extend .of-grid-width-3;
-    @extend .of-grid-left-17;
+    // display: none;
+    @extend .of-grid-width-4;
+    @extend .of-grid-left-16;
   }
 
   .image-3 {

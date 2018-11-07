@@ -72,12 +72,12 @@ class BottomLeft extends Component {
   }
 
   handleScroll = (event) => {
-    this.props.updateTotalScrolledPixels(event.target.scrollTop)
+    this.props.updateTotalScrolledPixels(document.getElementById("body").scrollTop)
   }
 
   componentDidMount() {
     let node = document.getElementById("body")
-    node.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
     this.props.updateTotalPixels(node.scrollHeight)
   }
 

@@ -34,7 +34,8 @@
 
 
 html {
-	overflow: hidden;
+	// overflow: hidden;
+	// overflow-y: scroll;
 }
 
 body {
@@ -44,11 +45,16 @@ body {
 	font-family: "OF", sans-serif;
 	font-weight: 400;
 	-webkit-font-smoothing: subpixel-antialiased;
-	-webkit-overflow-scrolling: touch;
-	overflow-y: scroll;
-	overflow-x: hidden;
+	// -webkit-overflow-scrolling: touch;
 	width: 100%;
+	height: 100%;
 	color: white;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	overflow-y: scroll;
 }
 
 * {

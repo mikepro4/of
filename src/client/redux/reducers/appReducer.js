@@ -15,7 +15,7 @@ export const initialState = {
 	totalPixels: 0,
 	totalScrolledPixels: 0,
 	introLength: 7000,
-	appVisible: false,
+	appVisible: true,
 	gridVisible: false,
 	imageUrls: [
 		{

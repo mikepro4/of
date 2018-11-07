@@ -67,7 +67,7 @@ class Image extends Component {
     }
     if(this.props.loadedImages[this.props.imageId] && this.refs.image_container) {
         return (
-          <div className="image-wrapper" >
+          <div className="image-wrapper" style={imgStyle} >
             <span className="info">
               {this.props.className} – {this.props.imageId} - {this.refs.image_container.offsetTop}
             </span>
