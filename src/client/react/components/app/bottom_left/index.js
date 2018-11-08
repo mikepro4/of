@@ -6,6 +6,7 @@ import SplitText from 'react-pose-text';
 import classNames from "classnames"
 import { Link } from "react-router-dom";
 import posed, {PoseGroup} from 'react-pose';
+import commaNumber from "comma-number"
 
 
 import { updateTotalPixels, updateTotalScrolledPixels, setScrollTo} from "../../../../redux/actions/appActions";
@@ -46,7 +47,11 @@ class BottomLeft extends Component {
     topLineVisible: false
   };
 
-  componentDidUpdate(prevprops) {
+  componentDidUpdate(prevProps) {
+    if(prevProps.location.pathname !== this.props.location.pathname) {
+      this.props.updateTotalScrolledPixels(0)
+    }
+
     if(this.props.isVisible == true && this.state.totalVisible == false) {
 
       setTimeout(() => {
@@ -98,11 +103,13 @@ class BottomLeft extends Component {
     return (this.props.totalScrolledPixels*100)/(this.props.totalPixels-this.state.clientHeight)
   }
   getStyle() {
-    let left = this.getLeft()
-    let barStyle = {
-      transform: `translateX(${left}%)`
+    if(this.props.totalScrolledPixels >0 ) {
+      let left = this.getLeft()
+      let barStyle = {
+        transform: `translateX(${left}%)`
+      }
+      return barStyle
     }
-    return barStyle
   }
 
   getGhostBarStyle () {
@@ -235,7 +242,7 @@ class BottomLeft extends Component {
                     initialPose="exit"
                     pose={this.state.totalVisible ? "enter": "exit"}
                   >
-                    <span>{this.props.totalPixels}px</span>
+                    <span>{commaNumber(this.props.totalPixels)}px</span>
                   </Description>
                 </div>
               </div>
@@ -262,7 +269,7 @@ class BottomLeft extends Component {
                     {this.state.newScrollTo > 0 ? (
                         <span className="highlighted-value">{Math.round(this.state.newScrollTo)}px</span>
                       ): (
-                        <span >{Math.round(this.props.totalScrolledPixels)}px</span>
+                        <span >{commaNumber(Math.round(this.props.totalScrolledPixels))}px</span>
                       )}
                   </Description>
                 </div>

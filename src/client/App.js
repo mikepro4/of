@@ -84,7 +84,10 @@ class App extends Component {
 		// Reset scrolling position on route change
 		if(prevProps.location.pathname !== this.props.location.pathname) {
 			let node = document.getElementById("body")
-			if (node) { node.scrollTop = 0 }
+			if (node) {
+				node.scrollTop = 0
+				this.props.resetScrollTo()
+			}
 		}
 
 		if (this.props.scrollTo) {
