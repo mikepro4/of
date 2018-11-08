@@ -10,7 +10,9 @@ import {
 	LOAD_USER_DETAILS_SUCCESS,
 	LOAD_IMAGE_SUCCESS,
 	UPDATE_TOTAL_PIXELS,
-	UPDATE_TOTAL_SCROLLED_PIXELS
+	UPDATE_TOTAL_SCROLLED_PIXELS,
+	SCROLL_TO,
+	SCROLL_TO_RESET
 } from "./types";
 
 /////////////////////////////////////////////////
@@ -86,5 +88,20 @@ export const updateTotalScrolledPixels = (px) => async (dispatch, getState) => {
 	dispatch({
 		type: UPDATE_TOTAL_SCROLLED_PIXELS,
 		pixels: px
+	});
+}
+
+/////////////////////////////////////////////////
+
+export const setScrollTo = (px) => async (dispatch) => {
+	dispatch({
+		type: SCROLL_TO,
+		payload: px
+	});
+}
+
+export const resetScrollTo = (px) => async (dispatch) => {
+	dispatch({
+		type: SCROLL_TO_RESET
 	});
 }

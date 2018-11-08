@@ -25,11 +25,11 @@ class HomePage extends Component {
 			})
 		}, timeOut)
 
-		setTimeout(() => {
-			this.setState({
-				imagesVisible: true
-			})
-		}, (timeOut + 4000))
+		// setTimeout(() => {
+		// 	this.setState({
+		// 		imagesVisible: true
+		// 	})
+		// }, (timeOut + 4000))
 	}
 
 	renderHead = () => (

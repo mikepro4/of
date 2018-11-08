@@ -63,7 +63,7 @@ class Image extends Component {
 
   mayberRenderImage() {
     let imgStyle = {
-      transform: `translateY(${this.props.totalScrolledPixels /6}px)`
+      transform: `translateY(${this.props.totalScrolledPixels /4}px)`
     }
     if(this.props.loadedImages[this.props.imageId] && this.refs.image_container) {
         return (

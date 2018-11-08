@@ -7,6 +7,8 @@ import classNames from "classnames"
 import { Link } from "react-router-dom";
 import posed from 'react-pose';
 
+import Button from "../../components/uikit/Button"
+
 const Divider = posed.div({
   exit: {
     width: 0
@@ -67,7 +69,7 @@ class SectionHero extends Component {
 				pose={this.state.isVisible ? 'enter' : 'exit'}
 				className="section-container section-hero"
 			>
-        <div className="of-grid-gutter-4 of-grid-12 hero-headline-container">
+        <div className="of-grid-gutter-4 of-grid-13 hero-headline-container">
 
           <div className="hero-headline">
             <div className="hero-healine-textline">
@@ -126,15 +128,20 @@ class SectionHero extends Component {
 
         <div className="of-grid-row hero-buttons">
 					<Child className="of-grid-3 of-grid-gutter-4">
-	          <a href="#" className="button white-button-filled">
-	            <span className="button-text">Get a promotion</span>
-	          </a>
+            <Button
+              buttonWhite={true}
+              label="Get a promotion"
+              title="Get a promotion"
+            />
 					</Child>
 
 					<Child className="of-grid-3">
-	          <a href="#" className="button white-button-outlined">
-	            <span className="button-text">View Services</span>
-	          </a>
+            <Button
+              buttonWhite={true}
+              buttonOutlined={true}
+              label="View services"
+              title="View services"
+            />
 					</Child>
         </div>
       </Parent>

@@ -13,7 +13,6 @@
 @import "./imports/blueprint_overides";
 @import "./imports/animations";
 @import "./imports/grid";
-@import "./imports/buttons";
 
 // pages
 @import "../App";
@@ -31,6 +30,8 @@
 @import "../react/components/app/top_right/index";
 @import "../react/components/app/bottom_right/index";
 @import "../react/components/app/bottom_left/index";
+@import "../react/components/uikit/Button";
+
 
 
 html {

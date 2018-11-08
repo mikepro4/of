@@ -5,10 +5,10 @@ import ReactDOM from "react-dom";
 import SplitText from 'react-pose-text';
 import classNames from "classnames"
 import { Link } from "react-router-dom";
-import posed from 'react-pose';
+import posed, {PoseGroup} from 'react-pose';
 
 
-import { updateTotalPixels, updateTotalScrolledPixels} from "../../../../redux/actions/appActions";
+import { updateTotalPixels, updateTotalScrolledPixels, setScrollTo} from "../../../../redux/actions/appActions";
 
 
 import DoubleArrow from "../../../components/svg/double_arrow";
@@ -24,10 +24,10 @@ const Description = posed.div({
   }
 });
 
-const Arrow = posed.div({
-  exit: { translateY: -30 },
+const GreyBar = posed.div({
+  exit: { width: 0},
   enter: {
-    translateY: 0,
+    width: "100%",
     transition: {
      duration: 600,
 	 }
@@ -36,31 +36,42 @@ const Arrow = posed.div({
 
 class BottomLeft extends Component {
 	state = {
-    topLineVisible: false,
-    bottomLineVisible: false,
-    arrowVisible: false
+    totalVisible: false,
+    scrolledVisible: false,
+    greyBarVisible: false,
+    clientHeight: 0,
+    newScrollTo: 0,
+    showGhostBar: false,
+    hoverPercent: 0,
+    topLineVisible: false
   };
 
   componentDidUpdate(prevprops) {
-    if(this.props.isVisible == true && this.state.topLineVisible == false) {
-
-      setTimeout(() => {
-        this.setState({
-          arrowVisible: true
-        })
-      }, 2500)
+    if(this.props.isVisible == true && this.state.totalVisible == false) {
 
       setTimeout(() => {
         this.setState({
           topLineVisible: true
         })
-      }, 2700)
+      }, 700)
 
       setTimeout(() => {
         this.setState({
-          bottomLineVisible: true
+          greyBarVisible: true
         })
-      }, 2800)
+      }, 500)
+
+      setTimeout(() => {
+        this.setState({
+          totalVisible: true
+        })
+      }, 1000)
+
+      setTimeout(() => {
+        this.setState({
+          scrolledVisible: true
+        })
+      }, 1200)
     }
 
     let node = document.getElementById("body")
@@ -79,47 +90,183 @@ class BottomLeft extends Component {
     let node = document.getElementById("body")
     window.addEventListener('scroll', this.handleScroll);
     this.props.updateTotalPixels(node.scrollHeight)
+    this.setState({
+      clientHeight: node.clientHeight
+    })
+  }
+  getLeft() {
+    return (this.props.totalScrolledPixels*100)/(this.props.totalPixels-this.state.clientHeight)
+  }
+  getStyle() {
+    let left = this.getLeft()
+    let barStyle = {
+      transform: `translateX(${left}%)`
+    }
+    return barStyle
+  }
+
+  getGhostBarStyle () {
+    let barStyle = {
+      transform: `translateX(${this.state.hoverPercent}%)`
+    }
+    return barStyle
+  }
+
+  scrollDown() {
+    let scrollTo = this.props.totalScrolledPixels + this.state.clientHeight
+    this.props.setScrollTo(scrollTo)
+  }
+
+  scrollToTop() {
+    this.props.setScrollTo(1)
+  }
+
+  getDownBreak() {
+    if(this.getLeft() < 90) {
+      return (  <Description
+          initialPose="exit"
+          key="down"
+          pose={this.state.topLineVisible ? "enter": "exit"}
+        >
+          <a onClick={() => this.scrollDown()}>SCROLL DOWN</a>
+        </Description>)
+    } else if (this.getLeft() > 90 && this.state.clientHeight < this.props.totalPixels + (this.state.clientHeight*0.1)) {
+      return (<Description
+          initialPose="exit"
+          key="top"
+          pose={this.state.topLineVisible ? "enter": "exit"}
+        >
+          <a onClick={() => this.scrollToTop()}>SCROLL TO TOP</a>
+        </Description>)
+    }
+
+
+  }
+
+  renderTicks = () => {
+    if(this.refs.dividerContainer && (this.state.clientHeight > 0)) {
+      let numberOfTicks =  Math.round(this.props.totalPixels / this.state.clientHeight)
+
+      let ticks = []
+        for (let i = 0; i < numberOfTicks; i++) {
+          ticks.push(<div key={i} className="single-tick"/>)
+        }
+      return ticks
+    }
+  }
+
+  calculateWidth(event) {
+    const relX = event.pageX - (this.refs.dividerContainer.offsetLeft)
+    const progressBarPercent = relX * 100 / this.refs.dividerContainer.getBoundingClientRect().width
+    return progressBarPercent
+  }
+
+  onMouseMove(e) {
+    let scrollToPixels = (this.props.totalPixels-this.state.clientHeight)*this.calculateWidth(e)/100
+
+    this.setState({
+      newScrollTo: scrollToPixels,
+      showGhostBar: true,
+      hoverPercent: this.calculateWidth(e)
+    })
+  }
+
+  onMouseLeave() {
+    this.setState({
+      newScrollTo: 0,
+      showGhostBar: false
+    })
   }
 
 	render() {
 		return (
       <div className="of-grid-bottom-left">
 
-        <div className="arrow-container">
-          <div className="arrow-icon">
-            <Arrow
-              initialPose="exit"
-              pose={this.state.arrowVisible ? "enter": "exit"}
-            >
-              <DoubleArrow/>
-            </Arrow>
-          </div>
-        </div>
 
-        <div className="scroll-message-container">
 
-          <div className="scroll-message-title of-container">
+        <div className="scroll-info-container">
+
+          <div className="scroll-info-top">
             <div className="of-container">
-              <Description
+
+              {this.getDownBreak()}
+
+            </div>
+
+          </div>
+
+          <div className="scroll-info-divider-container" ref="dividerContainer">
+            <div
+              onMouseLeave={this.onMouseLeave.bind(this)}
+              onMouseMove={this.onMouseMove.bind(this)}
+              onClick={(e) => {
+              console.log(this.calculateWidth(e))
+              let scrollToPixels = (this.props.totalPixels-this.state.clientHeight)*this.calculateWidth(e)/100
+              this.props.setScrollTo(scrollToPixels)
+            }}>
+              <div className="ticks-container">{this.renderTicks()}</div>
+              <div className="scroll-info-divider-bar" style={this.getStyle()}/>
+              <GreyBar
+                className="grey-bar"
                 initialPose="exit"
-                pose={this.state.topLineVisible ? "enter": "exit"}
+                pose={this.state.greyBarVisible ? "enter" : "exit"}
               >
-                Scroll down
-              </Description>
+              </GreyBar>
+              {this.state.showGhostBar && (<div className="scroll-info-ghost-bar" style={this.getGhostBarStyle()}/>)}
             </div>
           </div>
 
-          <div className="scroll-message-description">
-            <div className="of-container">
-              <Description
-                initialPose="exit"
-                pose={this.state.topLineVisible ? "enter": "exit"}
-              >
-                Scrolled pixels:
-                <span className="count-container">{this.props.totalScrolledPixels}</span>
-                /
-                <span className="count-container">{this.props.totalPixels}</span>
-              </Description>
+          <div className="scroll-info-sections">
+            <div className="scroll-info-section">
+              <div className="scroll-info-title">
+                <div className="of-container">
+                  <Description
+                    initialPose="exit"
+                    pose={this.state.totalVisible ? "enter": "exit"}
+                    >
+                    Total
+                  </Description>
+                </div>
+              </div>
+
+              <div className="scroll-info-value">
+                <div className="of-container">
+                  <Description
+                    initialPose="exit"
+                    pose={this.state.totalVisible ? "enter": "exit"}
+                  >
+                    <span>{this.props.totalPixels}px</span>
+                  </Description>
+                </div>
+              </div>
+            </div>
+
+            <div className="scroll-info-section">
+              <div className="scroll-info-title">
+                <div className="of-container">
+                  <Description
+                    initialPose="exit"
+                    pose={this.state.scrolledVisible ? "enter": "exit"}
+                  >
+                    {this.state.newScrollTo > 0 ? "Scroll to" : "Scrolled"}
+                  </Description>
+                </div>
+              </div>
+
+              <div className="scroll-info-value">
+                <div className="of-container">
+                  <Description
+                    initialPose="exit"
+                    pose={this.state.scrolledVisible ? "enter": "exit"}
+                  >
+                    {this.state.newScrollTo > 0 ? (
+                        <span className="highlighted-value">{Math.round(this.state.newScrollTo)}px</span>
+                      ): (
+                        <span >{Math.round(this.props.totalScrolledPixels)}px</span>
+                      )}
+                  </Description>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -137,4 +284,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps, {updateTotalPixels, updateTotalScrolledPixels})(BottomLeft);
+export default connect(mapStateToProps, {updateTotalPixels, updateTotalScrolledPixels, setScrollTo})(BottomLeft);

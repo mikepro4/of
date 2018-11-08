@@ -8,7 +8,9 @@ import {
 	LOAD_USER_DETAILS_SUCCESS,
 	LOAD_IMAGE_SUCCESS,
 	UPDATE_TOTAL_PIXELS,
-	UPDATE_TOTAL_SCROLLED_PIXELS
+	UPDATE_TOTAL_SCROLLED_PIXELS,
+	SCROLL_TO,
+	SCROLL_TO_RESET
 } from "../actions/types";
 
 export const initialState = {
@@ -49,7 +51,8 @@ export const initialState = {
 		followers: null,
 		following: null,
 		avatarUrl: null
-	}
+	},
+	scrollTo: null
 };
 
 export const appReducer = (state = initialState, action) => {
@@ -88,6 +91,15 @@ export const appReducer = (state = initialState, action) => {
 			});
 			return assign({}, state, {
 				loadedImages: newLoadedImages
+			});
+
+		case SCROLL_TO:
+			return assign({}, state, {
+				scrollTo: action.payload
+			});
+		case SCROLL_TO_RESET:
+			return assign({}, state, {
+				scrollTo: null
 			});
 		default:
 			return state;

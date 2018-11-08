@@ -11,7 +11,7 @@ import classNames from "classnames"
 import { Link } from "react-router-dom";
 
 
-import { showApp, showGrid, hideGrid, fetchImageDetails, fetchUserDetails, loadAllDetails} from "./redux/actions/appActions";
+import { showApp, showGrid, hideGrid, fetchImageDetails, fetchUserDetails, loadAllDetail, resetScrollTo} from "./redux/actions/appActions";
 
 import Grid from "./react/components/grid"
 import MainLinks from "./react/components/navigation/main_links/"
@@ -63,11 +63,33 @@ class App extends Component {
 		}
 	}
 
+	handleScrollToElement = (element, to, duration) => {
+			if (duration <= 0) {
+					return;
+			}
+			const timeout = 10;
+			const difference = to - element.scrollTop;
+			const perTick = (difference / duration) * timeout;
+
+			window.setTimeout(() => {
+					element.scrollTop = element.scrollTop + perTick;
+					if (element.scrollTop === to) {
+							return;
+					}
+					this.handleScrollToElement(element, to, duration - timeout);
+			}, timeout);
+	};
+
 	componentDidUpdate(prevProps) {
 		// Reset scrolling position on route change
 		if(prevProps.location.pathname !== this.props.location.pathname) {
 			let node = document.getElementById("body")
 			if (node) { node.scrollTop = 0 }
+		}
+
+		if (this.props.scrollTo) {
+			this.handleScrollToElement(document.getElementById("body"), this.props.scrollTo, 500)
+			this.props.resetScrollTo()
 		}
 	}
 
@@ -111,10 +133,11 @@ function mapStateToProps(state) {
 		appVisible: state.app.appVisible,
 		gridVisible: state.app.gridVisible,
 		location: state.router.location,
-		imageUrls: state.app.imageUrls
+		imageUrls: state.app.imageUrls,
+		scrollTo: state.app.scrollTo
 	};
 }
 
 export default {
-	component: connect(mapStateToProps, { showApp, showGrid, hideGrid, fetchImageDetails, fetchUserDetails, loadAllDetails })(withRouter(App))
+	component: connect(mapStateToProps, { showApp, showGrid, hideGrid, fetchImageDetails, fetchUserDetails, resetScrollTo })(withRouter(App))
 };
