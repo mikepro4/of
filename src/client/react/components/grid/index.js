@@ -32,14 +32,14 @@ class Grid extends Component {
 		let guideYStyle = {
 			left: this.props.clientX + "px"
 		}
-		let left = this.props.clientWidth - this.props.clientX < 300
+		let left = this.props.clientWidth - this.props.clientX < 340
 
 		let tooltipStyle = {}
 
 		if(left) {
 			tooltipStyle = {
 				top: this.props.clientY + 10 + "px",
-				left: this.props.clientX - 270 + "px"
+				left: this.props.clientX - 330 + "px"
 			}
 		} else {
 			tooltipStyle = {

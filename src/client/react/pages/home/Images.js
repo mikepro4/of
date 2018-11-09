@@ -33,6 +33,7 @@ class Images extends Component {
 					top={150}
 					height={600}
 					screen={0}
+					slowDown={6}
 					order={1}
 				/>
 
@@ -43,6 +44,7 @@ class Images extends Component {
 					top={650}
 					height={350}
 					screen={0}
+					slowDown={7}
 					order={2}
 				/>
 
@@ -50,7 +52,7 @@ class Images extends Component {
 					isVisible={this.state.isVisible}
 					className="image-3"
 					imageId="BllohYGFEpN"
-					top={100}
+					top={150}
 					height={770}
 					screen={1}
 					order={4}
@@ -59,10 +61,11 @@ class Images extends Component {
 				<Image
 					isVisible={this.state.isVisible}
 					className="image-4"
-					imageId="Bngu9tGFkkH"
-					top={170}
+					imageId="BnXOfQZFkBt"
+					top={250}
 					square={true}
 					screen={1}
+					slowDown={12}
 					order={1}
 				/>
 
@@ -70,29 +73,32 @@ class Images extends Component {
 					isVisible={this.state.isVisible}
 					className="image-5"
 					imageId="BnP71eRlU0F"
-					top={450}
+					top={330}
 					height={340}
 					screen={1}
+					slowDown={5}
 					order={2}
 				/>
 
 				<Image
 					isVisible={this.state.isVisible}
 					className="image-6"
-					imageId="BoHCPBnFPzq"
-					top={200}
+					imageId="BlgxEIHlLK7"
+					top={150}
 					height={400}
 					screen={1}
 					order={3}
+					slowDown={6}
 				/>
 
 				<Image
 					isVisible={this.state.isVisible}
 					className="image-7"
 					imageId="BpXPT3ulrU6"
-					top={150}
+					top={0}
 					height={450}
 					screen={2}
+					slowDown={6}
 					order={1}
 				/>
       </div>

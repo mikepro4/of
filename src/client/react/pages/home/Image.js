@@ -81,7 +81,7 @@ class Image extends Component {
     let originalTop = this.props.top * 100 / this.getScreenHeight();
     let newTop = originalTop * this.getScreenHeight() / 100
     if(this.props.clientHeight > 1200) {
-      return newTop + 100
+      return newTop + 0
     } else {
       return newTop
     }
@@ -92,9 +92,28 @@ class Image extends Component {
       if(this.props.square ) {
         return this.refs.image_container.clientWidth
       } else {
-        return this.props.height
+        let height = (this.props.height * 100) / 970;
+        let screenHeight = this.props.clientHeight
+
+        if(this.props.clientHeight <= 970) {
+          screenHeight = 970
+        }
+
+        let newHeight = (height * screenHeight) / 100
+        console.log(height,newHeight)
+        return newHeight
       }
     }
+  }
+
+  imageTransform = () => {
+    let transform =  `translateY(0px)`;
+
+    if (this.props.slowDown) {
+      transform = `translateY(${this.props.totalScrolledPixels /this.props.slowDown}px)`
+    }
+
+    return transform
   }
 
   mayberRenderImage() {
@@ -121,7 +140,8 @@ class Image extends Component {
         <div className={classNames({"of-grid-image": true}, this.props.className)}
           style={{
            top: `calc(${this.getScreenHeight()}px + ${this.calcTop()}px)`,
-           height: this.getHeight() + "px"
+           height: this.getHeight() + "px",
+           transform: this.imageTransform()
           }}
          ref="image_container">
           <ImageContainer

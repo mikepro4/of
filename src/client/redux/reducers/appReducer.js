@@ -45,6 +45,12 @@ export const initialState = {
 		},
 		{
 			id: "BpXPT3ulrU6"
+		},
+		{
+			id: "BlgxEIHlLK7"
+		},
+		{
+			id: "BnXOfQZFkBt"
 		}
 	],
 	allImagesLoaded: false,

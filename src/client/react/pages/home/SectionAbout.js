@@ -9,13 +9,7 @@ import posed from 'react-pose';
 
 
 const Parent = posed.div({
-	enter: {staggerChildren: 350},
-  exit: {},
-	initialPose: 'closed'
-});
-
-const ButtonGroupContainer = posed.div({
-	enter: {staggerChildren: 500},
+	enter: {staggerChildren: 350, delayChildren: 0},
   exit: {},
 	initialPose: 'closed'
 });
@@ -36,29 +30,38 @@ const Child = posed.div({
 	initialPose: 'closed'
 });
 
+const DividerContainer = posed.div({
+	exit: {
+    width: 0,
+  },
+  enter: {
+    width: "100%",
+    transition: {
+     duration: 600,
+	 }
+ 	},
+	initialPose: 'closed'
+});
+
 class SectionHero extends Component {
 	state = {
-    isVisible: false,
   };
 
-  componentDidUpdate(prevprops) {
-    if(this.props.isVisible == true && this.state.isVisible == false) {
-
-      setTimeout(() => {
-        this.setState({
-          isVisible: true,
-        })
-      }, 500)
-
-      setTimeout(() => {
-        this.setState({
-          isButtonGroupVisible: true,
-        })
-      }, 2500)
-    }
+  componentDidMount() {
   }
 
-  componentDidMount() {
+	getPose() {
+    if(this.refs.screen) {
+      let node = this.refs.screen
+      let bodyHeight = this.props.clientHeight
+      if(node && (this.refs.screen.offsetTop <= ( this.props.totalScrolledPixels + (bodyHeight/1.5)))) {
+        return "enter"
+      } else {
+        return "exit"
+      }
+    } else {
+      return "exit"
+    }
   }
 
 	render() {
@@ -66,14 +69,16 @@ class SectionHero extends Component {
 		return (
       <div className="screen" ref="screen">
 
-        <div className="section-container section-hero">
-          <div className="of-grid-gutter-4 of-grid-13 hero-headline-container">
+        <div className="section-container section-about">
+          <div className="of-grid-gutter-10 of-grid-9 hero-headline-container">
 
             <Parent
               initialPose="exit"
-              pose={this.state.isVisible ? 'enter' : 'exit'}
+              pose={this.getPose()}
               className="about-description"
             >
+							<DividerContainer className="divider-container"/>
+
               <div className="about-description-line">
                 <div className="of-container">
   								<Child>
@@ -87,10 +92,9 @@ class SectionHero extends Component {
               <div className="about-description-line">
                 <div className="of-container">
   								<Child>
-  									My name is Olena Finch and I’m an actress, model and instagram influencer.
-                    I like beauty products, art, fashion, music, design, photography, blockchain and technology,
-                    and I help my friends on social media discover and experience the best products and services.
-  								</Child>
+  									Something smaller here but it has to be 2 lines so I'll write that.
+										Something smaller here but it has to be 2 lines so I'll write that.
+									</Child>
   							</div>
               </div>
             </Parent>
@@ -103,6 +107,8 @@ class SectionHero extends Component {
 
 function mapStateToProps({app}) {
 	return {
+		totalScrolledPixels: app.totalScrolledPixels,
+    clientHeight: app.clientHeight
   };
 }
 
