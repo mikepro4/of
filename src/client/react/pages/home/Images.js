@@ -53,7 +53,7 @@ class Images extends Component {
 					top={100}
 					height={770}
 					screen={1}
-					order={1}
+					order={4}
 				/>
 
 				<Image
@@ -63,7 +63,7 @@ class Images extends Component {
 					top={170}
 					square={true}
 					screen={1}
-					order={2}
+					order={1}
 				/>
 
 				<Image
@@ -73,7 +73,7 @@ class Images extends Component {
 					top={450}
 					height={340}
 					screen={1}
-					order={3}
+					order={2}
 				/>
 
 				<Image
@@ -83,7 +83,7 @@ class Images extends Component {
 					top={200}
 					height={400}
 					screen={1}
-					order={4}
+					order={3}
 				/>
 
 				<Image

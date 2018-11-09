@@ -26,7 +26,7 @@ const ImageContainer = posed.div({
       },
 	 },
    delay: ({order}) => {
-      return order * 200
+      return order * 300
      // if(order <= 2) {
      //   return order * 500
      // } else {
@@ -80,7 +80,11 @@ class Image extends Component {
   calcTop = () => {
     let originalTop = this.props.top * 100 / this.getScreenHeight();
     let newTop = originalTop * this.getScreenHeight() / 100
-    return newTop
+    if(this.props.clientHeight > 1200) {
+      return newTop + 100
+    } else {
+      return newTop
+    }
   }
 
   getHeight = () => {

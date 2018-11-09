@@ -32,14 +32,14 @@ class Grid extends Component {
 		let guideYStyle = {
 			left: this.props.clientX + "px"
 		}
-		let left = this.props.clientWidth - this.props.clientX < 200
+		let left = this.props.clientWidth - this.props.clientX < 300
 
 		let tooltipStyle = {}
 
 		if(left) {
 			tooltipStyle = {
 				top: this.props.clientY + 10 + "px",
-				left: this.props.clientX - 220 + "px"
+				left: this.props.clientX - 270 + "px"
 			}
 		} else {
 			tooltipStyle = {
@@ -76,6 +76,11 @@ class Grid extends Component {
 									<div className="cursor-tooltip-value"><span>ClientY:</span> {this.calcClientYPercent()}%</div>
 									<div className="cursor-tooltip-value"><span>PageY:</span> {this.calcPageYPercent()}%</div>
 								</div>
+
+								<div className="tooltip-row">
+									<div className="cursor-tooltip-value"><span>ClientHeight:</span> {this.props.clientHeight}</div>
+									<div className="cursor-tooltip-value"><span>ClientWidth:</span> {this.props.clientWidth}</div>
+								</div>
 							</div>
 						</div>
 					): ""}
@@ -111,7 +116,9 @@ function mapStateToProps(state) {
 	return {
 		totalPixels: state.app.totalPixels,
 		location: state.router.location,
-		gridVisible: state.app.gridVisible
+		gridVisible: state.app.gridVisible,
+		clientHeight: state.app.clientHeight,
+		clientWidth: state.app.clientWidth
 	};
 }
 

@@ -82,7 +82,7 @@ class BottomLeft extends Component {
     let node = document.getElementById("body")
 
     if(this.props.totalPixels !== node.scrollHeight) {
-      this.props.updateTotalPixels(node.scrollHeight)
+      this.props.updateTotalPixels(node.scrollHeight, node.clientWidth, node.clientHeight)
     }
 
   }
