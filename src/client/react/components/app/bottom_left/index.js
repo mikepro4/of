@@ -267,7 +267,7 @@ class BottomLeft extends Component {
                     pose={this.state.scrolledVisible ? "enter": "exit"}
                   >
                     {this.state.newScrollTo > 0 ? (
-                        <span className="highlighted-value">{Math.round(this.state.newScrollTo)}px</span>
+                        <span className="highlighted-value">{commaNumber(Math.round(this.state.newScrollTo))}px</span>
                       ): (
                         <span >{commaNumber(Math.round(this.props.totalScrolledPixels))}px</span>
                       )}

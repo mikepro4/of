@@ -23,17 +23,17 @@ class Images extends Component {
   }
 
 	render() {
-		return <div/>
-		// return (
-    //   <div className="of-grid-images">
-    //     <Image isVisible={this.state.isVisible} className="image-1" imageId="BnJRyQBFDLv" order={1} />
-    //     <Image isVisible={this.state.isVisible} className="image-2" imageId="BpnjJjZlLrL" order={2}/>
-    //     <Image isVisible={this.state.isVisible} className="image-3" imageId="BoHCPBnFPzq" order={3}/>
-    //     <Image isVisible={this.state.isVisible} className="image-4" imageId="Bngu9tGFkkH" order={4}/>
-    //     <Image isVisible={this.state.isVisible} className="image-5" imageId="BnP71eRlU0F" order={5}/>
-    //     <Image isVisible={this.state.isVisible} className="image-6" imageId="BllohYGFEpN" order={5}/>
-    //   </div>
-    // )
+		// return <div/>
+		return (
+      <div className="of-grid-images">
+        <Image isVisible={this.state.isVisible} className="image-1" imageId="BnJRyQBFDLv" order={1} />
+        <Image isVisible={this.state.isVisible} className="image-2" imageId="BpnjJjZlLrL" order={2}/>
+        <Image isVisible={this.state.isVisible} className="image-3" imageId="BoHCPBnFPzq" order={3}/>
+        <Image isVisible={this.state.isVisible} className="image-4" imageId="Bngu9tGFkkH" order={4}/>
+        <Image isVisible={this.state.isVisible} className="image-5" imageId="BnP71eRlU0F" order={5}/>
+        <Image isVisible={this.state.isVisible} className="image-6" imageId="BllohYGFEpN" order={5}/>
+      </div>
+    )
 	}
 }
 

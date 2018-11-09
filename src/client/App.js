@@ -30,7 +30,11 @@ class App extends Component {
 		introVisible: false,
 		appVisible: false,
 		instagramHovered: false,
-		facebookHovered: false
+		facebookHovered: false,
+		clientY: 0,
+		clientX: 0,
+		pageY: 0,
+		vlientWidth: 0
 	};
 
 	// static loadData(store, match) {
@@ -96,11 +100,22 @@ class App extends Component {
 		}
 	}
 
+	onMouseMove = (e) => {
+		if(true) {
+			this.setState({
+				clientWidth: document.getElementById("body").clientWidth,
+				clientY: e.clientY,
+				clientX: e.clientX,
+				pageY: e.pageY
+			})
+		}
+	}
+
 	render() {
 		return (
-			<div className="app">
+			<div className="app" onMouseMove={this.onMouseMove.bind(this)}>
 
-				<Grid/>
+				<Grid clientY={this.state.clientY} clientX={this.state.clientX} pageY={this.state.pageY} clientWidth={this.state.clientWidth} />
 
 				<Intro />
 
