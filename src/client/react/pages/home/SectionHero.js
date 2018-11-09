@@ -7,6 +7,7 @@ import classNames from "classnames"
 import { Link } from "react-router-dom";
 import posed from 'react-pose';
 
+import Profile from "./Profile"
 import Button from "../../components/uikit/Button"
 
 const Divider = posed.div({
@@ -21,15 +22,22 @@ const Divider = posed.div({
   }
 });
 
-const Parent = posed.ul({
-	enter: {staggerChildren: 100},
+const Parent = posed.div({
+	enter: {staggerChildren: 350},
   exit: {},
 	initialPose: 'closed'
 });
 
+const ButtonGroupContainer = posed.div({
+	enter: {staggerChildren: 500},
+  exit: {},
+	initialPose: 'closed'
+});
+
+
 const Child = posed.div({
 	exit: {
-    translateY: 30,
+    translateY: 50,
     opacity: 0
   },
   enter: {
@@ -42,19 +50,47 @@ const Child = posed.div({
 	initialPose: 'closed'
 });
 
+const ButtonContainer = posed.div({
+	exit: {
+    scale: 0.95,
+    opacity: 0
+  },
+  enter: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+     duration: 2000,
+	 }
+ 	},
+	initialPose: 'closed'
+});
+
 
 class SectionHero extends Component {
 	state = {
-    isVisible: false
+    isVisible: false,
+    isProfileVisible: false,
+    isButtonGroupVisible: false
   };
 
   componentDidUpdate(prevprops) {
-    if(this.props.isVisible == true && this.state.isVisible == false) {
+    if(this.props.isVisible == true && this.state.isVisible == false && this.state.isProfileVisible == false) {
+
+      this.setState({
+        isProfileVisible: true,
+      })
+
       setTimeout(() => {
         this.setState({
           isVisible: true,
         })
       }, 500)
+
+      setTimeout(() => {
+        this.setState({
+          isButtonGroupVisible: true,
+        })
+      }, 2500)
     }
   }
 
@@ -64,87 +100,80 @@ class SectionHero extends Component {
 	render() {
 
 		return (
-      <Parent
-				initialPose="exit"
-				pose={this.state.isVisible ? 'enter' : 'exit'}
-				className="section-container section-hero"
-			>
-        <div className="of-grid-gutter-4 of-grid-13 hero-headline-container">
+      <div className="screen">
 
-          <div className="hero-headline">
-            <div className="hero-healine-textline">
-              <div className="of-container">
-								<Child>
-									Instagram promotions,
-								</Child>
-							</div>
-            </div>
+        <Profile isVisible={this.state.isProfileVisible} />
 
-            <div className="hero-healine-textline">
-              <div className="of-container">
-								<Child	>
-									modeling, marketing
-								</Child>
-							</div>
-            </div>
+        <div className="section-container section-hero">
+          <div className="of-grid-gutter-4 of-grid-13 hero-headline-container">
 
-            <div className="hero-healine-textline">
-              <div className="of-container">
-								<Child>
-									and design for the best
-								</Child>
-							</div>
-            </div>
+            <Parent
+              initialPose="exit"
+              pose={this.state.isVisible ? 'enter' : 'exit'}
+              className="hero-headline"
+            >
+              <div className="hero-healine-textline">
+                <div className="of-container">
+  								<Child>
+  									Promotions
+  								</Child>
+  							</div>
+              </div>
 
-            <div className="hero-healine-textline">
-              <div className="of-container">
-								<Child>
-									products and services
-								</Child>
-							</div>
-            </div>
+              <div className="hero-healine-textline">
+                <div className="of-container">
+  								<Child	>
+  									Modelling
+  								</Child>
+  							</div>
+              </div>
+
+              <div className="hero-healine-textline">
+                <div className="of-container">
+  								<Child>
+  									Marketing
+  								</Child>
+  							</div>
+              </div>
+
+              <div className="hero-healine-textline">
+                <div className="of-container">
+  								<Child>
+  									Design
+  								</Child>
+  							</div>
+              </div>
+            </Parent>
           </div>
 
-          <Divider
-						className="hero-divider"
-						initialPose="exit"
-						pose={this.state.dividerVisible ? "enter": "exit"}
-					/>
+          <ButtonGroupContainer
+            initialPose="exit"
+            pose={this.state.isButtonGroupVisible ? 'enter' : 'exit'}
+            className="section-container section-hero"
+          >
 
-          <div className="hero-description">
-						<div className="hero-description-textline">
-							<div className="of-container"><Child>My name is Olena Finch and I’m an actress, model and instagram influencer.</Child></div>
-						</div>
+            <div className="of-grid-row hero-buttons">
+              <ButtonContainer className="of-grid-3 of-grid-gutter-4">
+                <Button
+                  buttonWhite={true}
+                  label="Get a promotion"
+                  title="Get a promotion"
+                />
+              </ButtonContainer>
 
-						<div className="hero-description-textline">
-							<div className="of-container"><Child>I like beauty products, art, fashion, music, design, photography, blockchain and technology,</Child></div>
-						</div>
+              <ButtonContainer className="of-grid-3">
+                <Button
+                  buttonWhite={true}
+                  buttonOutlined={true}
+                  label="View services"
+                  title="View services"
+                />
+              </ButtonContainer>
+            </div>
+          </ButtonGroupContainer>
 
-						<div className="hero-description-textline">
-							<div className="of-container"><Child>and I help my friends on social media discover and experience the best products and services.</Child></div>
-						</div>
-          </div>
-				</div>
-
-        <div className="of-grid-row hero-buttons">
-					<Child className="of-grid-3 of-grid-gutter-4">
-            <Button
-              buttonWhite={true}
-              label="Get a promotion"
-              title="Get a promotion"
-            />
-					</Child>
-
-					<Child className="of-grid-3">
-            <Button
-              buttonWhite={true}
-              buttonOutlined={true}
-              label="View services"
-              title="View services"
-            />
-					</Child>
         </div>
-      </Parent>
+      </div>
     )
 	}
 }

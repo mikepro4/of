@@ -6,6 +6,24 @@ import classNames from "classnames";
 import ReactDOM from "react-dom";
 
 class Grid extends Component {
+	calcClientXPercent = () => {
+		let percent = this.props.clientX * 100 / this.props.clientWidth
+
+		return Math.round(percent)
+	}
+
+	calcClientYPercent = () => {
+
+		let percent = this.props.clientY * 100 / this.props.clientWidth
+
+		return Math.round(percent)
+	}
+
+	calcPageYPercent = () => {
+		let percent = this.props.pageY * 100 / this.props.totalPixels
+
+		return Math.round(percent)
+	}
 	render() {
 
 		let guideXStyle = {
@@ -30,13 +48,12 @@ class Grid extends Component {
 			}
 		}
 
-
-		console.log(left)
-
-
 		return (
   			<div
-					className={classNames({"grid-visible": this.props.gridVisible}, "of-grid of-grid-preview")}
+					className={classNames({
+						"grid-visible": this.props.gridVisible,
+						"top": this.props.gridOnTop
+					}, "of-grid of-grid-preview")}
 				>
 
 					{this.props.gridVisible ? (
@@ -48,9 +65,17 @@ class Grid extends Component {
 							}
 								style={tooltipStyle}
 							>
-								<div className="cursor-tooltip-value"><span>ClientX:</span> {this.props.clientX}</div>
-								<div className="cursor-tooltip-value"><span>ClientY:</span> {this.props.clientY}</div>
-								<div className="cursor-tooltip-value"><span>PageY:</span> {this.props.pageY}</div>
+								<div className="tooltip-row">
+									<div className="cursor-tooltip-value"><span>ClientX:</span> {this.props.clientX}</div>
+									<div className="cursor-tooltip-value"><span>ClientY:</span> {this.props.clientY}</div>
+									<div className="cursor-tooltip-value"><span>PageY:</span> {this.props.pageY}</div>
+								</div>
+
+								<div className="tooltip-row">
+									<div className="cursor-tooltip-value"><span>ClientX:</span> {this.calcClientXPercent()}%</div>
+									<div className="cursor-tooltip-value"><span>ClientY:</span> {this.calcClientYPercent()}%</div>
+									<div className="cursor-tooltip-value"><span>PageY:</span> {this.calcPageYPercent()}%</div>
+								</div>
 							</div>
 						</div>
 					): ""}
@@ -84,6 +109,7 @@ class Grid extends Component {
 
 function mapStateToProps(state) {
 	return {
+		totalPixels: state.app.totalPixels,
 		location: state.router.location,
 		gridVisible: state.app.gridVisible
 	};

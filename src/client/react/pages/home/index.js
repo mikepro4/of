@@ -4,9 +4,9 @@ import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import posed, { PoseGroup } from 'react-pose';
 import SplitText from 'react-pose-text';
-import Profile from "./Profile"
 import Images from "./Images"
 import SectionHero from "./SectionHero"
+import SectionAbout from "./SectionAbout"
 
 class HomePage extends Component {
 	state = {
@@ -25,11 +25,11 @@ class HomePage extends Component {
 			})
 		}, timeOut)
 
-		// setTimeout(() => {
-		// 	this.setState({
-		// 		imagesVisible: true
-		// 	})
-		// }, (timeOut + 4000))
+		setTimeout(() => {
+			this.setState({
+				imagesVisible: true
+			})
+		}, (timeOut + 1000))
 	}
 
 	renderHead = () => (
@@ -47,8 +47,10 @@ class HomePage extends Component {
       <div className="route-container route-home">
 
         <div className="of-grid-content-layer"  style={imgStyle}>
-          <Profile isVisible={this.state.profileVisible} />
 					<SectionHero isVisible={this.state.heroVisible} />
+					<div className="screen"/>
+					<SectionAbout/>
+					<div className="screen"/>
         </div>
 
         <Images isVisible={this.state.imagesVisible}  />

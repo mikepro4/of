@@ -34,7 +34,9 @@ class App extends Component {
 		clientY: 0,
 		clientX: 0,
 		pageY: 0,
-		vlientWidth: 0
+		vlientWidth: 0,
+		gridOnTop: false,
+
 	};
 
 	// static loadData(store, match) {
@@ -56,6 +58,13 @@ class App extends Component {
 		this.props.imageUrls.map((image, i) => {
         this.props.fetchImageDetails(image.id, i)
     })
+	}
+
+	@keydown("T")
+	toggleGridOnTop() {
+		this.setState({
+			gridOnTop: !this.state.gridOnTop
+		})
 	}
 
 	@keydown("G")
@@ -115,7 +124,13 @@ class App extends Component {
 		return (
 			<div className="app" onMouseMove={this.onMouseMove.bind(this)}>
 
-				<Grid clientY={this.state.clientY} clientX={this.state.clientX} pageY={this.state.pageY} clientWidth={this.state.clientWidth} />
+				<Grid
+					gridOnTop={this.state.gridOnTop}
+					clientY={this.state.clientY}
+					clientX={this.state.clientX}
+					pageY={this.state.pageY}
+					clientWidth={this.state.clientWidth}
+				/>
 
 				<Intro />
 

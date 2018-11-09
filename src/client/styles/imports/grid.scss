@@ -69,6 +69,10 @@ $columnWidth: 70px;
     right: 0;
     z-index: 1;
 
+    &.top {
+      z-index: 1000
+    }
+
     .of-grid-container {
       flex-grow: 1;
       margin-bottom: 0;

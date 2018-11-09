@@ -94,10 +94,24 @@ class BottomLeft extends Component {
   componentDidMount() {
     let node = document.getElementById("body")
     window.addEventListener('scroll', this.handleScroll);
-    this.props.updateTotalPixels(node.scrollHeight)
+    this.props.updateTotalPixels(node.scrollHeight, node.clientWidth, node.clientHeight)
     this.setState({
       clientHeight: node.clientHeight
     })
+
+    window.addEventListener("resize", this.handleResize);
+    setTimeout(() => {
+      this.forceUpdate()
+    }, 1)
+  }
+
+  handleResize = () => {
+    let node = document.getElementById("body")
+    this.props.updateTotalPixels(node.scrollHeight, node.clientWidth, node.clientHeight)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize);
   }
   getLeft() {
     return (this.props.totalScrolledPixels*100)/(this.props.totalPixels-this.state.clientHeight)

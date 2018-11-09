@@ -1,4 +1,14 @@
+.screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 970px;
+  // border-bottom: 1px solid rgba($white, 0.3);
+}
+
 .section-hero {
+
   .hero-headline-container {
     margin-top: 30px;
 
@@ -7,8 +17,7 @@
       left: -6px;
 
       .hero-healine-textline {
-        font-size: 8.3vh;
-        // font-size: 84px;
+        font-size: 90px;
         font-weight: 600;
         letter-spacing: 1.1px;
         line-height: 1.2em;
@@ -23,8 +32,6 @@
     }
 
     .hero-description {
-      // font-size: 20px;
-      // line-height: 32px;
       letter-spacing: 0.8px;
       font-weight: 300;
       font-size: 2vh;

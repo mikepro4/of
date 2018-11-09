@@ -77,10 +77,12 @@ export const loadAllDetails = (store) => async (dispatch, getState) => {
 
 /////////////////////////////////////////////////
 
-export const updateTotalPixels = (px) => async (dispatch, getState) => {
+export const updateTotalPixels = (total, clientWidth, clientHeight) => async (dispatch, getState) => {
 	dispatch({
 		type: UPDATE_TOTAL_PIXELS,
-		pixels: px
+		total: total,
+		clientWidth: clientWidth,
+		clientHeight: clientHeight,
 	});
 }
 

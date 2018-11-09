@@ -15,6 +15,8 @@ import {
 
 export const initialState = {
 	totalPixels: 0,
+	clientWidth: 0,
+	clientHeight: 0,
 	totalScrolledPixels: 0,
 	introLength: 7000,
 	appVisible: true,
@@ -40,6 +42,9 @@ export const initialState = {
 		},
 		{
 			id: "BllohYGFEpN"
+		},
+		{
+			id: "BpXPT3ulrU6"
 		}
 	],
 	allImagesLoaded: false,
@@ -76,7 +81,9 @@ export const appReducer = (state = initialState, action) => {
 
 		case UPDATE_TOTAL_PIXELS:
 			return assign({}, state, {
-				totalPixels: action.pixels
+				totalPixels: action.total,
+				clientWidth: action.clientWidth,
+				clientHeight: action.clientHeight
 			});
 		case UPDATE_TOTAL_SCROLLED_PIXELS:
 			return assign({}, state, {

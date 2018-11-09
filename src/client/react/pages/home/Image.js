@@ -10,7 +10,7 @@ import posed from 'react-pose';
 const ImageContainer = posed.div({
   exit: {
     opacity: 0,
-    translateY: 200
+    translateY: 30
   },
   enter: {
     opacity: 1,
@@ -21,15 +21,17 @@ const ImageContainer = posed.div({
 
       },
       translateY: {
-        duration: 3000,
+        duration: 2000,
+        easing: "cubic-bezier(.19,1,.22,1)"
       },
 	 },
    delay: ({order}) => {
-     if(order <= 2) {
-       return order * 500
-     } else {
-       return 0
-     }
+      return order * 200
+     // if(order <= 2) {
+     //   return order * 500
+     // } else {
+     //   return 0
+     // }
    }
   }
 });
@@ -61,9 +63,42 @@ class Image extends Component {
     }
   }
 
+  getScreenHeight = () => {
+    if(this.props.screen == 0) {
+      return 1
+    } else {
+      let screenHeight = this.props.clientHeight
+
+      if(this.props.clientHeight <= 970) {
+        screenHeight = 970
+      }
+
+      return screenHeight * this.props.screen
+    }
+  }
+
+  calcTop = () => {
+    let originalTop = this.props.top * 100 / this.getScreenHeight();
+    let newTop = originalTop * this.getScreenHeight() / 100
+    return newTop
+  }
+
+  getHeight = () => {
+    if(this.refs.image_container) {
+      if(this.props.square ) {
+        return this.refs.image_container.clientWidth
+      } else {
+        return this.props.height
+      }
+    }
+  }
+
   mayberRenderImage() {
+
+
     let imgStyle = {
-      transform: `translateY(${this.props.totalScrolledPixels /4}px)`
+
+      // transform: `translateY(${this.props.totalScrolledPixels /4}px)`
     }
     if(this.props.loadedImages[this.props.imageId] && this.refs.image_container) {
         return (
@@ -79,7 +114,12 @@ class Image extends Component {
 
 	render() {
       return (
-        <div className={classNames({"of-grid-image": true}, this.props.className)} ref="image_container">
+        <div className={classNames({"of-grid-image": true}, this.props.className)}
+          style={{
+           top: `calc(${this.getScreenHeight()}px + ${this.calcTop()}px)`,
+           height: this.getHeight() + "px"
+          }}
+         ref="image_container">
           <ImageContainer
             initialPose="exit"
             order={this.props.order}
@@ -97,7 +137,8 @@ function mapStateToProps({app}) {
 	return {
     userDetails: app.userDetails,
     loadedImages: app.loadedImages,
-    totalScrolledPixels: app.totalScrolledPixels
+    totalScrolledPixels: app.totalScrolledPixels,
+    clientHeight: app.clientHeight
 	};
 }
 
