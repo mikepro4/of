@@ -21,38 +21,6 @@ export const initialState = {
 	introLength: 7000,
 	appVisible: true,
 	gridVisible: false,
-	imageUrls: [
-		{
-			id: "BnJRyQBFDLv"
-		},
-		{
-			id: "Bp2TY2FlrM0"
-		},
-		{
-			id: "BpnjJjZlLrL"
-		},
-		{
-			id: "BoHCPBnFPzq"
-		},
-		{
-			id: "Bngu9tGFkkH"
-		},
-		{
-			id: "BnP71eRlU0F"
-		},
-		{
-			id: "BllohYGFEpN"
-		},
-		{
-			id: "BpXPT3ulrU6"
-		},
-		{
-			id: "BlgxEIHlLK7"
-		},
-		{
-			id: "BnXOfQZFkBt"
-		}
-	],
 	allImagesLoaded: false,
 	loadedImages: {},
 	userDetails: {

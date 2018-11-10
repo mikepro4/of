@@ -55,9 +55,9 @@ class App extends Component {
 			})
 		}
 
-		this.props.imageUrls.map((image, i) => {
-        this.props.fetchImageDetails(image.id, i)
-    })
+		// this.props.imageUrls.map((image, i) => {
+    //     this.props.fetchImageDetails(image.id, i)
+    // })
 	}
 
 	@keydown("T")
@@ -166,7 +166,6 @@ function mapStateToProps(state) {
 		appVisible: state.app.appVisible,
 		gridVisible: state.app.gridVisible,
 		location: state.router.location,
-		imageUrls: state.app.imageUrls,
 		scrollTo: state.app.scrollTo
 	};
 }

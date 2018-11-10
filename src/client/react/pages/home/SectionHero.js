@@ -123,7 +123,7 @@ class SectionHero extends Component {
               <div className="hero-healine-textline">
                 <div className="of-container">
   								<Child	>
-  									Modelling
+  									Modeling
   								</Child>
   							</div>
               </div>

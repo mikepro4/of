@@ -23,13 +23,12 @@ class Images extends Component {
   }
 
 	render() {
-		// return <div/>
 		return (
       <div className="of-grid-images">
         <Image
 					isVisible={this.state.isVisible}
 					className="image-1"
-					imageId="BnJRyQBFDLv"
+					imageId="BZLsOxXFLGS"
 					top={150}
 					height={600}
 					screen={0}
@@ -88,7 +87,7 @@ class Images extends Component {
 					height={400}
 					screen={1}
 					order={3}
-					slowDown={6}
+					slowDown={7}
 				/>
 
 				<Image

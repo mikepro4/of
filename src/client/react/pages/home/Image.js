@@ -7,6 +7,8 @@ import classNames from "classnames"
 import { Link } from "react-router-dom";
 import posed from 'react-pose';
 
+import { fetchImageDetails } from "../../../redux/actions/appActions";
+
 const ImageContainer = posed.div({
   exit: {
     opacity: 0,
@@ -27,11 +29,6 @@ const ImageContainer = posed.div({
 	 },
    delay: ({order}) => {
       return order * 300
-     // if(order <= 2) {
-     //   return order * 500
-     // } else {
-     //   return 0
-     // }
    }
   }
 });
@@ -47,6 +44,10 @@ class Image extends Component {
         isVisible: true
       })
     }
+  }
+
+  componentDidMount() {
+     this.props.fetchImageDetails(this.props.imageId, this.props.order)
   }
 
   getPose() {
@@ -117,15 +118,9 @@ class Image extends Component {
   }
 
   mayberRenderImage() {
-
-
-    let imgStyle = {
-
-      // transform: `translateY(${this.props.totalScrolledPixels /4}px)`
-    }
     if(this.props.loadedImages[this.props.imageId] && this.refs.image_container) {
         return (
-          <div className="image-wrapper" style={imgStyle} >
+          <div className="image-wrapper" >
             <span className="info">
               {this.props.className} – {this.props.imageId} - {this.refs.image_container.offsetTop}
             </span>
@@ -166,4 +161,4 @@ function mapStateToProps({app}) {
 	};
 }
 
-export default connect(mapStateToProps, {})(Image);
+export default connect(mapStateToProps, {fetchImageDetails})(Image);
