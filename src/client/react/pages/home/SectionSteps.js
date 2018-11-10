@@ -10,7 +10,7 @@ import posed from 'react-pose';
 import Button from "../../components/uikit/Button"
 
 const Parent = posed.div({
-	enter: {staggerChildren: 350, delayChildren: 0},
+	enter: {staggerChildren: 60, delayChildren: 0},
   exit: {},
 	initialPose: 'closed'
 });

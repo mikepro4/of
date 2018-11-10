@@ -75,4 +75,9 @@
     @extend .of-grid-width-4;
     @extend .of-grid-left-4;
   }
+
+  .image-8 {
+    @extend .of-grid-width-5;
+    @extend .of-grid-left-15;
+  }
 }

@@ -60,7 +60,7 @@ class Images extends Component {
 				<Image
 					isVisible={this.state.isVisible}
 					className="image-4"
-					imageId="BnXOfQZFkBt"
+					imageId="BjN1KM_FwrH"
 					top={250}
 					square={true}
 					screen={1}
@@ -98,6 +98,17 @@ class Images extends Component {
 					height={450}
 					screen={2}
 					slowDown={6}
+					order={1}
+				/>
+
+				<Image
+					isVisible={this.state.isVisible}
+					className="image-8"
+					imageId="BjX8wJIlTcT"
+					top={-550}
+					height={590}
+					screen={4}
+					slowDown={5}
 					order={1}
 				/>
       </div>

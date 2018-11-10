@@ -26,9 +26,9 @@ export const initialState = {
 	userDetails: {
 		id: null,
 		externalUrl: null,
-		posts: null,
-		followers: null,
-		following: null,
+		posts: 0,
+		followers: 0,
+		following: 0,
 		avatarUrl: null
 	},
 	scrollTo: null

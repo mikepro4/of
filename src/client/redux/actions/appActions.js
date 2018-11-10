@@ -56,12 +56,12 @@ export const fetchUserDetails = () => async dispatch => {
 	// const followers = await bud("yeah_lenka", 'followers')
 	// const avatarUrl = await ipp.medium("yeah_lenka")
 
-	const response = await axios.get(`https://www.instagram.com/p/Bp0cA6klO0t/?__a=1`);
+	const response = await axios.get(`https://www.instagram.com/p/BqAuaVqleZQ/?__a=1`);
 
 	dispatch({
 		type: LOAD_USER_DETAILS_SUCCESS,
 		payload: {
-			avatarUrl: response.data.graphql.shortcode_media.owner.profile_pic_url
+			avatarUrl: response.data.graphql.shortcode_media.owner.profile_pic_url,
 		}
 	});
 }

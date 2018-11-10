@@ -12,5 +12,12 @@
     letter-spacing: 1.1px;
     font-weight: 600;
     text-transform: uppercase;
+    transition: all 1s;
+  }
+
+  &:hover {
+    .of-text {
+      letter-spacing: 2px;
+    }
   }
 }
