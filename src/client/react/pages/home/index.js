@@ -7,6 +7,7 @@ import SplitText from 'react-pose-text';
 import Images from "./Images"
 import SectionHero from "./SectionHero"
 import SectionAbout from "./SectionAbout"
+import SectionSteps from "./SectionSteps"
 
 class HomePage extends Component {
 	state = {
@@ -50,6 +51,7 @@ class HomePage extends Component {
 					<SectionHero isVisible={this.state.heroVisible} />
 					<div className="screen"/>
 					<SectionAbout/>
+					<SectionSteps/>
 					<div className="screen"/>
         </div>
 

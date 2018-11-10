@@ -21,7 +21,7 @@
 @import "../react/pages/home/Profile";
 @import "../react/pages/home/SectionHero";
 @import "../react/pages/home/SectionAbout";
-
+@import "../react/pages/home/SectionSteps";
 
 //components
 @import "../react/components/navigation/main_links/index";
@@ -32,7 +32,6 @@
 @import "../react/components/app/bottom_right/index";
 @import "../react/components/app/bottom_left/index";
 @import "../react/components/uikit/Button";
-
 
 html {
 	// overflow: hidden;
@@ -99,5 +98,5 @@ a {
   flex-direction: column;
   justify-content: center;
   min-height: 970px;
-  border-bottom: 1px solid rgba($white, 0.3);
+  // border-bottom: 1px solid rgba($white, 0.3);
 }

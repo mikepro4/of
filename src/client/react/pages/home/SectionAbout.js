@@ -65,7 +65,6 @@ class SectionHero extends Component {
   }
 
 	render() {
-    console.log(this.refs)
 		return (
       <div className="screen" ref="screen">
 
