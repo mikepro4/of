@@ -9,6 +9,7 @@ import SectionHero from "./SectionHero"
 import SectionAbout from "./SectionAbout"
 import SectionSteps from "./SectionSteps"
 import SectionStatistics from "./SectionStatistics"
+import SectionPayment from "./SectionPayment"
 
 class HomePage extends Component {
 	state = {
@@ -54,6 +55,7 @@ class HomePage extends Component {
 					<SectionAbout/>
 					<SectionSteps/>
 					<SectionStatistics/>
+					<SectionPayment />
 					<div className="screen"/>
         </div>
 

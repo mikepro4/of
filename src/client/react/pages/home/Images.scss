@@ -80,4 +80,9 @@
     @extend .of-grid-width-5;
     @extend .of-grid-left-15;
   }
+
+  .image-9 {
+    @extend .of-grid-width-8;
+    left: 0;
+  }
 }

@@ -111,6 +111,17 @@ class Images extends Component {
 					slowDown={5}
 					order={1}
 				/>
+
+				<Image
+					isVisible={this.state.isVisible}
+					className="image-9"
+					imageId="BqAuaVqleZQ"
+					top={-400}
+					height={900}
+					screen={5}
+					slowDown={8}
+					order={1}
+				/>
       </div>
     )
 	}
