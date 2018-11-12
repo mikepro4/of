@@ -102,7 +102,7 @@ class SectionSteps extends Component {
 
                 <div className="steps-headline-line">
                   <div className="of-container">
-                    <Child> Ill help you promote it to </Child>
+                    <Child> I'll help you promote it to </Child>
                   </div>
                 </div>
 

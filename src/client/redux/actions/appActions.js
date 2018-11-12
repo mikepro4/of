@@ -39,6 +39,7 @@ export const hideGrid = () => dispatch => {
 
 export const fetchImageDetails = (id, i) => async dispatch => {
 	const response = await axios.get(`https://www.instagram.com/p/${id}/?__a=1`);
+	console.log(response.data.graphql)
 
 	dispatch({
 		type: LOAD_IMAGE_SUCCESS,

@@ -104,7 +104,7 @@ class SectionHero extends Component {
               <div className="payment-line">
                 <div className="of-container">
   								<Child>
-  									I accept Paypal and all major cryptocurrencies such BTC, ETH, LTC, XRP, 0x and others.
+  									I accept Paypal, Venmo and all major cryptocurrencies such as BTC, ETH, LTC, XRP, 0x and others.
                   </Child>
   							</div>
               </div>

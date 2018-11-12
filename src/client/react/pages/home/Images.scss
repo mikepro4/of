@@ -16,9 +16,27 @@
     position: absolute;
     background-repeat: no-repeat;
 
+    .image-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
     // box-shadow: 0 10px 150px 0 rgba(0,0,0,5);
 
     .image-wrapper {
+      width: 100%;
+      height: 100%;
+      background-position: center center;
+      background-size: auto 100%;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
     }
 
     .info {
@@ -28,14 +46,6 @@
       background: rgba($black, 0.5);
       font-size: 10px;
       z-index: 10;
-    }
-
-    img {
-      position: relative;
-      z-index: 1;
-      transform-origin: 50% 50%;
-      height: 100%;
-      // display: none;
     }
   }
 

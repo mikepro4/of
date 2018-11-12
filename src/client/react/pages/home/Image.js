@@ -6,8 +6,11 @@ import SplitText from 'react-pose-text';
 import classNames from "classnames"
 import { Link } from "react-router-dom";
 import posed from 'react-pose';
+import commaNumber from "comma-number"
 
 import { fetchImageDetails } from "../../../redux/actions/appActions";
+
+import Heart from "../../components/svg/heart"
 
 const ImageContainer = posed.div({
   exit: {
@@ -65,27 +68,36 @@ class Image extends Component {
   }
 
   getScreenHeight = () => {
-    if(this.props.screen == 0) {
-      return 1
-    } else {
-      let screenHeight = this.props.clientHeight
+    if(this.props.screen) {
+      if(this.props.screen == 0) {
+        return 1
+      } else {
+        let screenHeight = this.props.clientHeight
 
-      if(this.props.clientHeight <= 970) {
-        screenHeight = 970
+        if(this.props.clientHeight <= 970) {
+          screenHeight = 970
+        }
+
+        return screenHeight * this.props.screen
       }
-
-      return screenHeight * this.props.screen
+    } else {
+      return 1
     }
   }
 
   calcTop = () => {
-    let originalTop = this.props.top * 100 / this.getScreenHeight();
-    let newTop = originalTop * this.getScreenHeight() / 100
-    if(this.props.clientHeight > 1200) {
-      return newTop + 0
+    if (this.props.top) {
+      let originalTop = this.props.top * 100 / this.getScreenHeight();
+      let newTop = originalTop * this.getScreenHeight() / 100
+      if(this.props.clientHeight > 1200) {
+        return newTop + 0
+      } else {
+        return newTop
+      }
     } else {
-      return newTop
+      return 0
     }
+
   }
 
   getHeight = () => {
@@ -120,11 +132,15 @@ class Image extends Component {
   mayberRenderImage() {
     if(this.props.loadedImages[this.props.imageId] && this.refs.image_container) {
         return (
-          <div className="image-wrapper" >
+          <div className="image-wrapper"
+            ref={this.props.imageId}
+            style={{
+              backgroundImage: `url(${this.props.loadedImages[this.props.imageId].imageDetails.display_resources[2].src})`
+            }}
+          >
             <span className="info">
               {this.props.className} – {this.props.imageId} - {this.refs.image_container.offsetTop}
             </span>
-            <img ref={this.props.imageId} src={this.props.loadedImages[this.props.imageId].imageDetails.display_resources[2].src} />
           </div>
         )
       }
@@ -132,15 +148,27 @@ class Image extends Component {
 
 	render() {
       return (
-        <div className={classNames({"of-grid-image": true}, this.props.className)}
+        <div
+          className={classNames({"of-grid-image": true}, this.props.className)}
           style={{
            top: `calc(${this.getScreenHeight()}px + ${this.calcTop()}px)`,
            height: this.getHeight() + "px",
            transform: this.imageTransform()
           }}
-         ref="image_container">
+         ref="image_container"
+        >
+
+          {this.props.showLikes && this.props.loadedImages[this.props.imageId] ? (
+              <div className="image-likes-count">
+                <Heart color="white" />
+                {commaNumber(this.props.loadedImages[this.props.imageId].imageDetails.edge_media_preview_like.count)}
+              </div>
+            ) : ""
+          }
+
           <ImageContainer
             initialPose="exit"
+            className="image-container"
             order={this.props.order}
             pose={this.getPose()}
           >
