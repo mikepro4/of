@@ -44,11 +44,11 @@
         font-size: 84px;
         letter-spacing: 6px;
         color: $black;
-        line-height: 84px;
+        line-height: 100px;
         font-weight: 600;
         position: relative;
         left: -5px;
-        margin: 5px 0 15px 0;
+        margin: 5px 0 10px 0;
     }
 
     .release-mix {
@@ -62,7 +62,24 @@
         li {
             float: left;
             width: calc(50% - 15px);
-            margin-right: 20px;
+            margin: 0 20px 12px 0;
+            font-size: 14px;
+            letter-spacing: 0.53px;
+
+            .key {
+                width: 110px;
+                color:  $black;
+                opacity: 0.5;
+                font-weight: 300;
+                display: inline-block
+            }
+
+            .value {
+            }
+
+            .value {
+
+            }
 
             &:nth-child(2n) {
                 margin-right: 0;

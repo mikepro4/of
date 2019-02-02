@@ -42,7 +42,7 @@ class TopRight extends Component {
             className="text"
             pose={this.state.emailVisible ? "enter": "exit"}
           >
-            <a href="#" className="line-hover">contact@dcdnt.net</a>
+            100% Techno
           </SocialLink>
         </div>
       </div>

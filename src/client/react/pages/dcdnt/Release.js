@@ -9,7 +9,7 @@ const Parent = posed.div({
 });
 
 const Child = posed.div({
-exit: {
+    exit: {
     translateY: 50,
     opacity: 0
   },
@@ -155,7 +155,9 @@ class Release extends Component {
                                             <li key={i} className="release-single-metadata">
                                                 <div className="of-container">
                                                     <Child	className="text">
-                                                        {metadata.key}: {metadata.value}
+                                                        
+                                                        <span className="key">{metadata.key}:</span> 
+                                                        <span className="value">{metadata.value}</span>
                                                     </Child>
                                                 </div>
                                             </li>

@@ -49,7 +49,7 @@ class BottomRight extends Component {
             className="text"
             pose={this.state.topLineVisible ? "enter": "exit"}
           >
-            TECHNO PRODUCTION AND PERFORMANCE
+            TECHNO PRODUCTION AND LIVE PERFORMANCE
           </Description>
         </div>
 

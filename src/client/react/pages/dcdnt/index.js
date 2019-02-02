@@ -19,24 +19,24 @@ class HomePage extends Component {
 						value: "6:03"
 					},
 					{
-						key: "Key",
-						value: "C#"
-					},
-					{
 						key: "Genre",
 						value: "Techno"
 					},
 					{
-						key: "Length",
-						value: "6:03"
-					},
-					{
 						key: "Key",
-						value: "C#"
+						value: "A# min"
 					},
 					{
-						key: "Genre",
-						value: "Techno"
+						key: "Release date",
+						value: "02/01/2019"
+					},
+					{
+						key: "BPM",
+						value: "126"
+					},
+					{
+						key: "Produced in",
+						value: "New York City, US"
 					}
 				],
 				links: [
@@ -64,23 +64,23 @@ class HomePage extends Component {
 					},
 					{
 						key: "Key",
-						value: "C#"
+						value: "A# min"
 					},
 					{
 						key: "Genre",
 						value: "Techno"
 					},
 					{
-						key: "Length",
-						value: "6:03"
+						key: "Release date",
+						value: "02/01/2019"
 					},
 					{
-						key: "Key",
-						value: "C#"
+						key: "BPM",
+						value: "126"
 					},
 					{
-						key: "Genre",
-						value: "Techno"
+						key: "Produced in",
+						value: "New York City, US"
 					}
 				],
 				links: [
