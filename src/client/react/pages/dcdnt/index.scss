@@ -1,8 +1,12 @@
 .route-releases {
-    height: 10500px;
+    height: 1000px;
   
     .of-grid-content-layer {
       margin: 0 0 0 0;
+
+      .releases-container {
+        margin: 150px 0 100px 0;
+      }
     }
   }
   

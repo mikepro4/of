@@ -1,9 +1,44 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Helmet } from "react-helmet";
+import Release from './Release'
 
 class HomePage extends Component {
 	state = {
+		releases: [
+			{
+				name: "Dystopia",
+				mixType: "Original Mix",
+				imageUrl: "/photos/intro.ong",
+				soundUrl: "https://res.cloudinary.com/dcdnt/video/upload/v1547250881/que7hrtqlmiarao8lpvr.mp3",
+				matadata: [
+					{
+						key: "Length",
+						value: "6:03"
+					},
+					{
+						key: "Key",
+						value: "C#"
+					},
+					{
+						key: "Genre",
+						value: "Techno"
+					}
+				],
+				links: [
+					{
+						linkType: "beatport",
+						linkUrl: "/some/url"
+					},
+					{
+						linkType: "spotify",
+						linkUrl: "/some/url"
+					}
+				],
+				label: "Septima Records",
+				new: true,
+			}
+		]
 	};
 
 	componentDidMount() {
@@ -21,7 +56,11 @@ class HomePage extends Component {
             <div className="route-container route-releases">
 
                 <div className="of-grid-content-layer">
-
+					<div className="releases-container">
+						{this.state.releases.map((release, i) => {
+							return <Release release={release} key={i} order={i}/>
+						})}
+					</div>
                 </div>
             </div>
 		);
