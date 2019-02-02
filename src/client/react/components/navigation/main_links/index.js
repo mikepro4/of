@@ -49,10 +49,6 @@ class MainLinks extends Component {
       {
         url: "/contact",
         name: "Contact"
-      },
-      {
-        url: "/faq",
-        name: "FAQ"
       }
     ]
 

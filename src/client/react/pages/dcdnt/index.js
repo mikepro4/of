@@ -5,13 +5,115 @@ import Release from './Release'
 
 class HomePage extends Component {
 	state = {
+		showReleases: false,
+		loaded: false,
 		releases: [
 			{
 				name: "Dystopia",
 				mixType: "Original Mix",
-				imageUrl: "/photos/intro.ong",
+				imageUrl: "https://res.cloudinary.com/dcdnt/image/upload/v1549075236/album_art.png",
 				soundUrl: "https://res.cloudinary.com/dcdnt/video/upload/v1547250881/que7hrtqlmiarao8lpvr.mp3",
-				matadata: [
+				metadata: [
+					{
+						key: "Length",
+						value: "6:03"
+					},
+					{
+						key: "Key",
+						value: "C#"
+					},
+					{
+						key: "Genre",
+						value: "Techno"
+					},
+					{
+						key: "Length",
+						value: "6:03"
+					},
+					{
+						key: "Key",
+						value: "C#"
+					},
+					{
+						key: "Genre",
+						value: "Techno"
+					}
+				],
+				links: [
+					{
+						linkType: "beatport",
+						linkUrl: "/some/url"
+					},
+					{
+						linkType: "spotify",
+						linkUrl: "/some/url"
+					}
+				],
+				label: "Septima Records",
+				new: true,
+			},
+			{
+				name: "Dystopia",
+				mixType: "Original Mix",
+				imageUrl: "https://res.cloudinary.com/dcdnt/image/upload/v1549075236/album_art.png",
+				soundUrl: "https://res.cloudinary.com/dcdnt/video/upload/v1547250881/que7hrtqlmiarao8lpvr.mp3",
+				metadata: [
+					{
+						key: "Length",
+						value: "6:03"
+					},
+					{
+						key: "Key",
+						value: "C#"
+					},
+					{
+						key: "Genre",
+						value: "Techno"
+					},
+					{
+						key: "Length",
+						value: "6:03"
+					},
+					{
+						key: "Key",
+						value: "C#"
+					},
+					{
+						key: "Genre",
+						value: "Techno"
+					}
+				],
+				links: [
+					{
+						linkType: "beatport",
+						linkUrl: "/some/url"
+					},
+					{
+						linkType: "spotify",
+						linkUrl: "/some/url"
+					}
+				],
+				label: "Septima Records",
+				new: true,
+			},
+			{
+				name: "Dystopia",
+				mixType: "Original Mix",
+				imageUrl: "https://res.cloudinary.com/dcdnt/image/upload/v1549075236/album_art.png",
+				soundUrl: "https://res.cloudinary.com/dcdnt/video/upload/v1547250881/que7hrtqlmiarao8lpvr.mp3",
+				metadata: [
+					{
+						key: "Length",
+						value: "6:03"
+					},
+					{
+						key: "Key",
+						value: "C#"
+					},
+					{
+						key: "Genre",
+						value: "Techno"
+					},
 					{
 						key: "Length",
 						value: "6:03"
@@ -42,6 +144,12 @@ class HomePage extends Component {
 	};
 
 	componentDidMount() {
+		setTimeout(() => {
+			this.setState({
+				showReleases: true,
+				loaded: true
+			})
+		}, 900)
 	}
 
 	renderHead = () => (
@@ -58,7 +166,7 @@ class HomePage extends Component {
                 <div className="of-grid-content-layer">
 					<div className="releases-container">
 						{this.state.releases.map((release, i) => {
-							return <Release release={release} key={i} order={i}/>
+							return <Release isVisible={this.state.showReleases} release={release} key={i} order={i}/>
 						})}
 					</div>
                 </div>
