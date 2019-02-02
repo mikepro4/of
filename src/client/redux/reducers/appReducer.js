@@ -19,7 +19,7 @@ export const initialState = {
 	clientHeight: 0,
 	totalScrolledPixels: 0,
 	introLength: 7000,
-	appVisible: true,
+	appVisible: false,
 	gridVisible: false,
 	allImagesLoaded: false,
 	loadedImages: {},

@@ -15,12 +15,17 @@ import Heart from "../../components/svg/heart"
 const ImageContainer = posed.div({
   exit: {
     opacity: 0,
+    scale: 1.1,
     translateY: 30
   },
   enter: {
     opacity: 1,
+    scale: 1,
     translateY: 0,
     transition: {
+      scale: {
+        duration: 3000
+      },
       opacity: {
         duration: 2000,
 
@@ -50,7 +55,9 @@ class Image extends Component {
   }
 
   componentDidMount() {
-     this.props.fetchImageDetails(this.props.imageId, this.props.order)
+    if(!this.props.loadedImages[this.props.imageId]) {
+      this.props.fetchImageDetails(this.props.imageId, this.props.order)
+    }
   }
 
   getPose() {
@@ -113,7 +120,6 @@ class Image extends Component {
         }
 
         let newHeight = (height * screenHeight) / 100
-        console.log(height,newHeight)
         return newHeight
       }
     }
@@ -185,7 +191,8 @@ function mapStateToProps({app}) {
     userDetails: app.userDetails,
     loadedImages: app.loadedImages,
     totalScrolledPixels: app.totalScrolledPixels,
-    clientHeight: app.clientHeight
+    clientHeight: app.clientHeight,
+    clientWidth: app.clientWidth
 	};
 }
 

@@ -11,7 +11,7 @@ import { configure as createStore } from "./client/redux/store";
 import reducer from "./client/redux/reducers";
 import buildAssets from "../webpack-assets.json";
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 7000;
 const BASE_API_URL = process.env.BASE_API_URL || "http://localhost:5000";
 const HOST = process.env.HOST || `localhost:${PORT}`;
 const PROXY_ROUTE = "/api_call";
