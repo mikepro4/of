@@ -6,26 +6,34 @@ $columnWidth: 70px;
 
 @for $i from 1 through $columns {
   .of-grid-#{$i} {
-      margin-right: 10px;
-      width: calc((100% / #{$columns} * #{$i}) - 10px);
+      @media only screen and (min-width: $mobile) {
+        margin-right: 10px;
+        width: calc((100% / #{$columns} * #{$i}) - 10px);
+      }
   }
 }
 
 @for $i from 1 through $columns {
   .of-grid-gutter-#{$i} {
-      margin-left: calc(((100% / #{$columns}) * #{$i}));
+      @media only screen and (min-width: $mobile) {
+        margin-left: calc(((100% / #{$columns}) * #{$i}));
+      }
   }
 }
 
 @for $i from 1 through $columns {
   .of-grid-width-#{$i} {
-      width: calc((100% / #{$columns} * #{$i}) - 10px);
+      @media only screen and (min-width: $mobile) {
+        width: calc((100% / #{$columns} * #{$i}) - 10px);
+      }
   }
 }
 
 @for $i from 1 through $columns {
   .of-grid-left-#{$i} {
-      left: calc((100% / #{$columns} * #{$i}));
+      @media only screen and (min-width: $mobile) {
+        left: calc((100% / #{$columns} * #{$i}));
+      }
   }
 }
 
@@ -58,6 +66,10 @@ $columnWidth: 70px;
 
   .of-grid-row {
     display: flex;
+
+    @media only screen and (max-width: $mobile) {
+      flex-direction: column;
+    }
   }
 
   &.of-grid-preview {

@@ -8,3 +8,9 @@
     }
   }
 }
+
+.of-grid-navigation {
+  @media only screen and (max-width: $mobile) {
+    display: none
+  }
+}

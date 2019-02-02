@@ -195,4 +195,8 @@
   //   width: 40px;
   //   text-align: center;
   // }
+
+  @media only screen and (max-width: $mobile) {
+    display: none
+  }
 }
