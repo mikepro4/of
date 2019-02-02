@@ -1,9 +1,13 @@
 .release-container {
-    height: 1000px;
+    margin-bottom: 200px;
 
     .player-container {
         margin-top: 60px;
         margin-bottom: 30px;
+    }
+
+    .play-button-container {
+        position: relative;
     }
 
     .play-button {
@@ -13,6 +17,11 @@
         background: #EDEDED;
         transition: all 0.2s;
         cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
 
         svg {
             width: 30px;
@@ -60,7 +69,7 @@
             position: absolute;
             bottom: 1px;
             width: 100%;
-            left: 0;
+            left: -100%;
             height: 1px;
             background: $black;
         }
@@ -71,12 +80,25 @@
 
         .button {
             height: 80px;
-            background: #EDEDED;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
+            position: relative;
+
+            .of-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            .button-link {
+                height: 80px;
+                background: #EDEDED;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.2s;
+            }
 
             svg {
                 position: relative;
@@ -89,7 +111,9 @@
                 }
 
                 &:hover {
-                    background: rgba(#99CC00, 0.1);
+                    .button-link {
+                        background: rgba(#99CC00, 0.1);
+                    }
 
                     path {
                         fill: #99CC00;
@@ -103,7 +127,9 @@
                 }
 
                 &:hover {
-                    background: rgba(#1ED760, 0.1);
+                    .button-link {
+                        background: rgba(#1ED760, 0.1);
+                    }
 
                     path {
                         fill: #1ED760;
@@ -121,7 +147,9 @@
                 }
 
                 &:hover {
-                    background: rgba(#FF009C, 0.1);
+                    .button-link {
+                        background: rgba(#FF009C, 0.1);
+                    }
 
                     path.logo {
                         fill: #FF009C;
@@ -138,7 +166,9 @@
                 }
 
                 &:hover {
-                    background: rgba(#F68D11, 0.1);
+                    .button-link {
+                        background: rgba(#F68D11, 0.1);
+                    }
 
                     path.logo {
                         fill: #F68D11;
@@ -155,7 +185,9 @@
                 }
 
                 &:hover {
-                    background: rgba($cobalt4, 0.1);
+                    .button-link {
+                        background: rgba($cobalt4, 0.1);
+                    }
 
                     path, polygon {
                         fill: $cobalt4;
@@ -171,7 +203,9 @@
                 }
 
                 &:hover {
-                    background: rgba(#FF0000, 0.1);
+                    .button-link {
+                        background: rgba(#FF0000, 0.1);
+                    }
 
                     path.logo {
                         fill: #FF0000;
@@ -266,8 +300,12 @@
             }
         }
     }
+}
 
-    .text {
-        opacity: 0;
-    }
+.text {
+    opacity: 0;
+}
+
+.link {
+    opacity: 0;
 }
