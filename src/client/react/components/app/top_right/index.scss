@@ -13,8 +13,12 @@
     font-weight: 300;
     height: 25px;
 
+    .text {
+      opacity: 0;
+    }
+
     a {
-     height: 20px;
+      height: 20px;
     }
   }
 }

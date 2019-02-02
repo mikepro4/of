@@ -39,9 +39,10 @@ class TopRight extends Component {
         <div className="of-container">
           <SocialLink
             initialPose="exit"
+            className="text"
             pose={this.state.emailVisible ? "enter": "exit"}
           >
-            <a href="#" className="line-hover">contact@olenafinch.com</a>
+            <a href="#" className="line-hover">contact@dcdnt.net</a>
           </SocialLink>
         </div>
       </div>

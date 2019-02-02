@@ -37,7 +37,7 @@ class Logo extends Component {
                   opacity: v => {}
                 }}
               >
-                Olena Finch
+                DCDNT
               </SplitText>
             </Link>
         </div>

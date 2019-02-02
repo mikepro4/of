@@ -6,6 +6,10 @@
   left: 40px;
   display: flex;
 
+  .text {
+    opacity: 0;
+  }
+
   .scroll-info-container {
     .scroll-info-top {
       margin: 0 0 25px;
@@ -57,7 +61,7 @@
           height: 1px;
           width: 1px;
           transition: all 0.3s;
-          background: $black;
+          background: $white;
         }
       }
 
@@ -67,7 +71,7 @@
         width: 0;
         left: 0;
         height: 1px;
-        background: rgba($white,0.2);
+        background: rgba($black,0.2);
         z-index: 1;
         transition: all 0.3s;
       }
@@ -78,7 +82,7 @@
         width: 100%;
         left: -100%;
         height: 1px;
-        background: $white;
+        background: $black;
         // transition: all 0.3s;
         display: flex;
         z-index: 2;
@@ -104,7 +108,7 @@
         .scroll-info-title {
           font-size: 7px;
           letter-spacing: 2px;
-          opacity: 0.3;
+          opacity: 0.8;
           text-transform: uppercase;
           font-weight: 300;
           white-space: nowrap;
@@ -115,7 +119,7 @@
           letter-spacing: 1.3px;
 
           span {
-            opacity: 0.3;
+            opacity: 0.6;
             transition: all 1s;
 
             &.highlighted-value {
@@ -147,7 +151,7 @@
           height: 6px;
           z-index: 20;
           transition: all 0s;
-          background: rgba($white, 0.2);
+          background: rgba($black, 0.2);
         }
       }
     }

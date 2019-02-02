@@ -1,14 +1,14 @@
 import React from "react";
 import App from "../App";
-import Home from "../react/pages/home";
 import About from "../react/pages/about";
+import Releases from "../react/pages/dcdnt";
 
 export default [
 	{
 		...App,
 		routes: [
 			{
-				...Home,
+				...Releases,
 				path: "/",
 				exact: true,
 				params: {

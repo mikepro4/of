@@ -25,23 +25,26 @@ const Child = posed.div({
 
 
 class MainLinks extends Component {
-	isActivePath = (pathname) => {
-		return this.props.location.pathname.indexOf(pathname) !== -1
+	isActivePath = (pathname, home) => {
+      if(pathname.length == 1 && this.props.location.pathname == '/') {
+        return true
+      }
+      return this.props.location.pathname.indexOf(pathname) !== -1 && pathname.length > 1
 	}
 	render() {
 
     let links = [
       {
+        url: "/",
+        name: "Releases"
+      },
+      {
+        url: "/live_videos",
+        name: "Live Videos"
+      },
+      {
         url: "/about",
         name: "About"
-      },
-      {
-        url: "/portfolio",
-        name: "Portfolio"
-      },
-      {
-        url: "/services",
-        name: "Services"
       },
       {
         url: "/contact",
@@ -58,7 +61,7 @@ class MainLinks extends Component {
 		return (
 			<div className="main-links-container">
         <Parent
-					className={classNames({"active": !(this.props.location.pathname == "/")}, "main-links")}
+					className={classNames({"active": true}, "main-links")}
 					initialPose="closed"
 					pose={isVisible ? 'open' : 'closed'}
 				>
@@ -66,7 +69,7 @@ class MainLinks extends Component {
           {links.map(link => {
             return (
               <li key={link.url} className={classNames("main-link-container", {
-                  "main-link-active": this.isActivePath(link.url)
+                  "main-link-active": this.isActivePath(link.url, 'home')
                 })}
               >
 								<Child>

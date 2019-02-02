@@ -2,7 +2,7 @@
   position: fixed;
   bottom: 20px;
   z-index: 1000;
-  width: width(5);
+  width: width(7);
   right: 40px;
   text-align: right;
   transform: rotate(90deg) translateX(18px);
@@ -18,5 +18,9 @@
     font-weight: 300;
     text-transform: uppercase;
     margin: 0 0 5px 0;
+
+    .text {
+      opacity: 0;
+    }
   }
 }

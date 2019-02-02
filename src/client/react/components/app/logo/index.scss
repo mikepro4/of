@@ -8,16 +8,18 @@
   cursor: pointer;
 
   .of-text {
-    font-size: 18px;
-    letter-spacing: 1.1px;
+    font-size: 24px;
+    letter-spacing: 2px;
     font-weight: 600;
     text-transform: uppercase;
     transition: all 1s;
+    opacity: 0;
+    transform: translateY(30px)
   }
 
   &:hover {
     .of-text {
-      letter-spacing: 2px;
+      letter-spacing: 3px;
     }
   }
 }

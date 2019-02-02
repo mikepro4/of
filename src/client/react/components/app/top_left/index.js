@@ -66,7 +66,7 @@ class TopLeft extends Component {
               }
             }
           >
-            <a href="">Instagram</a>
+            <a href="">Youtube</a>
           </SocialLink>
         </div>
 
@@ -102,7 +102,7 @@ class TopLeft extends Component {
                 }
               }
             >
-              <a href="#">Facebook</a>
+              <a href="#">Instagram</a>
             </SocialLink>
         </div>
       </div>

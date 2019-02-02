@@ -243,6 +243,7 @@ class BottomLeft extends Component {
                 <div className="of-container">
                   <Description
                     initialPose="exit"
+                    className="text"
                     pose={this.state.totalVisible ? "enter": "exit"}
                     >
                     Total
@@ -254,6 +255,7 @@ class BottomLeft extends Component {
                 <div className="of-container">
                   <Description
                     initialPose="exit"
+                    className="text"
                     pose={this.state.totalVisible ? "enter": "exit"}
                   >
                     <span>{commaNumber(this.props.totalPixels)}px</span>
@@ -267,6 +269,7 @@ class BottomLeft extends Component {
                 <div className="of-container">
                   <Description
                     initialPose="exit"
+                    className="text"
                     pose={this.state.scrolledVisible ? "enter": "exit"}
                   >
                     {this.state.newScrollTo > 0 ? "Scroll to" : "Scrolled"}
@@ -278,6 +281,7 @@ class BottomLeft extends Component {
                 <div className="of-container">
                   <Description
                     initialPose="exit"
+                    className="text"
                     pose={this.state.scrolledVisible ? "enter": "exit"}
                   >
                     {this.state.newScrollTo > 0 ? (

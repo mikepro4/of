@@ -46,15 +46,17 @@ class BottomRight extends Component {
         <div className="of-container">
           <Description
             initialPose="exit"
+            className="text"
             pose={this.state.topLineVisible ? "enter": "exit"}
           >
-            Promotions & modeling
+            TECHNO PRODUCTION AND PERFORMANCE
           </Description>
         </div>
 
         <div className="of-container">
           <Description
             initialPose="exit"
+            className="text"
             pose={this.state.bottomLineVisible ? "enter": "exit"}
           >
             New York City
