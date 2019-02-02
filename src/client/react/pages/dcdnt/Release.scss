@@ -228,10 +228,12 @@
 }
 
 .release-details {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    flex-direction: column;
+    @media only screen and (min-width: $mobile) {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        flex-direction: column;
+    }
 
     .label-container {
         margin: 0 0 30px 0;

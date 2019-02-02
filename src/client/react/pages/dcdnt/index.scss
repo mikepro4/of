@@ -1,11 +1,13 @@
 .route-releases {
     height: 5000px;
-  
+
     .of-grid-content-layer {
       margin: 0 0 0 0;
 
       .releases-container {
-        margin: 150px 0 100px 0;
+        @media only screen and (min-width: $mobile) {
+          margin: 150px 0 100px 0;
+        }
       }
     }
   }

@@ -62,7 +62,15 @@ $columnWidth: 70px;
   display: flex;
   flex-direction: column;
   z-index: 2;
-  margin: 0 30px 0 40px;
+  overflow: hidden;
+
+  @media only screen and (min-width: $mobile) {
+    margin: 0 30px 0 40px;
+  }
+
+  @media only screen and (max-width: $mobile) {
+    margin: 0 5px 0 15px;
+  }
 
   .of-grid-row {
     display: flex;
