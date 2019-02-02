@@ -54,7 +54,7 @@ class HomePage extends Component {
 			},
 			{
 				name: "Dystopia",
-				mixType: "Original Mix",
+				mixType: "Dawless Mix",
 				imageUrl: "https://res.cloudinary.com/dcdnt/image/upload/v1549075236/album_art.png",
 				soundUrl: "https://res.cloudinary.com/dcdnt/video/upload/v1547250881/que7hrtqlmiarao8lpvr.mp3",
 				metadata: [
@@ -97,8 +97,8 @@ class HomePage extends Component {
 				new: true,
 			},
 			{
-				name: "Dystopia",
-				mixType: "Original Mix",
+				name: "1:1",
+				mixType: "Dawless Mix",
 				imageUrl: "https://res.cloudinary.com/dcdnt/image/upload/v1549075236/album_art.png",
 				soundUrl: "https://res.cloudinary.com/dcdnt/video/upload/v1547250881/que7hrtqlmiarao8lpvr.mp3",
 				metadata: [
@@ -149,7 +149,7 @@ class HomePage extends Component {
 				showReleases: true,
 				loaded: true
 			})
-		}, 900)
+		}, 1)
 	}
 
 	renderHead = () => (

@@ -2,14 +2,33 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import posed from 'react-pose';
 
+const Parent = posed.div({
+	enter: {staggerChildren: 70},
+    exit: {},
+	initialPose: 'closed'
+});
+
+const Child = posed.div({
+exit: {
+    translateY: 50,
+    opacity: 0
+  },
+  enter: {
+    translateY: 0,
+    opacity: 1,
+    transition: {
+            duration: 350,
+        }
+ 	},
+	initialPose: 'closed'
+});
+
 const ImageContainer = posed.div({
     exit: {
       opacity: 0,
-      translateY: 30
     },
     enter: {
       opacity: 1,
-      translateY: 0,
       transition: {
         opacity: {
           duration: 2000,
@@ -91,35 +110,61 @@ class Release extends Component {
                                 height: this.getHeight()
                             }}
                         >
+                            <Parent
+                                initialPose="exit"
+                                pose={this.getPose()}
+                                className="hero-headline"
+                            >
 
-                            {this.props.release.new ? (
-                                <div className="label-container">
-                                    <span className="label">NEW RELEASE</span>
+                                {this.props.release.new ? (
+                                    <div className="label-container">
+                                        <Child className="text">
+                                            <span className="label">NEW RELEASE</span>
+                                        </Child>
+                                    </div>
+                                ) : ""}
+
+                                <div className="release-label">
+                                    <div className="of-container">
+                                        <Child className="text">
+                                                {this.props.release.label}
+                                        </Child>
+                                    </div>
                                 </div>
-                            ) : ""}
 
-                            <div className="release-label">
-                                {this.props.release.label}
-                            </div>
 
-                            <div className="release-name">
-                                {this.props.release.name}
-                            </div>
+                                <div className="release-name">
+                                    <div className="of-container">
+                                        <Child className="text">
+                                            {this.props.release.name}
+                                        </Child>
+                                    </div>
+                                </div>
 
-                            <div className="release-mix">
-                                {this.props.release.mixType}
-                            </div>
+                                <div className="release-mix">
+                                    <div className="of-container">
+                                        <Child	className="text">
+                                            {this.props.release.mixType}
+                                        </Child>
+                                    </div>
+                                </div>
 
-                            <ul className="release-metadata">
-                                {this.props.release.metadata.map((metadata , i)  => {
-                                   return( 
-                                    <li key={i} className="release-single-metadata">
-                                        {metadata.key}: {metadata.value}
-                                    </li>
-                                   )
-                                })
-                            }
-                            </ul>
+                                <ul className="release-metadata">
+                                    {this.props.release.metadata.map((metadata , i)  => {
+                                        return( 
+                                            <li key={i} className="release-single-metadata">
+                                                <div className="of-container">
+                                                    <Child	className="text">
+                                                        {metadata.key}: {metadata.value}
+                                                    </Child>
+                                                </div>
+                                            </li>
+                                        )
+                                    })
+                                }
+                                </ul>
+
+                            </Parent>
                         </div>
                     </div>
                 </div>
