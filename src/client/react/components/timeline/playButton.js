@@ -13,7 +13,7 @@ import {
 	trackPlaying
 } from '../../../redux/actions/playerActions'
 
-class Timeline extends Component {
+class PlayButton extends Component {
 
 	renderPlayButton = () => {
 		return (
@@ -90,4 +90,4 @@ export default connect(mapStateToProps, {
 	trackSeek,
 	trackLoad,
 	trackPlaying
-})(withRouter(Timeline));
+})(withRouter(PlayButton));

@@ -63,3 +63,8 @@ export const setAnalyser = (analyser) => async (dispatch, getState, api) => {
     payload: analyser
   });
 }
+
+
+export const updateHoverTime = (seconds) => async (dispatch, getState, api) => {
+  console.log(seconds)
+}

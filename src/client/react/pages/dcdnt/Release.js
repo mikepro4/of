@@ -4,7 +4,8 @@ import posed from 'react-pose';
 import { Icon, Button } from "@blueprintjs/core";
 import { formatTime } from '../../../../client/utils/formatTime'
 
-import Timeline from '../../components/timeline/'
+import Play from '../../components/timeline/playButton'
+import ProgressBar from '../../components/timeline/ProgressBar'
 
 const Parent = posed.div({
 	enter: {staggerChildren: 70},
@@ -66,12 +67,12 @@ const ImageContainer = posed.div({
 
 const PlayerBar = posed.div({
     exit: {
-      left: "-100%",
+      width: 0,
     },
     enter: {
-      left: 0,
+      width: "100%",
       transition: {
-        left: {
+        width: {
           duration: 500,
           easing: "cubic-bezier(.19,1,.22,1)"
         }
@@ -235,21 +236,13 @@ class Release extends Component {
                             }}
                         >
 
-                            <Timeline release={this.props.release} />
-
-                            {/* <PlayButton
+                            <PlayButton
                                 initialPose="exit"
                                 className="link"
                                 pose={this.getPose()}
                             >
-
-                                <div 
-                                    className="play-button" 
-                                >
-                                    <Icon icon="play" iconSize={20} />
-                                </div>
-                            
-                            </PlayButton> */}
+                                <Play release={this.props.release} />
+                            </PlayButton>
                         </div>
 
                         
@@ -260,21 +253,25 @@ class Release extends Component {
                                 height: this.getPlayButtonHeight()
                             }}
                         >
-                            <div className="of-container">
+                            {/* <div className="of-container">
                                 <Child className="text">
                                     <div className="time-container">
                                         <span className="time-current">{this.props.player.soundUrl == this.props.release.soundUrl ? formatTime(this.props.player.currentTime) : formatTime(0)}</span>
                                         <span className="time-full">/ {formatTime(this.props.release.previewDuration)}</span>
                                     </div>
                                 </Child>
-                            </div>
+                            </div> */}
                             
-                            <div className="player-ghost-bar"></div>
                             <PlayerBar
                                 initialPose="exit"
                                 className="player-bar"
                                 pose={this.getPose()}
-                            ></PlayerBar>
+                                style={{
+                                    height: this.getPlayButtonHeight()
+                                }}
+                            >
+                                <ProgressBar release={this.props.release} />
+                            </PlayerBar>
                         </div>
                     </div>
 
