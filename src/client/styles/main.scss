@@ -38,6 +38,7 @@
 @import "../react/components/app/bottom_right/index";
 @import "../react/components/app/bottom_left/index";
 @import "../react/components/uikit/Button";
+@import "../react/components/app/mobile_header/index";
 
 html {
 	// overflow: hidden;
@@ -105,4 +106,45 @@ a {
   justify-content: center;
   min-height: 970px;
   // border-bottom: 1px solid rgba($white, 0.3);
+}
+
+.app {
+	transition: all 1s;
+
+	&.theme-black {
+		color: $white;
+		background: $black;
+	
+		a {
+			color: $white;
+		
+			&:hover {
+				color: $white;
+			}
+		
+			&:active {
+				color: $white;
+			}
+		}
+	
+		.of-grid-top-left .divider-container .divider-bar {
+			background: $white;
+		}
+	
+		.of-grid-bottom-left .scroll-info-container .scroll-info-divider-container .scroll-info-divider-bar{
+			background: $white;
+		}
+	
+		.of-grid-bottom-left .scroll-info-container .scroll-info-divider-container .scroll-info-ghost-bar {
+			background: rgba($white,0.3);
+		}
+	
+		.of-grid-bottom-left .scroll-info-container .scroll-info-divider-container .ticks-container {
+			opacity: 0.5;
+		}
+	
+		.of-grid-navigation ul.main-links li.main-link-container:before {
+			background: $white
+		}
+	}
 }

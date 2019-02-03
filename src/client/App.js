@@ -22,6 +22,7 @@ import TopLeft from "./react/components/app/top_left/"
 import TopRight from "./react/components/app/top_right/"
 import BottomRight from "./react/components/app/bottom_right/"
 import BottomLeft from "./react/components/app/bottom_left/"
+import MobileHeader from "./react/components/app/mobile_header/"
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
@@ -120,9 +121,28 @@ class App extends Component {
 		}
 	}
 
+	blackThemeOn = () => {
+		if(this.props.location.pathname !== "/") {
+			return true
+		} else {
+			return false
+		}
+		// isActivePath = (pathname, home) => {
+		// 	if(pathname.length == 1 && this.props.location.pathname == '/') {
+		// 	  return true
+		// 	}
+		// 	return this.props.location.pathname.indexOf(pathname) !== -1 && pathname.length > 1
+		//   }
+	}
+
 	render() {
 		return (
-			<div className="app" onMouseMove={this.onMouseMove.bind(this)}>
+			<div 
+				className={classNames({"theme-black": this.blackThemeOn()}, "app")}
+				onMouseMove={this.onMouseMove.bind(this)}
+			>
+
+				<MobileHeader />
 
 				<Grid
 					gridOnTop={this.state.gridOnTop}

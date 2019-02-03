@@ -8,6 +8,10 @@
         @media only screen and (min-width: $mobile) {
           margin: 150px 0 100px 0;
         }
+
+        @media only screen and (max-width: $mobile) {
+          margin: 115px 0 100px 0;
+        }
       }
     }
   }
