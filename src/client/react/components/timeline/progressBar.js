@@ -4,6 +4,10 @@ import classNames from "classnames"
 import { formatTime } from '../../../../client/utils/formatTime'
 import { updateHoverTime } from "../../../../client/redux/actions/playerActions";
 
+import {
+	trackSeek,
+} from '../../../redux/actions/playerActions'
+
 class ProgressBar extends React.Component {
 	constructor(props) {
 		super(props);
@@ -14,24 +18,19 @@ class ProgressBar extends React.Component {
 	}
 
 	handlePorgressBarClick(event) {
+		let box = document.getElementById("progressBar").getBoundingClientRect();
 		const relX =
-			event.pageX -
-			(this.refs.progress_bar_container.offsetLeft +
-				this.refs.progress_bar_container.offsetParent.offsetLeft +
-				96);
+			event.pageX - box.left;
 		const progressBarPercent =
 			relX *
 			100 /
-			this.refs.progress_bar_container.getBoundingClientRect().width;
-        const seekSeconds = progressBarPercent * this.props.duration / 100;
-        console.log(this.props.currentVideo.videoId,
-			"seek",
-			seekSeconds)
-		// this.props.updateCurrentVideo(
-		// 	this.props.currentVideo.videoId,
-		// 	"seek",
-		// 	seekSeconds
-		// );
+			box.width;
+		const seekSeconds = progressBarPercent * this.props.release.previewDuration / 100;
+            
+		this.props.trackSeek(
+			seekSeconds,
+			this.props.release.soundUrl
+		);
 	}
 
 	calculateWidth(event) {
@@ -50,6 +49,7 @@ class ProgressBar extends React.Component {
 	onMouseMove(event) {
 		this.props.updateHoverTime(this.calculateWidth(event));
 		this.setState({
+            hoverSeconds: this.calculateWidth(event),
 			hoverWidth: this.calculateWidth(event) * 100 / this.props.release.previewDuration + "%"
 		});
 
@@ -60,6 +60,7 @@ class ProgressBar extends React.Component {
 	onMouseLeave(event) {
 		this.props.updateHoverTime(null);
 		this.setState({
+            hoverSeconds: 0,
 			hoverWidth: 0
 		});
 		// Update hover time in analysis reducer
@@ -121,6 +122,14 @@ class ProgressBar extends React.Component {
 						""
                     )}
 				</div>
+
+                <div 
+                    className={classNames({
+                        "active": this.state.hoverSeconds > 0
+                    }, "seek-label")}
+                >
+                    Start playing at <span className="time">{formatTime(this.state.hoverSeconds)}</span>
+                </div>
 			</div>
 		);
 	}
@@ -133,5 +142,6 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-	updateHoverTime
+    updateHoverTime,
+    trackSeek
 })(ProgressBar);

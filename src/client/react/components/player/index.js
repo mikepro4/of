@@ -59,6 +59,10 @@ class Player extends Component {
         }
     }
 
+    seek = () => {
+        this.refs.audio.currentTime = this.props.player.seekToSeconds
+    }
+
     play = () => {
         console.log("play audio")
 

@@ -55,6 +55,7 @@ import {
       case TRACK_SEEK:
         return {
             ...state,
+            status: "play",
             seekToSeconds: action.seekToSeconds,
             soundUrl: action.payload
         }
