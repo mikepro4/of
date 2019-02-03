@@ -18,14 +18,18 @@ class Timeline extends Component {
 	renderPlayButton = () => {
 		return (
 			<div className="play-button" onClick={() => {
+				let delay = 0
+
 				if(this.props.player.soundUrl !== this.props.release.soundUrl) {
 					this.props.trackPlaying( 0 , this.props.release.soundUrl) 
+					delay = 50
 				}
 				this.props.trackPause(this.props.release.soundUrl)
 				this.props.trackLoad(this.props.release.soundUrl)
+				
 				setTimeout(() => {
 					this.props.trackPlay(this.props.release.soundUrl)
-				},500)
+				},delay)
 			}}>
 				<Icon icon="play" iconSize={20} />
 			</div>

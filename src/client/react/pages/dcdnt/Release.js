@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import posed from 'react-pose';
 import { Icon, Button } from "@blueprintjs/core";
+import { formatTime } from '../../../../client/utils/formatTime'
 
 import Timeline from '../../components/timeline/'
 
@@ -262,8 +263,8 @@ class Release extends Component {
                             <div className="of-container">
                                 <Child className="text">
                                     <div className="time-container">
-                                        <span className="time-current">{this.props.player.soundUrl == this.props.release.soundUrl ? this.props.player.currentTime : 0}</span>
-                                        <span className="time-full">/ {this.props.release.previewDuration}</span>
+                                        <span className="time-current">{this.props.player.soundUrl == this.props.release.soundUrl ? formatTime(this.props.player.currentTime) : formatTime(0)}</span>
+                                        <span className="time-full">/ {formatTime(this.props.release.previewDuration)}</span>
                                     </div>
                                 </Child>
                             </div>
