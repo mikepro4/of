@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import posed from 'react-pose';
 import { Icon, Button } from "@blueprintjs/core";
 import { formatTime } from '../../../../client/utils/formatTime'
+import classNames from "classnames"
 
 import Play from '../../components/timeline/playButton'
 import ProgressBar from '../../components/timeline/ProgressBar'
@@ -253,14 +254,20 @@ class Release extends Component {
                                 height: this.getPlayButtonHeight()
                             }}
                         >
-                            {/* <div className="of-container">
+                            <div className="of-container">
                                 <Child className="text">
-                                    <div className="time-container">
+                                    <div 
+                                        className={
+                                            classNames({
+                                                "active": this.props.player.soundUrl == this.props.release.soundUrl 
+                                            }, "time-container")
+                                        }
+                                    >
                                         <span className="time-current">{this.props.player.soundUrl == this.props.release.soundUrl ? formatTime(this.props.player.currentTime) : formatTime(0)}</span>
                                         <span className="time-full">/ {formatTime(this.props.release.previewDuration)}</span>
                                     </div>
                                 </Child>
-                            </div> */}
+                            </div>
                             
                             <PlayerBar
                                 initialPose="exit"

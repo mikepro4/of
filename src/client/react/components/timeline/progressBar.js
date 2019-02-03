@@ -1,5 +1,6 @@
 import React, { PropTypes } from "react";
 import { connect } from "react-redux";
+import classNames from "classnames"
 import { formatTime } from '../../../../client/utils/formatTime'
 import { updateHoverTime } from "../../../../client/redux/actions/playerActions";
 
@@ -67,8 +68,8 @@ class ProgressBar extends React.Component {
 
 	render() {
 		const total = formatTime(this.props.release.previewDuration);
-		const current = formatTime(this.props.player.currentTime);
-		const progressBarWidth = {
+		let current = formatTime(this.props.player.currentTime);
+		let progressBarWidth = {
 			width: this.props.player.currentTime * 100 / this.props.release.previewDuration+ "%"
 		};
 
@@ -80,16 +81,24 @@ class ProgressBar extends React.Component {
 			left: this.props.player.hoverTime * 100 / this.props.release.previewDuration + "%"
 		};
 
-		const progressBarHoverWidth = {
+		let progressBarHoverWidth = {
 			width: this.state.hoverWidth
 		};
 
 		// const rangeHighlightStyles = {
 		// 	left: this.props.analysis.rangeStart * 100 / this.props.duration + "%",
 		// 	width: this.props.analysis.rangeLength * 100 / this.props.duration + "%"
-		// };
+        // };
+        
+        if(this.props.release.soundUrl !== this.props.player.soundUrl) {
+            progressBarWidth = { width: 0}
+        }
 		return (
-			<div className="progress-bar-player-container">
+            <div 
+                className={classNames({
+                        "active-player": this.props.release.soundUrl == this.props.player.soundUrl
+                    }, "progress-bar-player-container")}
+                >
 				<div
 					className="player-time-wrapper"
 					onClick={this.handlePorgressBarClick.bind(this)}
@@ -111,11 +120,6 @@ class ProgressBar extends React.Component {
 					) : (
 						""
                     )}
-                    
-                    <div className="time-container">
-                        <span className="time-current">{this.props.player.soundUrl == this.props.release.soundUrl ? formatTime(this.props.player.currentTime) : formatTime(0)}</span>
-                        <span className="time-full">/ {formatTime(this.props.release.previewDuration)}</span>
-                    </div>
 				</div>
 			</div>
 		);

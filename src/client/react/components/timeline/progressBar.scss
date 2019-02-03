@@ -5,5 +5,65 @@
     width: 0;
     left: 0;
     right: 0;
-    background: $black;
+}
+
+.progress-bar-player-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid $black;
+    transition: all 0.2s;
+
+    .player-time-wrapper {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        .progress-bar-wrapper {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            .progress-bar {
+                background: rgba($black, 0.05);
+                position: absolute;
+                top: 0;
+                bottom: -1px;
+                left: 0;
+                border-bottom: 3px solid $black;
+            }
+
+            .progress-bar-hover {
+                background: rgba($black, 0.05);
+                position: absolute;
+                top: 0;
+                bottom: -1px;
+                border-bottom: 1px solid rgba($black, 0.4);
+                left: 0;
+            }
+        }
+    }
+
+    &.active-player {
+        border-bottom: 1px solid rgba($cobalt4, 0.2);
+
+        .progress-bar-wrapper {
+
+            .progress-bar {
+                background: rgba($cobalt4, 0.05);
+                border-bottom: 3px solid $cobalt4;
+            }
+
+            .progress-bar-hover {
+                background: rgba($cobalt4, 0.05);
+                border-bottom: 1px solid rgba($cobalt4, 0.2);
+            }
+        }
+    }
 }

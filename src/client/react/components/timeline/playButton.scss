@@ -27,4 +27,12 @@
             fill: $cobalt4;
         }
     }
+
+    &.pause {
+        background: rgba($cobalt4, 0.07);
+
+        path {
+            fill: $cobalt4;
+        }
+    }
 }

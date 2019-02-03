@@ -55,7 +55,7 @@ class PlayButton extends Component {
 		} else if (this.props.player.status == "play") {
 			if(this.props.player.soundUrl == this.props.release.soundUrl) {
 				return (
-					<div className="play-button" onClick={() => this.props.trackPause(this.props.release.soundUrl)}>
+					<div className="play-button pause" onClick={() => this.props.trackPause(this.props.release.soundUrl)}>
 						<Icon icon="pause" iconSize={20} />
 					</div>
 				)
