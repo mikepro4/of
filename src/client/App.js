@@ -24,6 +24,8 @@ import BottomRight from "./react/components/app/bottom_right/"
 import BottomLeft from "./react/components/app/bottom_left/"
 import MobileHeader from "./react/components/app/mobile_header/"
 
+import Player from './react/components/player'
+
 FocusStyleManager.onlyShowFocusOnTabs();
 
 class App extends Component {
@@ -143,6 +145,8 @@ class App extends Component {
 			>
 
 				<MobileHeader />
+
+				<Player />
 
 				<Grid
 					gridOnTop={this.state.gridOnTop}

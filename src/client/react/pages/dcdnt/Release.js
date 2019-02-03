@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import posed from 'react-pose';
 import { Icon, Button } from "@blueprintjs/core";
 
+import Timeline from '../../components/timeline/'
+
 const Parent = posed.div({
 	enter: {staggerChildren: 70},
     exit: {},
@@ -231,7 +233,10 @@ class Release extends Component {
                                 height: this.getPlayButtonHeight()
                             }}
                         >
-                            <PlayButton
+
+                            <Timeline release={this.props.release} />
+
+                            {/* <PlayButton
                                 initialPose="exit"
                                 className="link"
                                 pose={this.getPose()}
@@ -243,7 +248,7 @@ class Release extends Component {
                                     <Icon icon="play" iconSize={20} />
                                 </div>
                             
-                            </PlayButton>
+                            </PlayButton> */}
                         </div>
 
                         
@@ -257,8 +262,8 @@ class Release extends Component {
                             <div className="of-container">
                                 <Child className="text">
                                     <div className="time-container">
-                                        <span className="time-current">0:00</span>
-                                        <span className="time-full">/ 2:00</span>
+                                        <span className="time-current">{this.props.player.soundUrl == this.props.release.soundUrl ? this.props.player.currentTime : 0}</span>
+                                        <span className="time-full">/ {this.props.release.previewDuration}</span>
                                     </div>
                                 </Child>
                             </div>
@@ -496,10 +501,11 @@ class Release extends Component {
 	}
 }
 
-function mapStateToProps({app}) {
+function mapStateToProps(state) {
 	return {
-		totalScrolledPixels: app.totalScrolledPixels,
-        clientHeight: app.clientHeight
+		totalScrolledPixels: state.app.totalScrolledPixels,
+        clientHeight: state.app.clientHeight,
+        player: state.player
   };
 }
 

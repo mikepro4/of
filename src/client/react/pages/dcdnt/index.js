@@ -13,6 +13,7 @@ class HomePage extends Component {
 				mixType: "Original Mix",
 				imageUrl: "https://res.cloudinary.com/dcdnt/image/upload/v1549075236/album_art.png",
 				soundUrl: "https://res.cloudinary.com/dcdnt/video/upload/v1547250881/que7hrtqlmiarao8lpvr.mp3",
+				previewDuration: 160,
 				metadata: [
 					{
 						key: "Length",
@@ -54,21 +55,22 @@ class HomePage extends Component {
 			},
 			{
 				name: "Dystopia",
-				mixType: "Dawless Mix",
+				mixType: "Original Mix",
 				imageUrl: "https://res.cloudinary.com/dcdnt/image/upload/v1549075236/album_art.png",
-				soundUrl: "https://res.cloudinary.com/dcdnt/video/upload/v1547250881/que7hrtqlmiarao8lpvr.mp3",
+				soundUrl: "https://res.cloudinary.com/dcdnt/video/upload/v1543983998/lzpvba3wpmxzsuankh1t.mp3",
+				previewDuration: 160,
 				metadata: [
 					{
 						key: "Length",
 						value: "6:03"
 					},
 					{
-						key: "Key",
-						value: "A# min"
-					},
-					{
 						key: "Genre",
 						value: "Techno"
+					},
+					{
+						key: "Key",
+						value: "A# min"
 					},
 					{
 						key: "Release date",
@@ -81,50 +83,6 @@ class HomePage extends Component {
 					{
 						key: "Produced in",
 						value: "New York City, US"
-					}
-				],
-				links: [
-					{
-						linkType: "beatport",
-						linkUrl: "/some/url"
-					},
-					{
-						linkType: "spotify",
-						linkUrl: "/some/url"
-					}
-				],
-				label: "Septima Records",
-				new: true,
-			},
-			{
-				name: "1:1",
-				mixType: "Dawless Mix",
-				imageUrl: "https://res.cloudinary.com/dcdnt/image/upload/v1549075236/album_art.png",
-				soundUrl: "https://res.cloudinary.com/dcdnt/video/upload/v1547250881/que7hrtqlmiarao8lpvr.mp3",
-				metadata: [
-					{
-						key: "Length",
-						value: "6:03"
-					},
-					{
-						key: "Key",
-						value: "C#"
-					},
-					{
-						key: "Genre",
-						value: "Techno"
-					},
-					{
-						key: "Length",
-						value: "6:03"
-					},
-					{
-						key: "Key",
-						value: "C#"
-					},
-					{
-						key: "Genre",
-						value: "Techno"
 					}
 				],
 				links: [
