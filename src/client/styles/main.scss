@@ -148,5 +148,10 @@ a {
 		.of-grid-navigation ul.main-links li.main-link-container:before {
 			background: $white
 		}
+
+		.mobile-header-container {
+			background: $black;
+			border-bottom: 1px solid rgba($white, 0.1)
+		}
 	}
 }

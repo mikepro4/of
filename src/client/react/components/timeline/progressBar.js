@@ -130,6 +130,9 @@ class ProgressBar extends React.Component {
                 >
                     Start playing at <span className="time">{formatTime(this.state.hoverSeconds)}</span>
                 </div>
+                {/* {this.props.release.soundUrl == this.props.player.soundUrl && this.props.player.currentTime == 0 ? (
+                    <div>Loading...</div>
+                ) : ""} */}
 			</div>
 		);
 	}

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import classNames from "classnames"
 import posed, { PoseGroup } from 'react-pose';
-import { Icon } from "@blueprintjs/core";
+import { Icon, Spinner } from "@blueprintjs/core";
 
 import {
 	trackLoad,
@@ -31,7 +31,7 @@ class PlayButton extends Component {
 					this.props.trackPlay(this.props.release.soundUrl)
 				},delay)
 			}}>
-				<Icon icon="play" iconSize={20} />
+                <Icon icon="play" iconSize={20} />
 			</div>
 		) 
 	}
@@ -56,7 +56,9 @@ class PlayButton extends Component {
 			if(this.props.player.soundUrl == this.props.release.soundUrl) {
 				return (
 					<div className="play-button pause" onClick={() => this.props.trackPause(this.props.release.soundUrl)}>
-						<Icon icon="pause" iconSize={20} />
+						{this.props.release.soundUrl == this.props.player.soundUrl && this.props.player.currentTime == 0 ? (
+							<Spinner size={20} />
+						) : (<Icon icon="pause" iconSize={20} />)}
 					</div>
 				)
 			} else {
