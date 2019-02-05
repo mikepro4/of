@@ -8,6 +8,12 @@ import {
   TRACK_STOP,
   TRACK_SEEK,
   TRACK_PLAYING,
+  VIDEO_LOAD,
+  VIDEO_PLAY,
+  VIDEO_PAUSE,
+  VIDEO_STOP,
+  VIDEO_SEEK,
+  VIDEO_PLAYING,
   SET_ANALYSER
 } from "./types";
 
@@ -67,4 +73,52 @@ export const setAnalyser = (analyser) => async (dispatch, getState, api) => {
 
 export const updateHoverTime = (seconds) => async (dispatch, getState, api) => {
   console.log(seconds)
+}
+
+// =============================================================================
+
+export const videoLoad = (videoDetails, duration) => async (dispatch, getState, api) => {
+  dispatch({
+    type: VIDEO_LOAD,
+    payload: videoDetails,
+    duration
+  });
+}
+
+export const videoPlay = (videoDetails) => async (dispatch, getState, api) => {
+  dispatch({
+    type: VIDEO_PLAY,
+    payload: videoDetails
+  });
+}
+
+export const videoPause = (videoDetails) => async (dispatch, getState, api) => {
+  dispatch({
+    type: VIDEO_PAUSE,
+    payload: videoDetails
+  });
+}
+
+export const videoStop = (videoDetails) => async (dispatch, getState, api) => {
+  dispatch({
+    type: VIDEO_STOP,
+    payload: videoDetails
+  });
+}
+
+export const videoSeek = (seconds, videoDetails) => async (dispatch, getState, api) => {
+  dispatch({
+    type: VIDEO_SEEK,
+    seekToSeconds: seconds,
+    payload: videoDetails
+  });
+}
+
+export const videoPlaying = (currentTime, duration, videoDetails) => async (dispatch, getState, api) => {
+  dispatch({
+    type: VIDEO_PLAYING,
+    currentTime: currentTime,
+    duration: duration,
+    payload: videoDetails
+  });
 }

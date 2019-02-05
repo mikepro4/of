@@ -3,6 +3,8 @@ import path from "path";
 import { matchRoutes } from "react-router-config";
 import proxy from "express-http-proxy";
 import axios from "axios";
+const bodyParser = require("body-parser");
+const cors = require("cors");
 import { ConnectedRouter, push } from "react-router-redux";
 
 import Router from "./client/router";
@@ -30,7 +32,11 @@ app.use(
 	})
 );
 
+app.use(cors());
+app.use(bodyParser.json());
+
 require("./routes/mailRoutes")(app);
+require("./routes/youtubeRoutes")(app);
 
 app.use(express.static(STATIC_DIR));
 app.use(express.static(PUBLIC_DIR));

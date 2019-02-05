@@ -39,7 +39,7 @@ class MainLinks extends Component {
         name: "Releases"
       },
       {
-        url: "/live_videos",
+        url: "/live",
         name: "Live Videos"
       },
       {

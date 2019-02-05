@@ -11,7 +11,16 @@ import classNames from "classnames"
 import { Link } from "react-router-dom";
 
 
-import { showApp, showGrid, hideGrid, fetchImageDetails, fetchUserDetails, loadAllDetail, resetScrollTo} from "./redux/actions/appActions";
+import { 
+	showApp, 
+	showGrid, 
+	hideGrid, 
+	fetchImageDetails, 
+	fetchUserDetails, 
+	loadAllDetail, 
+	resetScrollTo,
+	fetchVideoDetails
+} from "./redux/actions/appActions";
 
 import Grid from "./react/components/grid"
 import MainLinks from "./react/components/navigation/main_links/"
@@ -38,8 +47,7 @@ class App extends Component {
 		clientX: 0,
 		pageY: 0,
 		vlientWidth: 0,
-		gridOnTop: false,
-
+		gridOnTop: false
 	};
 
 	// static loadData(store, match) {
@@ -49,6 +57,7 @@ class App extends Component {
 	componentDidMount() {
 
 		this.props.fetchUserDetails()
+		this.fetchVideoDetails()
 
 		// this.props.fetchImageDetails()
 
@@ -61,6 +70,12 @@ class App extends Component {
 		// this.props.imageUrls.map((image, i) => {
     //     this.props.fetchImageDetails(image.id, i)
     // })
+	}
+
+	fetchVideoDetails = () => {
+		this.props.youtubeVideos.map((video, i) => {
+			this.props.fetchVideoDetails(video.videoId, i)
+		})
 	}
 
 	@keydown("T")
@@ -190,10 +205,19 @@ function mapStateToProps(state) {
 		appVisible: state.app.appVisible,
 		gridVisible: state.app.gridVisible,
 		location: state.router.location,
-		scrollTo: state.app.scrollTo
+		scrollTo: state.app.scrollTo,
+		youtubeVideos: state.videos.youtubeVideos
 	};
 }
 
 export default {
-	component: connect(mapStateToProps, { showApp, showGrid, hideGrid, fetchImageDetails, fetchUserDetails, resetScrollTo })(withRouter(App))
+	component: connect(mapStateToProps, { 
+		showApp, 
+		showGrid, 
+		hideGrid, 
+		fetchImageDetails, 
+		fetchUserDetails, 
+		resetScrollTo,
+		fetchVideoDetails
+	})(withRouter(App))
 };

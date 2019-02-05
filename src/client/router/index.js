@@ -2,6 +2,7 @@ import React from "react";
 import App from "../App";
 import About from "../react/pages/about";
 import Releases from "../react/pages/dcdnt";
+import Live from "../react/pages/live";
 
 export default [
 	{
@@ -21,6 +22,14 @@ export default [
 				exact: true,
 				params: {
 					name: "about"
+				}
+			},
+			{
+				...Live,
+				path: "/live",
+				exact: true,
+				params: {
+					name: "live"
 				}
 			}
 		]

@@ -1,71 +1,66 @@
 import {
-    TRACK_LOAD,
-    TRACK_PLAY,
-    TRACK_PAUSE,
-    TRACK_STOP,
-    TRACK_SEEK,
-    TRACK_PLAYING,
-    SET_ANALYSER
+    VIDEO_LOAD,
+    VIDEO_PLAY,
+    VIDEO_PAUSE,
+    VIDEO_STOP,
+    VIDEO_SEEK,
+    VIDEO_PLAYING,
   } from "../actions/types";
   
   export const initialState = {
     loading: false,
-    soundUrl: "",
-    youtubeId: "",
+    videoDetails: {},
     status: "stop",
+    duration: 0,
     currentTime: 0,
     seekToSeconds: null,
-    analyser: null
   };
   
-  export const playerReducer = (state = initialState, action) => {
+  export const videoPlayerReducer = (state = initialState, action) => {
       switch (action.type) {
-      case SET_ANALYSER: {
-        return {
-          ...state,
-          analyser: action.payload
-        }
-      }
-      case TRACK_LOAD:
+      case VIDEO_LOAD:
         return {
             ...state,
-            soundUrl: action.payload,
-            seekToSeconds: null
+            videoDetails: action.payload,
+            seekToSeconds: null,
+            duration: action.duration
         }
-      case TRACK_PLAY:
+      case VIDEO_PLAY:
         return {
             ...state,
             status: "play",
             seekToSeconds: null,
-            soundUrl: action.payload
+            videoDetails: action.payload,
+            duration: action.duration
         }
-      case TRACK_PAUSE:
+      case VIDEO_PAUSE:
         return {
             ...state,
             status: "pause",
             seekToSeconds: null,
-            soundUrl: action.payload
+            videoDetails: action.payload,
         }
-      case TRACK_STOP:
+      case VIDEO_STOP:
         return {
             ...state,
             status: "stop",
             seekToSeconds: null,
-            soundUrl: action.payload
+            videoDetails: action.payload
         }
-      case TRACK_SEEK:
+      case VIDEO_SEEK:
         return {
             ...state,
             status: "play",
             seekToSeconds: action.seekToSeconds,
-            soundUrl: action.payload
+            videoDetails: action.payload
         }
-      case TRACK_PLAYING:
+      case VIDEO_PLAYING:
         return {
             ...state,
             seekToSeconds: null,
             currentTime: action.currentTime,
-            soundUrl: action.payload
+            videoDetails: action.payload,
+            duration: action.duration
         }
           default:
             return state;

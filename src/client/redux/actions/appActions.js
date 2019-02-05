@@ -9,6 +9,7 @@ import {
 	HIDE_GRID,
 	LOAD_USER_DETAILS_SUCCESS,
 	LOAD_IMAGE_SUCCESS,
+	LOAD_VIDEO_SUCCESS,
 	UPDATE_TOTAL_PIXELS,
 	UPDATE_TOTAL_SCROLLED_PIXELS,
 	SCROLL_TO,
@@ -45,6 +46,21 @@ export const fetchImageDetails = (id, i) => async dispatch => {
 		type: LOAD_IMAGE_SUCCESS,
 		payload: response.data.graphql.shortcode_media,
 		imageId: id,
+		i: i
+	});
+}
+
+/////////////////////////////////////////////////
+
+export const fetchVideoDetails = (videoId, i) => async dispatch => {
+	const response = await axios.post('/youtube_video_details/', {
+		videoId: videoId
+	});
+
+	dispatch({
+		type: LOAD_VIDEO_SUCCESS,
+		payload: response.data,
+		videoId: videoId,
 		i: i
 	});
 }
