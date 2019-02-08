@@ -17,6 +17,11 @@ class Player extends Component {
 
     componentDidUpdate = (prevprops) => {
 
+		if(this.props.player.videoDetails.videoId && this.props.player.videoDetails.videoId !== this.props.videoId ) {
+			if (this.state.status == "play"){this.pause()}
+			// this.pause()
+		}
+
 		// externally seek
         if(
         prevprops.player.seekToSeconds !== this.props.player.seekToSeconds
@@ -28,7 +33,11 @@ class Player extends Component {
 		// externally play pause stop
         if(prevprops.player.status !== this.props.player.status) {
             this.changeStatus(this.props.player.status)
-        }
+		}
+		
+		if(this.props.app.clientWidth !== prevprops.app.clientWidth) {
+			this.forceUpdate();
+		}
     }
 
     componentWillMount() {
@@ -37,6 +46,7 @@ class Player extends Component {
 
 	componentWillUnmount() {
 		clearInterval(this.state.timeInterval);
+		this.props.videoLoad({}, 0);
     }
     
     onStateChange(event) {
@@ -66,29 +76,33 @@ class Player extends Component {
 
     play = () => {
         console.log("play video")
-        this.state.player.playVideo();
+		this.state.player.playVideo();
+		this.setState({
+			status: "play"
+		})
     }
 
     pause = () => {
         console.log("pause video");
-        this.state.player.pauseVideo();
+		this.state.player.pauseVideo();
+		this.setState({
+			status: "pause"
+		})
     }
 
     stop = () => {
         console.log("stop audvideoio")
-        this.state.player.stopVideo();
-    }
-
-    playing = () => {
-        this.props.videoPlaying(
-			this.state.player.getCurrentTime(),
-            this.state.player.getDuration(),
-			this.props.videoDetails
-        )
-    }
-
+		this.state.player.stopVideo();
+		this.setState({
+			status: "stop"
+		})
+	}
+	
     onEnd() {
 		this.stopVideo();
+		this.setState({ 
+			status: "end"
+		});
     }
     
     onReady(event) {
@@ -98,47 +112,35 @@ class Player extends Component {
     }
 
     onPlay(event) {
-		this.setState({ timeInterval: null });
 		this.props.videoLoad(this.props.videoDetails, this.state.player.getDuration());
-		this.startTimeInterval();
+		this.setState({ 
+			status: "play"
+		});
 	}
 
 	onPause(event) {
+		this.setState({ 
+			status: "pause"
+		});
     }
-    
-    startTimeInterval() {
-		const timeInterval = setInterval(() => {
-           this.playing()
-		}, 100);
-
-		this.setState({ timeInterval });
-    }
-    
-    playPauseSwitch() {
-		// switch (this.props.currentVideo.playerAction) {
-		// 	case "playing":
-		// 		return this.pauseVideo();
-		// 	case "paused":
-		// 		return this.playVideo();
-		// 	case "stopped":
-		// 		return this.playVideo();
-		// 	case undefined:
-		// 		return this.playVideo();
-		// 	default:
-		// 		return this.playVideo();
-		// }
+	
+	getWidth = () => {
+        if(this.refs.videoContainer) {
+            return this.refs.videoContainer.clientWidth
+        }
 	}
+	
+	getHeight = () => {
+        if(this.refs.videoContainer) {
+            return this.refs.videoContainer.clientWidth / 1.77777
+        }
+    }
 
 
 	render() {
 		const videoPlayerOptions = {
-			height: this.props.height ? this.props.height : "170",
-			width: this.props.width ? this.props.width : "270",
-			playerVars: {
-				controls: 0,
-				showinfo: 0,
-				modestbranding: 1
-			}
+			width: this.getWidth() + "px",
+			height: this.getHeight() + "px"
 		};
 
 		let videoClasses = classNames({
@@ -147,13 +149,7 @@ class Player extends Component {
 		});
 
 		return (
-			<div className={videoClasses}>
-				<div
-					className="player-overlay"
-					onClick={() => {
-						this.playPauseSwitch();
-					}}
-				/>
+			<div className={videoClasses} ref="videoContainer">
 				<YouTube
 					videoId={this.props.videoId}
 					opts={videoPlayerOptions}
@@ -173,7 +169,8 @@ class Player extends Component {
 function mapStateToProps(state) {
 	return {
 		location: state.router.location,
-        player: state.videoPlayer
+		player: state.videoPlayer,
+		app: state.app
 	};
 }
 
