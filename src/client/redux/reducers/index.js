@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
 import { reducer as formReducer } from "redux-form";
-import { routerReducer } from "react-router-redux";
+import { routerReducer } from "connected-react-router";
 import { appReducer } from "./appReducer";
+import { connectRouter } from "connected-react-router";
 
-const REDUCERS_OBJECT = {
-	app: appReducer,
+
+export default (history) => combineReducers({
+	router: connectRouter(history),
 	form: formReducer,
-	router: routerReducer
-};
-
-export default combineReducers(REDUCERS_OBJECT);
+	appReducer: appReducer
+})

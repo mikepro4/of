@@ -1,10 +1,9 @@
 import * as redux from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { routerMiddleware, routerReducer } from "react-router-redux";
+import { routerMiddleware, routerReducer, connectRouter } from "connected-react-router";
 
-import createBrowserHistory from "history/createBrowserHistory";
-import createMemoryHistory from "history/createMemoryHistory";
+import {createBrowserHistory, createMemoryHistory} from "history";
 
 const INITIAL_STATE = {};
 
@@ -16,11 +15,13 @@ export const configure = (
 ) => {
 	let history;
 
+
 	if (fromServer) {
 		history = createMemoryHistory();
 	} else {
 		history = createBrowserHistory();
 	}
+
 
 	// Analytics will be tracked here
 	// history.listen(location => console.log("Track route change: ", location));
@@ -43,7 +44,6 @@ export const configure = (
 	}
 
 	const composedEnhancer = redux.compose(...composeArguments);
-	const store = redux.createStore(reducers, initialState, composedEnhancer);
-
+	const store = redux.createStore(reducers(history), initialState, composedEnhancer);
 	return { history, store };
 };

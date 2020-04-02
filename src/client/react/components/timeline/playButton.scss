@@ -1,0 +1,46 @@
+.play-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #EDEDED;
+    transition: all 0.2s;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    path {
+        transition: all 0.2s;
+    }
+
+    &:hover {
+        background: rgba($cobalt4, 0.07);
+
+        path {
+            fill: $cobalt4;
+        }
+    }
+
+    &.pause {
+        background: rgba($cobalt4, 0.07);
+
+        path {
+            fill: $cobalt4;
+        }
+    }
+
+    .bp3-spinner-track {
+        stroke: rgba($cobalt4, 0.3);
+    }
+
+    .bp3-spinner-head {
+        stroke: $cobalt4;
+    }
+}

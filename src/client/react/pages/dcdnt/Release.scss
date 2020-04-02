@@ -1,0 +1,300 @@
+.release-container {
+    margin-bottom: 200px;
+
+    .player-container {
+        margin-top: 60px;
+        margin-bottom: 30px;
+    }
+
+    .play-button-container {
+        position: relative;
+    }
+
+    .player-timeline-container {
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .player-ghost-bar {
+
+        }
+
+        .time-container {
+            position: relative;
+            top: -2px;
+            font-size: 30px;
+            margin: 0 0 0 10px;
+            opacity: 1;
+
+            .time-current {
+                width: 95px;
+                display: inline-block
+            }
+
+            .time-full {
+                color: #AEAEAE;
+                margin: 0 0 0 8px;
+                font-weight: 300;
+                opacity: 0.7;
+                width: 200px;
+                display: inline-block
+            }
+
+            &.active {
+                color: $cobalt4;
+
+                .time-full {
+                    color: rgba($cobalt4, 0.5);
+                }
+            }
+        }
+
+        &:hover {
+            .time-container {
+                opacity: 0;
+            } 
+        }
+    }
+
+    .links-row {
+        margin: 0 0 10px 0;
+
+        .button {
+            height: 80px;
+            position: relative;
+
+            .of-container {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+            }
+
+            .button-link {
+                height: 80px;
+                background: #EDEDED;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.2s;
+            }
+
+            svg {
+                position: relative;
+                top: -2px;
+            }
+
+            &.beatport-button {
+
+                svg {
+                    top: -1px;
+                }
+                
+                path {
+                    transition: all 0.2s;
+                }
+
+                &:hover {
+                    .button-link {
+                        background: rgba(#99CC00, 0.1);
+                    }
+
+                    path {
+                        fill: #99CC00;
+                    }
+                }
+            }
+
+            &.spotify-button {
+                path {
+                    transition: all 0.2s;
+                }
+
+                &:hover {
+                    .button-link {
+                        background: rgba(#1ED760, 0.1);
+                    }
+
+                    path {
+                        fill: #1ED760;
+                    }
+                }
+            }
+
+            &.itunes-button {
+                svg {
+                    top: -4px;
+                }
+
+                path.logo {
+                    transition: all 0.2s;
+                }
+
+                &:hover {
+                    .button-link {
+                        background: rgba(#FF009C, 0.1);
+                    }
+
+                    path.logo {
+                        fill: #FF009C;
+                    }
+                }
+            }
+
+            &.amazon-button {
+                svg {
+                    top: 2px;
+                }
+                path.logo {
+                    transition: all 0.2s;
+                }
+
+                &:hover {
+                    .button-link {
+                        background: rgba(#F68D11, 0.1);
+                    }
+
+                    path.logo {
+                        fill: #F68D11;
+                    }
+                }
+            }
+
+            &.tidal-button {
+                svg {
+                    top: -3px;
+                }
+                path, polygon {
+                    transition: all 0.2s;
+                }
+
+                &:hover {
+                    .button-link {
+                        background: rgba($cobalt4, 0.1);
+                    }
+
+                    path, polygon {
+                        fill: $cobalt4;
+                    }
+                }
+            }
+
+            &.youtube-button {
+                svg {
+                }
+                path.logo {
+                    transition: all 0.2s;
+                }
+
+                &:hover {
+                    .button-link {
+                        background: rgba(#FF0000, 0.1);
+                    }
+
+                    path.logo {
+                        fill: #FF0000;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.release-cover {
+    .image-container {
+        opacity: 0
+    }
+
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+.release-details {
+    @media only screen and (min-width: $mobile) {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .label-container {
+        margin: 0 0 30px 0;
+
+        .label {
+            padding: 7px 15px; 
+            border-radius: 100px;
+            background: rgba($cobalt4, 0.07);
+            color: $cobalt4;
+            font-weight: 400;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+        }
+    }
+
+    .release-label {
+        font-size: 16px;
+        letter-spacing: 1.2px;
+        color: #7F7F7F;
+        font-weight: 300;
+    }
+
+    .release-name {
+        font-size: 84px;
+        letter-spacing: 6px;
+        color: $black;
+        line-height: 100px;
+        font-weight: 600;
+        position: relative;
+        left: -5px;
+    }
+
+    .release-mix {
+        font-size: 34px;
+        line-height: 40px;
+        letter-spacing: 2.43px;
+        margin-top: 5px;
+        margin-bottom: 30px;
+    }
+
+    .release-metadata {
+        li {
+            float: left;
+            width: calc(50% - 15px);
+            margin: 0 20px 12px 0;
+            font-size: 14px;
+            letter-spacing: 0.53px;
+
+            .key {
+                width: 110px;
+                color: #7F7F7F;
+                opacity: 0.5;
+                font-weight: 300;
+                display: inline-block
+            }
+
+            .value {
+            }
+
+            .value {
+
+            }
+
+            &:nth-child(2n) {
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.text {
+    opacity: 0;
+}
+
+.link {
+    opacity: 0;
+}

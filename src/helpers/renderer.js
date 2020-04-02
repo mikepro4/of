@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { Helmet } from "react-helmet";
 import serialize from "serialize-javascript";
 import Router from "../client/router";
-import { ConnectedRouter } from "react-router-redux";
+import { ConnectedRouter } from "connected-react-router";
 
 export default (
 	expressRequest,
@@ -15,6 +15,7 @@ export default (
 	routerContext = {},
 	history
 ) => {
+
 	const injectAssets = assets => {
 		const assetNameWeights = {
 			manifest: 1,
@@ -44,7 +45,7 @@ export default (
 				} else return ""
 			}, "");
 	};
-
+	
 
 	const content = renderToString(
 		<Provider store={reduxStore}>

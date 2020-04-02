@@ -3,7 +3,7 @@ import path from "path";
 import { matchRoutes } from "react-router-config";
 import proxy from "express-http-proxy";
 import axios from "axios";
-import { ConnectedRouter, push } from "react-router-redux";
+import { connectRouter, push } from "connected-react-router";
 
 import Router from "./client/router";
 import renderer from "./helpers/renderer";
@@ -30,6 +30,7 @@ app.use(
 	})
 );
 
+
 require("./routes/mailRoutes")(app);
 
 app.use(express.static(STATIC_DIR));
@@ -41,6 +42,8 @@ app.get("*", (request, response) => {
 		headers: { cookie: request.get("cookie") || "" }
 	});
 
+
+
 	const { history, store } = createStore(
 		{},
 		reducer,
@@ -48,12 +51,14 @@ app.get("*", (request, response) => {
 		"fromServer"
 	);
 
+
 	store.dispatch(push(request.path));
 
 	const currentRoute = matchRoutes(Router, request.path);
 
 	const need = currentRoute.map(({ route, match }) => {
 		if (route.component) {
+			
 			return route.component.loadData
 				? // the following will be passed into each component's `loadData` method:
 					route.component.loadData(
@@ -69,6 +74,7 @@ app.get("*", (request, response) => {
 	});
 
 	Promise.all(need).then(() => {
+
 		const staticRouterContext = {};
 		const html = renderer(
 			request,
@@ -80,6 +86,8 @@ app.get("*", (request, response) => {
 		if (staticRouterContext.url)
 			return response.redirect(301, staticRouterContext.url);
 		if (staticRouterContext.notFound) response.status(404);
+
+
 		response.send(html);
 	});
 });
