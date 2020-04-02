@@ -51,14 +51,13 @@ app.get("*", (request, response) => {
 		"fromServer"
 	);
 
-
-	store.dispatch(push(request.path));
+	// store.dispatch(push(request.path));
 
 	const currentRoute = matchRoutes(Router, request.path);
 
 	const need = currentRoute.map(({ route, match }) => {
+		
 		if (route.component) {
-			
 			return route.component.loadData
 				? // the following will be passed into each component's `loadData` method:
 					route.component.loadData(
@@ -71,6 +70,8 @@ app.get("*", (request, response) => {
 				: Promise.resolve(null);
 		}
 		Promise.resolve(null);
+
+		
 	});
 
 	Promise.all(need).then(() => {

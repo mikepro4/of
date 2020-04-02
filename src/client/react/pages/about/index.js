@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import posed, { PoseGroup } from 'react-pose';
 import SplitText from 'react-pose-text';
 
-class HomePage extends Component {
+class About extends Component {
 	state = {};
 
 	componentDidMount() {}
@@ -35,10 +35,9 @@ class HomePage extends Component {
 
 function mapStateToProps({ app }) {
 	return {
-    appVisible: app.appVisible
   };
 }
 
 export default {
-	component: connect(mapStateToProps, {})(HomePage)
+	component: connect(mapStateToProps, {})(About)
 }
