@@ -24,6 +24,7 @@ class About extends Component {
         <div className="of-grid-content-layer">
           <div className="of-grid-row">
             <div className="of-grid-gutter-4 of-grid-5">
+						<Link to="/">home</Link>
 							about
             </div>
           </div>

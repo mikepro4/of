@@ -7,7 +7,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="app" onClick={() => alert("lol")}>
+			<div className="app">
 				{renderRoutes(this.props.route.routes)}
 			</div>
 		)

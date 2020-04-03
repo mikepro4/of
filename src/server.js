@@ -3,7 +3,7 @@ import path from "path";
 import { matchRoutes } from "react-router-config";
 import proxy from "express-http-proxy";
 import axios from "axios";
-import { connectRouter, push } from "connected-react-router";
+import { connectRouter, push, go } from "connected-react-router";
 
 import Router from "./client/router";
 import renderer from "./helpers/renderer";
@@ -42,21 +42,17 @@ app.get("*", (request, response) => {
 		headers: { cookie: request.get("cookie") || "" }
 	});
 
-
-
 	const { history, store } = createStore(
 		{},
 		reducer,
 		axiosInstance,
-		"fromServer"
+		"fromServer",
+		request.path
 	);
-
-	// store.dispatch(push(request.path));
 
 	const currentRoute = matchRoutes(Router, request.path);
 
 	const need = currentRoute.map(({ route, match }) => {
-		
 		if (route.component) {
 			return route.component.loadData
 				? // the following will be passed into each component's `loadData` method:
@@ -70,8 +66,6 @@ app.get("*", (request, response) => {
 				: Promise.resolve(null);
 		}
 		Promise.resolve(null);
-
-		
 	});
 
 	Promise.all(need).then(() => {
@@ -87,7 +81,6 @@ app.get("*", (request, response) => {
 		if (staticRouterContext.url)
 			return response.redirect(301, staticRouterContext.url);
 		if (staticRouterContext.notFound) response.status(404);
-
 
 		response.send(html);
 	});

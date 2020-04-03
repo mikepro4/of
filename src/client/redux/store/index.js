@@ -1,7 +1,7 @@
 import * as redux from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { routerMiddleware, routerReducer, connectRouter } from "connected-react-router";
+import { routerMiddleware, routerReducer, connectRouter, push} from "connected-react-router";
 
 import {createBrowserHistory, createMemoryHistory} from "history";
 
@@ -11,7 +11,8 @@ export const configure = (
 	initialState = INITIAL_STATE,
 	reducers = {},
 	axiosInstance = null,
-	fromServer: null
+	fromServer: null,
+	path
 ) => {
 	let history;
 
@@ -20,11 +21,10 @@ export const configure = (
 		history = createMemoryHistory();
 	} else {
 		history = createBrowserHistory();
+
+		// Analytics will be tracked here
+		history.listen(location => console.log("Track route change: ", location));
 	}
-
-
-	// Analytics will be tracked here
-	// history.listen(location => console.log("Track route change: ", location));
 
 	const initializedRouterMW = routerMiddleware(history);
 
@@ -43,7 +43,14 @@ export const configure = (
 		);
 	}
 
+	// THIS IS SUPER IMPORTANT
+
+	if (fromServer) {
+		history.push(path);
+	}
+
 	const composedEnhancer = redux.compose(...composeArguments);
 	const store = redux.createStore(reducers(history), initialState, composedEnhancer);
+	
 	return { history, store };
 };

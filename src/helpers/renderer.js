@@ -45,8 +45,7 @@ export default (
 				} else return ""
 			}, "");
 	};
-	console.log(expressRequest.path)
-	reduxStore.dispatch(push(expressRequest.path));
+	// reduxStore.dispatch(push(expressRequest.path));
 
 	const content = renderToString(
 		<Provider store={reduxStore}>
